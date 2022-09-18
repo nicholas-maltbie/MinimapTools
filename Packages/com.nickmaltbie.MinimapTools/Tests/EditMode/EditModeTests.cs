@@ -1,5 +1,3 @@
-#pragma warning disable IDE0073 // The file header does not match the required text
-
 // Copyright (C) 2022 Nicholas Maltbie
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
@@ -18,13 +16,31 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-/// <summary>
-/// Constants for the project
-/// </summary>
-public static class Constants
+using com.nickmaltbie.MinimapTools;
+using NUnit.Framework;
+using UnityEngine;
+
+namespace nickmaltbie.MinimapTools.Tests.EditMode
 {
     /// <summary>
-    /// Folder application project is stored in.
+    /// Tests meant to be run in EditMode.
     /// </summary>
-    public static string ProjectName = "MinimapTools";
+    public class EditModeTests
+    {
+        /// <summary>
+        /// Simple sample script test.
+        /// </summary>
+        [Test]
+        public void SimpleSampleScriptTest()
+        {
+            var go = new GameObject();
+            SampleScript sample = go.AddComponent<SampleScript>();
+
+            Assert.AreEqual(sample.Value, 0);
+            sample.IncrementValue();
+            Assert.AreEqual(sample.Value, 1);
+
+            GameObject.DestroyImmediate(go);
+        }
+    }
 }

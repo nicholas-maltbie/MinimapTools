@@ -1,5 +1,3 @@
-#pragma warning disable IDE0073 // The file header does not match the required text
-
 // Copyright (C) 2022 Nicholas Maltbie
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
@@ -18,13 +16,34 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-/// <summary>
-/// Constants for the project
-/// </summary>
-public static class Constants
+using UnityEngine;
+
+namespace com.nickmaltbie.MinimapTools
 {
     /// <summary>
-    /// Folder application project is stored in.
+    /// Basic sample script in project.
     /// </summary>
-    public static string ProjectName = "MinimapTools";
+    public class SampleScript : MonoBehaviour
+    {
+        /// <summary>
+        /// Value associated with sample script.
+        /// </summary>
+        public int Value { get; private set; } = 0;
+
+        /// <summary>
+        /// Increment value associated with sample script.
+        /// </summary>
+        public void IncrementValue()
+        {
+            Value++;
+        }
+
+        /// <summary>
+        /// Update function run each frame.
+        /// </summary>
+        public void Update()
+        {
+            IncrementValue();
+        }
+    }
 }

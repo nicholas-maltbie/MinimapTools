@@ -1,0 +1,21 @@
+{
+    "name": "nickmaltbie.MinimapTools.Tests.EditMode",
+    "rootNamespace": "nickmaltbie.MinimapTools.Tests.EditMode",
+    "references": [
+        "nickmaltbie.MinimapTools"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

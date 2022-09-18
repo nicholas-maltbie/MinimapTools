@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "com.nickmaltbie.templateunitypackage": {
-      "version": "file:com.nickmaltbie.TemplateUnityPackage",
+    "com.nickmaltbie.minimaptools": {
+      "version": "file:com.nickmaltbie.MinimapTools",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
