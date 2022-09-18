@@ -1,0 +1,24 @@
+{
+  "name": "com.nickmaltbie.minimaptools",
+  "displayName": "MinimapTools",
+  "version": "0.0.0",
+  "description": "MinimapTools for creating and sharing assets.",
+  "author": {
+    "name": "Nick Maltbie",
+    "email": "nick.dmalt@gmail.com",
+    "url": "https://nickmaltbie.com"
+  },
+  "documentationUrl": "https://nickmaltbie.com/MinimapTools/docs",
+  "keywords": [
+    "minimap"
+  ],
+  "samples": [
+    {
+      "displayName": "Example Sample",
+      "description": "Example Sample folder for minimap tools.",
+      "path": "Samples~/ExampleSample"
+    }
+  ],
+  "license": "MIT",
+  "type": "library"
+}

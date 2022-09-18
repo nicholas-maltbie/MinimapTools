@@ -3,11 +3,6 @@
 Nick Maltbie's MinimapTools for easily creating and sharing unity
 packages over git and NPM.
 
-![Example importing package from git.](Demo/project-demo.png)
-
-If you want to host and share code between unity projects easily,
-use this project to configure unity builds.
-
 MinimapTools is an open source project hosted at
 [https://github.com/nicholas-maltbie/MinimapTools](https://github.com/nicholas-maltbie/MinimapTools)
 
