@@ -1,17 +1,23 @@
-# MinimapTools
+# Minimap Tools
 
-Nick Maltbie's MinimapTools for easily creating and sharing unity
-packages over git and NPM.
-
-![Example importing package from git.](Demo/project-demo.png)
-
-If you want to host and share code between unity projects easily,
-use this project to configure unity builds.
+Nick Maltbie's MinimapTools for creating basic minimaps for unity game
+spaces that can be explored by a user.
 
 MinimapTools is an open source project hosted at
 [https://github.com/nicholas-maltbie/MinimapTools](https://github.com/nicholas-maltbie/MinimapTools)
 
 This is an open source project licensed under a [MIT License](LICENSE.txt).
+
+## Features
+
+The minimap tools package includes the following features:
+
+* \[Planned\] UI Element for a minimap on the screen.
+* \[Planned\] Revealing the map as the player moves around with configurable
+  levels of fog of war.
+* \[Planned\] Icons and UI Elements within the map based on objects inside
+  the game scene.
+* \[Planned\] Optional automated generation of minimap using a camera.
 
 ## Installation
 
