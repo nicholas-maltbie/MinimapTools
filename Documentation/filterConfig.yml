@@ -1,9 +1,9 @@
 apiRules:
 - include:
-    uidRegex: ^nickmaltbie\.TemplateUnityPackage
+    uidRegex: ^nickmaltbie\.MinimapTools
     type: Namespace
 - include:
-    uidRegex: ^nickmaltbie\.TemplateUnityPackage\.*
+    uidRegex: ^nickmaltbie\.MinimapTools\.*
     type: Namespace
 - exclude:
     uidRegex: .*
