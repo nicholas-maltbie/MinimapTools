@@ -1,0 +1,27 @@
+# Sources
+
+## starcraft-screenshot.jpg
+
+Image from StarCraft 2 game Outbreak mission in Wings of liberty campaign.
+
+## Super_Metroid_Grapple_Beam.png
+
+wikipedia link - https://en.wikipedia.org/wiki/File:Super_Metroid_Grapple_Beam.png
+Description - Screenshot of typical gameplay from Super Metroid. The
+    protagonist uses a grapple beam to reach inaccessible areas.
+Source - From Metroid Recon
+Article - Super Metroid: https://en.wikipedia.org/wiki/Super_Metroid)
+Portion used - Entire portion of a single screenshot.
+Low resolution? - Yes; the original was 512×446 and has been reduced.
+Purpose of use - The image is used to depict the game's graphical style
+    and gameplay. It highlights distinct features, such as the graphics
+    engine, in a way the article text itself could not describe as
+    intricately.
+Replaceable - No free equivalent of this screenshot exists.
+    Other non-free screenshots can be easily provided.
+Other information -
+    Use of the screenshot in the article is believed to comply with
+    Wikipedia non-free content policy and fair use under United States
+    copyright law as described above. his image does not allow users to
+    make illegal copies of the software, and does not diminish the 
+    copyright holder's ability to market the software.
