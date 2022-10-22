@@ -1,5 +1,5 @@
 {
-    "name": "MinimapFPS",
+    "name": "nickmaltbie.MinimapTools.MinimapFPS",
     "rootNamespace": "com.nickmaltbie.MinimapTools.MinimapFPS",
     "references": [
         "GUID:75469ad4d38634e559750d17036d5f7c"
