@@ -76,8 +76,8 @@ namespace com.nickmaltbie.MinimapTools.MinimapFPS
         {
             characterController = GetComponent<CharacterController>();
             cameraTransform = GetComponentInChildren<Camera>().transform;
-            lookAround?.action.Enable();
-            movePlayer?.action.Enable();
+            lookAround.action.Enable();
+            movePlayer.action.Enable();
         }
 
         // Update is called once per frame

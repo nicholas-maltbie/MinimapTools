@@ -1924,6 +1924,10 @@ PrefabInstance:
       propertyPath: menuController
       value: 
       objectReference: {fileID: 8387962290575963714}
+    - target: {fileID: 619880433332672161, guid: 155fa25be030187488f3a6279788e08c, type: 3}
+      propertyPath: menuController
+      value: 
+      objectReference: {fileID: 8387962290575963714}
     - target: {fileID: 1190656660190202813, guid: 155fa25be030187488f3a6279788e08c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1972,6 +1976,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7258973882005371912, guid: 155fa25be030187488f3a6279788e08c, type: 3}
+      propertyPath: menuController
+      value: 
+      objectReference: {fileID: 8387962290575963714}
     - target: {fileID: 7604536538350049094, guid: 155fa25be030187488f3a6279788e08c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2125,7 +2133,7 @@ PrefabInstance:
       objectReference: {fileID: 8387962290575963714}
     - target: {fileID: 6187564329407797762, guid: 8ddb8e75fab307e408881a788d010222, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7694884257995294999, guid: 8ddb8e75fab307e408881a788d010222, type: 3}
       propertyPath: m_AnchorMax.x
