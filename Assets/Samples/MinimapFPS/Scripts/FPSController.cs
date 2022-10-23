@@ -72,10 +72,12 @@ namespace com.nickmaltbie.MinimapTools.MinimapFPS
         private Transform cameraTransform;
         private CharacterController characterController;
 
-        public void Awake()
+        public void Start()
         {
             characterController = GetComponent<CharacterController>();
             cameraTransform = GetComponentInChildren<Camera>().transform;
+            GetComponent<PlayerInput>().currentActionMap.Enable();
+
             lookAround.action.Enable();
             movePlayer.action.Enable();
         }

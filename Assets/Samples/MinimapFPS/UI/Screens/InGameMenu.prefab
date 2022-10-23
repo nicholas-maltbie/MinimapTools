@@ -482,12 +482,12 @@ MonoBehaviour:
     OnPressed:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1292730286106825495, guid: c35c01f406a47e64d9ecbfca3b165e47, type: 3}
+        - m_Target: {fileID: 1292730286106825495, guid: d34568cd617084e4eaf6bc88f4e16818, type: 3}
           m_TargetAssemblyTypeName: nickmaltbie.ScreenManager.MenuController, ScreenManager
           m_MethodName: SetScreen
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 6101108449083475876, guid: c35c01f406a47e64d9ecbfca3b165e47, type: 3}
+            m_ObjectArgument: {fileID: 6101108449083475876, guid: d34568cd617084e4eaf6bc88f4e16818, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -816,7 +816,7 @@ MonoBehaviour:
         m_MethodName: SetScreen
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6637053135914170328, guid: ebfbdf94e68ae6d4cacda98a8a50e0d1, type: 3}
+          m_ObjectArgument: {fileID: 6637053135914170328, guid: 178097701acde2841946c6ae24a6aa61, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1030,7 +1030,7 @@ MonoBehaviour:
         m_MethodName: SetScreen
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6101108449083475876, guid: c35c01f406a47e64d9ecbfca3b165e47, type: 3}
+          m_ObjectArgument: {fileID: 6101108449083475876, guid: d34568cd617084e4eaf6bc88f4e16818, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1044,14 +1044,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3816567771485690120}
     m_Modifications:
-    - target: {fileID: 3733915148585717349, guid: a2927e65fb1d493469acfd395cb7c76d, type: 3}
+    - target: {fileID: 3733915148585717349, guid: 010d40c35676a3b4ca0e5cff82a97fac, type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a2927e65fb1d493469acfd395cb7c76d, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 010d40c35676a3b4ca0e5cff82a97fac, type: 3}
 --- !u!224 &4767079529828849869 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3733915148585717349, guid: a2927e65fb1d493469acfd395cb7c76d, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3733915148585717349, guid: 010d40c35676a3b4ca0e5cff82a97fac, type: 3}
   m_PrefabInstance: {fileID: 8212764274198238888}
   m_PrefabAsset: {fileID: 0}

@@ -116,7 +116,7 @@ public class RenameAssetsWindow : EditorWindow
     [MenuItem("Tools/Rename Template Assets")]
     public static void ShowRenameAssets()
     {
-        // This method is called when the user selects the menu item in the Editor
+        // This method is called when the user selects the menu item in the EditorTools
         EditorWindow wnd = GetWindow<RenameAssetsWindow>();
         wnd.titleContent = new GUIContent("Rename Template Assets");
     }

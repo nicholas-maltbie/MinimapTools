@@ -16,31 +16,35 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools;
-using NUnit.Framework;
+using com.nickmaltbie.MinimapTools.Icon;
 using UnityEngine;
 
-namespace nickmaltbie.MinimapTools.Tests.EditMode
+namespace com.nickmaltbie.MinimapTools
 {
     /// <summary>
-    /// Tests meant to be run in EditMode.
+    /// Minimap for managing state.
     /// </summary>
-    public class EditModeTests
+    public interface IMinimap
     {
         /// <summary>
-        /// Simple sample script test.
+        /// Check if a location is in the minimap space.
         /// </summary>
-        [Test]
-        public void SimpleSampleScriptTest()
-        {
-            var go = new GameObject();
-            SampleScript sample = go.AddComponent<SampleScript>();
+        /// <param name="worldSpace">World space of the object.</param>
+        /// <returns>True if the location is within the minimap, false otherwise.</returns>
+        bool InMap(Vector3 worldSpace);
 
-            Assert.AreEqual(sample.Value, 0);
-            sample.IncrementValue();
-            Assert.AreEqual(sample.Value, 1);
+        /// <summary>
+        /// Add an icon to the minimap.
+        /// </summary>
+        /// <param name="minimapIcon">Icon to add to the minimap.</param>
+        /// <returns>True if the object was added successfully, false otherwise.</returns>
+        bool AddIcon(IMinimapIcon minimapIcon);
 
-            GameObject.DestroyImmediate(go);
-        }
+        /// <summary>
+        /// Remove an icon from the minimap.
+        /// </summary>
+        /// <param name="minimapIcon">Icon to remove to the minimap.</param>
+        /// <returns>True if the object was removed successfully, false otherwise.</returns>
+        bool RemoveIcon(IMinimapIcon minimapIcon);
     }
 }

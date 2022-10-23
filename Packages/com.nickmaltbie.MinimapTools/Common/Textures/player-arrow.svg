@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg2545"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   sodipodi:docname="player-arrow.svg"
+   inkscape:export-filename="D:\Projects\MinimapTools\Packages\com.nickmaltbie.minimaptools\Common\Textures\player-arrow.png"
+   inkscape:export-xdpi="107.7237"
+   inkscape:export-ydpi="107.7237"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview2547"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.51843089"
+     inkscape:cx="-205.42757"
+     inkscape:cy="131.16502"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2542" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       d="M 0,120 50,0 100,120 C 71.358984,99.409124 35.405283,99.55875 0,120 Z"
+       id="path7023"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:#fff900;fill-opacity:1;stroke:#000000;stroke-width:0.256513px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 1.5254113,118.17059 50.000452,1.830498 98.475478,118.17059 c -27.767479,-19.962875 -62.624617,-19.817808 -96.9500667,0 z"
+       id="path7023-3"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:#ffd600;fill-opacity:1;stroke:none;stroke-width:0.256513px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 3.642078,116.05392 50.000452,4.4763313 50.574148,101.72245 c -6.566072,1.40347 -10.820381,-1.913852 -46.93207,14.33147 z"
+       id="path7023-3-3"
+       sodipodi:nodetypes="cccc" />
+  </g>
+</svg>

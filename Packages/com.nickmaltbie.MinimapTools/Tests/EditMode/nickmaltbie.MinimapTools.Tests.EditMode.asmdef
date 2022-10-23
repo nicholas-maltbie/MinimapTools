@@ -2,10 +2,12 @@
     "name": "nickmaltbie.MinimapTools.Tests.EditMode",
     "rootNamespace": "nickmaltbie.MinimapTools.Tests.EditMode",
     "references": [
-        "nickmaltbie.MinimapTools"
-    ],
-    "optionalUnityReferences": [
-        "TestAssemblies"
+        "nickmaltbie.MinimapTools",
+        "nickmaltbie.MinimapTools.TestCommon",
+        "UnityEditor.TestRunner",
+        "UnityEngine.TestRunner",
+        "Unity.InputSystem",
+        "Unity.InputSystem.TestFramework"
     ],
     "includePlatforms": [
         "Editor"
@@ -13,9 +15,14 @@
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
-    "precompiledReferences": [],
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Moq.dll"
+    ],
     "autoReferenced": false,
-    "defineConstraints": [],
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
     "versionDefines": [],
     "noEngineReferences": false
 }

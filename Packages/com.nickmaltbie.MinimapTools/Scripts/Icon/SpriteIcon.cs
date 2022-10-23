@@ -17,33 +17,42 @@
 // SOFTWARE.
 
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace com.nickmaltbie.MinimapTools
+namespace com.nickmaltbie.MinimapTools.Icon
 {
     /// <summary>
-    /// Basic sample script in project.
+    /// Icon for a minimap composed of a simple sprite.
     /// </summary>
-    public class SampleScript : MonoBehaviour
+    public class SpriteIcon : MonoBehaviour, IMinimapIcon
     {
         /// <summary>
-        /// Value associated with sample script.
+        /// Icon for this object on the minimap.
         /// </summary>
-        public int Value { get; private set; } = 0;
+        [Tooltip("Icon for this object on the minimap.")]
+        public Sprite _sprite;
 
-        /// <summary>
-        /// Increment value associated with sample script.
-        /// </summary>
-        public void IncrementValue()
-        {
-            Value++;
-        }
+        public float width = 10;
 
-        /// <summary>
-        /// Update function run each frame.
-        /// </summary>
-        public void Update()
+        public float height = 10;
+
+        /// <inheritdoc/>
+        public Vector3 GetWorldSpace() => transform.position;
+
+        /// <inheritdoc/>
+        public Quaternion GetIconRotation() => transform.rotation;
+
+        /// <inheritdoc/>
+        public GameObject CreateIcon(RectTransform minimapTransform)
         {
-            IncrementValue();
+            var go = new GameObject();
+            Image image = go.AddComponent<Image>();
+            image.sprite = _sprite;
+            RectTransform rt = go.GetComponent<RectTransform>();
+            rt.SetParent(minimapTransform);
+            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+            return go;
         }
     }
 }

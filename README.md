@@ -3,6 +3,8 @@
 Nick Maltbie's MinimapTools for creating basic minimaps for unity game
 spaces that can be explored by a user.
 
+![Minimap demo for FPS scene](Demo/MinimapTools-Example.gif)
+
 MinimapTools is an open source project hosted at
 [https://github.com/nicholas-maltbie/MinimapTools](https://github.com/nicholas-maltbie/MinimapTools)
 

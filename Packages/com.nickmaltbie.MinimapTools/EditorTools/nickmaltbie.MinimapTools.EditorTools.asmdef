@@ -1,0 +1,20 @@
+{
+    "name": "nickmaltbie.MinimapTools.EditorTools",
+    "rootNamespace": "com.nickmaltbie.MinimapTools.EditorTools",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:33ba47153cb20554cb9674037eacaed0",
+        "GUID:bfaa3c93cd27753458d50dcc711875ae"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
