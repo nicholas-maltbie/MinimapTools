@@ -18,19 +18,17 @@
 
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Simple
+namespace com.nickmaltbie.MinimapTools.Minimap.MinimapBounds
 {
     /// <summary>
-    /// Source of bounds from a box collider
+    /// Source of bounds for a minimap
     /// </summary>
-    [RequireComponent(typeof(BoxCollider))]
-    public class BoxBoundsSource : MonoBehaviour, IBoundsSource
+    public interface IBoundsSource
     {
-        /// <inheritdoc/>
-        public Bounds GetBounds()
-        {
-            Bounds bounds = GetComponent<BoxCollider>().bounds;
-            return new Bounds(bounds.center + transform.position, bounds.size);
-        }
+        /// <summary>
+        /// Get the bounds for this bounds source.
+        /// </summary>
+        /// <returns>Get the bounds for this minimap source.</returns>
+        Bounds GetBounds();
     }
 }

@@ -17,7 +17,8 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Icon;
-using com.nickmaltbie.MinimapTools.Simple;
+using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
+using com.nickmaltbie.MinimapTools.Minimap.Simple;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
 using UnityEngine;

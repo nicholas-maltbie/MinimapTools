@@ -18,11 +18,12 @@
 
 using System.Collections.Generic;
 using com.nickmaltbie.MinimapTools.Icon;
+using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
 using nickmaltbie.ScreenManager;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace com.nickmaltbie.MinimapTools.Simple
+namespace com.nickmaltbie.MinimapTools.Minimap.Simple
 {
     /// <summary>
     /// Simple, static minimap that does not move (static) and simply displays

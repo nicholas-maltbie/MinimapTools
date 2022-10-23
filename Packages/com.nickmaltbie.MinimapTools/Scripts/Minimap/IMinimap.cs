@@ -16,19 +16,35 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using com.nickmaltbie.MinimapTools.Icon;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Simple
+namespace com.nickmaltbie.MinimapTools.Minimap
 {
     /// <summary>
-    /// Source of bounds for a minimap
+    /// Minimap for managing state.
     /// </summary>
-    public interface IBoundsSource
+    public interface IMinimap
     {
         /// <summary>
-        /// Get the bounds for this bounds source.
+        /// Check if a location is in the minimap space.
         /// </summary>
-        /// <returns>Get the bounds for this minimap source.</returns>
-        Bounds GetBounds();
+        /// <param name="worldSpace">World space of the object.</param>
+        /// <returns>True if the location is within the minimap, false otherwise.</returns>
+        bool InMap(Vector3 worldSpace);
+
+        /// <summary>
+        /// Add an icon to the minimap.
+        /// </summary>
+        /// <param name="minimapIcon">Icon to add to the minimap.</param>
+        /// <returns>True if the object was added successfully, false otherwise.</returns>
+        bool AddIcon(IMinimapIcon minimapIcon);
+
+        /// <summary>
+        /// Remove an icon from the minimap.
+        /// </summary>
+        /// <param name="minimapIcon">Icon to remove to the minimap.</param>
+        /// <returns>True if the object was removed successfully, false otherwise.</returns>
+        bool RemoveIcon(IMinimapIcon minimapIcon);
     }
 }

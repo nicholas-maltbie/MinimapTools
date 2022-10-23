@@ -32,15 +32,29 @@ namespace com.nickmaltbie.MinimapTools.Icon
         [Tooltip("Icon for this object on the minimap.")]
         public Sprite _sprite;
 
+        /// <summary>
+        /// Width of the icon in pixels.
+        /// </summary>
+        [Tooltip("Width of the icon in pixels.")]
         public float width = 10;
 
+        /// <summary>
+        /// Height of the icon in pixels.
+        /// </summary>
+        [Tooltip("Height of the icon in pixels.")]
         public float height = 10;
+
+        /// <summary>
+        /// Should the icon rotate with the object's rotation.
+        /// </summary>
+        [Tooltip("Should the icon rotate with the object's rotation")]
+        public bool rotateIcon = false;
 
         /// <inheritdoc/>
         public Vector3 GetWorldSpace() => transform.position;
 
         /// <inheritdoc/>
-        public Quaternion GetIconRotation() => transform.rotation;
+        public Quaternion GetIconRotation() => rotateIcon ? Quaternion.identity : transform.rotation;
 
         /// <inheritdoc/>
         public GameObject CreateIcon(RectTransform minimapTransform)
