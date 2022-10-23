@@ -63,3 +63,4 @@ MonoBehaviour:
   minimapBoundsTag: MinimapBounds
   followTargetTag: MinimapTarget
   _mapScale: {x: 0.5, y: 0.5}
+  rotateMinimap: 0

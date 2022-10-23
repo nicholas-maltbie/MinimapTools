@@ -242,7 +242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4762580867013638654, guid: cace731e22929a84c87282fc42b44b51, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -170
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 4762580867013638654, guid: cace731e22929a84c87282fc42b44b51, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -273,6 +273,10 @@ PrefabInstance:
     - target: {fileID: 2158160876106336398, guid: 866805ae6671a2d48bbd92181c1cc724, type: 3}
       propertyPath: m_Name
       value: CenteredMinimap
+      objectReference: {fileID: 0}
+    - target: {fileID: 2158160876106336398, guid: 866805ae6671a2d48bbd92181c1cc724, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4762580867013638654, guid: 866805ae6671a2d48bbd92181c1cc724, type: 3}
       propertyPath: m_Pivot.x

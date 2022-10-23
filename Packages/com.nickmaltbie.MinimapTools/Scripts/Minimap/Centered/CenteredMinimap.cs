@@ -51,6 +51,13 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         private Vector2 _mapScale = Vector2.one;
 
         /// <summary>
+        /// Should the minimap rotate with the follow target.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("Should the minimap rotate with the follow target.")]
+        private bool rotateMinimap = false;
+
+        /// <summary>
         /// Follow target for the minimap to center on.
         /// </summary>
         private IMinimapIcon followTarget;
@@ -92,6 +99,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         public override void LateUpdate()
         {
             _mapOffset = base.GetMinimapPosition(followTarget.GetWorldSpace());
+            transform.rotation = Quaternion.Euler(0, 0, rotateMinimap ? followTarget.GetIconRotation().eulerAngles.y : 0);
 
             base.LateUpdate();
         }

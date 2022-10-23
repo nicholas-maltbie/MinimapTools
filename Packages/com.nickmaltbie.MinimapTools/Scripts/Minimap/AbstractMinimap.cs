@@ -171,7 +171,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap
                 rectTransform.anchorMax = relativePosition;
                 rectTransform.anchorMin = relativePosition;
                 rectTransform.anchoredPosition = Vector2.zero;
-                rectTransform.rotation = Quaternion.Euler(0, 0, -icon.GetIconRotation().eulerAngles.y);
+                rectTransform.localRotation = Quaternion.Euler(0, 0, -icon.GetIconRotation().eulerAngles.y);
 
                 iconGo.transform.localScale = new Vector3(1 / MapScale.x, 1 / MapScale.y);
             }
