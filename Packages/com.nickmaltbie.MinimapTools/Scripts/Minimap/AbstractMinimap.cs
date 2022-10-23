@@ -19,7 +19,6 @@
 using System.Collections.Generic;
 using com.nickmaltbie.MinimapTools.Icon;
 using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
-using nickmaltbie.ScreenManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -63,7 +62,6 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// Source of bounds for the minimap.
         /// </summary>
         public abstract IBoundsSource Source { get; }
-
 
         /// <summary>
         /// Scale of the map relative to minimap size.

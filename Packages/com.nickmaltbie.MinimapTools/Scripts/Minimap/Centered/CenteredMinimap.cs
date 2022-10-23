@@ -18,7 +18,6 @@
 
 using com.nickmaltbie.MinimapTools.Icon;
 using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
-using nickmaltbie.ScreenManager;
 using UnityEngine;
 
 namespace com.nickmaltbie.MinimapTools.Minimap.Centered
