@@ -1,13 +1,12 @@
 {
-    "name": "nickmaltbie.MinimapTools.Tests.EditMode",
-    "rootNamespace": "nickmaltbie.MinimapTools.Tests.EditMode",
+    "name": "nickmaltbie.MinimapTools.TestCommon",
+    "rootNamespace": "nickmaltbie.MinimapTools.TestCommon",
     "references": [
-        "nickmaltbie.MinimapTools",
-        "nickmaltbie.MinimapTools.TestCommon",
-        "UnityEditor.TestRunner",
-        "UnityEngine.TestRunner",
         "Unity.InputSystem",
-        "Unity.InputSystem.TestFramework"
+        "Unity.InputSystem.TestFramework",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "nickmaltbie.MinimapTools"
     ],
     "includePlatforms": [
         "Editor"

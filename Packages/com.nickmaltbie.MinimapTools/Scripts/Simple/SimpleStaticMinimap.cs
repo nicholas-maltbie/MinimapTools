@@ -85,12 +85,10 @@ namespace com.nickmaltbie.MinimapTools.Simple
         {
             Mask mask = gameObject.AddComponent<Mask>();
             Image maskImage = gameObject.AddComponent<Image>();
-            if (MaskShape != null)
-            {
-                maskImage.sprite = MaskShape;
-            }
+            maskImage.sprite = MaskShape;
 
             var background = new GameObject();
+            background.name = "Background";
             background.transform.SetParent(transform);
 
             RectTransform backgroundTr = background.AddComponent<RectTransform>();
@@ -114,6 +112,7 @@ namespace com.nickmaltbie.MinimapTools.Simple
 
             GameObject iconGo = minimapIcon.CreateIcon(GetComponent<RectTransform>());
             iconGo.transform.SetParent(transform);
+            iconGo.name = "icon";
 
             icons.Add(minimapIcon, iconGo);
             UpdateMinimapIconPosition(minimapIcon);
@@ -142,6 +141,10 @@ namespace com.nickmaltbie.MinimapTools.Simple
         /// <inheritdoc/>
         public bool RemoveIcon(IMinimapIcon minimapIcon)
         {
+            if (icons.TryGetValue(minimapIcon, out GameObject go))
+            {
+                GameObject.DestroyImmediate(go);
+            }
             return icons.Remove(minimapIcon);
         }
 
