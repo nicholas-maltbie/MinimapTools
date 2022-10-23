@@ -17,6 +17,7 @@
 // SOFTWARE.
 
 using System.Collections.Generic;
+using com.nickmaltbie.MinimapTools.Icon;
 using nickmaltbie.ScreenManager;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,13 +44,53 @@ namespace com.nickmaltbie.MinimapTools.Simple
         private Sprite backgroundImage;
 
         /// <summary>
+        /// Shape of the minimap mask.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("Shape of the minimap mask.")]
+        private Sprite MaskShape;
+
+        /// <summary>
         /// Source of bounds for the minimap.
         /// </summary>
         private IBoundsSource source;
 
+        /// <summary>
+        /// Collection of icons contained in this minimap.
+        /// </summary>
+        private Dictionary<IMinimapIcon, GameObject> icons = new Dictionary<IMinimapIcon, GameObject>();
+
+        /// <summary>
+        /// Gets the world bounds for this simple minimap.
+        /// </summary>
+        private Bounds WorldBounds => source?.GetBounds() ?? defaultBounds;
+
+        public void LateUpdate()
+        {
+            foreach (IMinimapIcon icon in icons.Keys)
+            {
+                UpdateMinimapIconPosition(icon);
+            }
+        }
+
+        public void Start()
+        {
+            foreach (IMinimapIcon icon in GameObject.FindObjectsOfType<SpriteIcon>())
+            {
+                AddIcon(icon);
+            }
+        }
+
         public void Awake()
         {
-            GameObject background = new GameObject();
+            Mask mask = gameObject.AddComponent<Mask>();
+            Image maskImage = gameObject.AddComponent<Image>();
+            if (MaskShape != null)
+            {
+                maskImage.sprite = MaskShape;
+            }
+
+            var background = new GameObject();
             background.transform.SetParent(transform);
 
             RectTransform backgroundTr = background.AddComponent<RectTransform>();
@@ -63,37 +104,19 @@ namespace com.nickmaltbie.MinimapTools.Simple
             image.sprite = backgroundImage;
         }
 
-        /// <summary>
-        /// Collection of icons contained in this minimap.
-        /// </summary>
-        private ICollection<IMinimapIcon> icons = new HashSet<IMinimapIcon>();
-
-        /// <summary>
-        /// Gets the world bounds for this simple minimap.
-        /// </summary>
-        private Bounds WorldBounds => source?.GetBounds() ?? defaultBounds;
-
-        /// <summary>
-        /// Translates a position from world space to normalized minimap space.
-        /// </summary>
-        /// <param name="worldPosition">Position of the object in world space.</param>
-        /// <returns>Normalized minimap position, will scale positions within
-        /// the minimap to between (0,0) and (1,1).</returns>
-        private Vector2 GetMinimapPosition(Vector3 worldPosition)
-        {
-            Vector3 relativePosition = worldPosition - WorldBounds.min;
-            Vector2 normalizedPosition = new Vector2(relativePosition.x / WorldBounds.size.x, relativePosition.z / WorldBounds.size.z);
-            return normalizedPosition;
-        }
-
         /// <inheritdoc/>
         public bool AddIcon(IMinimapIcon minimapIcon)
         {
-            if (icons.Contains(minimapIcon))
+            if (icons.ContainsKey(minimapIcon))
             {
                 return false;
             }
-            icons.Add(minimapIcon);
+
+            GameObject iconGo = minimapIcon.CreateIcon(GetComponent<RectTransform>());
+            iconGo.transform.SetParent(transform);
+
+            icons.Add(minimapIcon, iconGo);
+            UpdateMinimapIconPosition(minimapIcon);
             return true;
         }
 
@@ -107,7 +130,7 @@ namespace com.nickmaltbie.MinimapTools.Simple
         public void OnScreenLoaded()
         {
             // Update bounds source based on source in scene
-            this.source ??= GameObject.FindObjectOfType<BoxBoundsSource>() as IBoundsSource;
+            source ??= GameObject.FindObjectOfType<BoxBoundsSource>() as IBoundsSource;
         }
 
         /// <inheritdoc/>
@@ -120,6 +143,36 @@ namespace com.nickmaltbie.MinimapTools.Simple
         public bool RemoveIcon(IMinimapIcon minimapIcon)
         {
             return icons.Remove(minimapIcon);
+        }
+
+        /// <summary>
+        /// UPdate the position of a minimap icon based on its current position.
+        /// </summary>
+        /// <param name="icon">icon to update position of.</param>
+        private void UpdateMinimapIconPosition(IMinimapIcon icon)
+        {
+            if (icons.TryGetValue(icon, out GameObject iconGo))
+            {
+                Vector3 relativePosition = GetMinimapPosition(icon.GetWorldSpace());
+                RectTransform rectTransform = iconGo.GetComponent<RectTransform>();
+                rectTransform.anchorMax = relativePosition;
+                rectTransform.anchorMin = relativePosition;
+                rectTransform.anchoredPosition = Vector2.zero;
+                rectTransform.rotation = Quaternion.Euler(0, 0, -icon.GetIconRotation().eulerAngles.y);
+            }
+        }
+
+        /// <summary>
+        /// Translates a position from world space to normalized minimap space.
+        /// </summary>
+        /// <param name="worldPosition">Position of the object in world space.</param>
+        /// <returns>Normalized minimap position, will scale positions within
+        /// the minimap to between (0,0) and (1,1).</returns>
+        private Vector2 GetMinimapPosition(Vector3 worldPosition)
+        {
+            Vector3 relativePosition = worldPosition - WorldBounds.min;
+            var normalizedPosition = new Vector2(relativePosition.x / WorldBounds.size.x, relativePosition.z / WorldBounds.size.z);
+            return normalizedPosition;
         }
     }
 }

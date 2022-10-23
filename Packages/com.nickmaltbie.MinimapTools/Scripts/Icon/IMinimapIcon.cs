@@ -17,34 +17,31 @@
 // SOFTWARE.
 
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace com.nickmaltbie.MinimapTools
+namespace com.nickmaltbie.MinimapTools.Icon
 {
     /// <summary>
-    /// Icon for a minimap composed of a simple sprite.
+    /// Minimap Icon to display something on the minimap.
     /// </summary>
-    public class SpriteIcon : MonoBehaviour, IMinimapIcon
+    public interface IMinimapIcon
     {
         /// <summary>
-        /// Icon for this object on the minimap.
+        /// Get the location of this object in world space.
         /// </summary>
-        [Tooltip("Icon for this object on the minimap.")]
-        public Sprite _sprite;
+        /// <returns>Position of the object in world space.</returns>
+        Vector3 GetWorldSpace();
 
-        /// <inheritdoc/>
-        public Vector3 GetWorldSpace() => transform.position;
+        /// <summary>
+        /// Get the rotation of the object in world space.
+        /// </summary>
+        /// <returns>The current rotation of the object in world space.</returns>
+        Quaternion GetIconRotation();
 
-        /// <inheritdoc/>
-        public float GetIconRotation() => transform.rotation.eulerAngles.y;
-
-        /// <inheritdoc/>
-        public GameObject CreateIcon()
-        {
-            GameObject go = new GameObject();
-            var image = go.AddComponent<Image>();
-            image.sprite = _sprite;
-            return go;
-        }
+        /// <summary>
+        /// Create an icon to represent this object on the minimap.
+        /// </summary>
+        /// <param name="minimapTransform">Transform of the parent minimap this is being added to.</param>
+        /// <returns>The newly created icon for this object.</returns>
+        GameObject CreateIcon(RectTransform minimapTransform);
     }
 }

@@ -17,31 +17,42 @@
 // SOFTWARE.
 
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace com.nickmaltbie.MinimapTools
+namespace com.nickmaltbie.MinimapTools.Icon
 {
     /// <summary>
-    /// Minimap Icon to display something on the minimap.
+    /// Icon for a minimap composed of a simple sprite.
     /// </summary>
-    public interface IMinimapIcon
+    public class SpriteIcon : MonoBehaviour, IMinimapIcon
     {
         /// <summary>
-        /// get the location of this object in world space.
+        /// Icon for this object on the minimap.
         /// </summary>
-        /// <returns>Position of the object in world space.</returns>
-        Vector3 GetWorldSpace();
+        [Tooltip("Icon for this object on the minimap.")]
+        public Sprite _sprite;
 
-        /// <summary>
-        /// Get the rotation of the icon in degrees, zero represents no rotation,
-        /// 180 represents flipped over. Rotates the icon on the minimap.
-        /// </summary>
-        /// <returns>The current rotation of the icon.</returns>
-        float GetIconRotation();
+        public float width = 10;
 
-        /// <summary>
-        /// Create an icon to represent this object on the minimap.
-        /// </summary>
-        /// <returns>The newly created icon for this object.</returns>
-        GameObject CreateIcon();
+        public float height = 10;
+
+        /// <inheritdoc/>
+        public Vector3 GetWorldSpace() => transform.position;
+
+        /// <inheritdoc/>
+        public Quaternion GetIconRotation() => transform.rotation;
+
+        /// <inheritdoc/>
+        public GameObject CreateIcon(RectTransform minimapTransform)
+        {
+            var go = new GameObject();
+            Image image = go.AddComponent<Image>();
+            image.sprite = _sprite;
+            RectTransform rt = go.GetComponent<RectTransform>();
+            rt.SetParent(minimapTransform);
+            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+            return go;
+        }
     }
 }
