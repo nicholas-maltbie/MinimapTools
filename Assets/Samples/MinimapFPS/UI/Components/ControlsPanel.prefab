@@ -2109,7 +2109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dce06a2a473b0447926c43526eed334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputAction: {fileID: 8130185064591157487, guid: a91fe66733285db4bb5daf7067d48a9f, type: 3}
+  inputAction: {fileID: 1782936207585160164, guid: a91fe66733285db4bb5daf7067d48a9f, type: 3}
   menuController: {fileID: 0}
   rebindingGroups:
   - bindingDisplayNameText: {fileID: 7103512561513873706}

@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputActions:
   - {fileID: -157715672235557779, guid: a91fe66733285db4bb5daf7067d48a9f, type: 3}
-  - {fileID: 8130185064591157487, guid: a91fe66733285db4bb5daf7067d48a9f, type: 3}
+  - {fileID: 1782936207585160164, guid: a91fe66733285db4bb5daf7067d48a9f, type: 3}
   - {fileID: 1152416210319569963, guid: a91fe66733285db4bb5daf7067d48a9f, type: 3}
 --- !u!1 &8981685885685296716
 GameObject:
