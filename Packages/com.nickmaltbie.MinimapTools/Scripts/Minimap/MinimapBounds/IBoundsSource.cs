@@ -18,7 +18,7 @@
 
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Simple
+namespace com.nickmaltbie.MinimapTools.Minimap.MinimapBounds
 {
     /// <summary>
     /// Source of bounds for a minimap

@@ -18,18 +18,16 @@
 
 using System.Collections.Generic;
 using com.nickmaltbie.MinimapTools.Icon;
-using nickmaltbie.ScreenManager;
+using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace com.nickmaltbie.MinimapTools.Simple
+namespace com.nickmaltbie.MinimapTools.Minimap
 {
     /// <summary>
-    /// Simple, static minimap that does not move (static) and simply displays
-    /// objects on top of a pre-rendered background image. Icons added to the
-    /// map will have their position updated each frame to follow the minimap.
+    /// Abstract minimap that contains basic functions for  minimap.
     /// </summary>
-    public class SimpleStaticMinimap : MonoBehaviour, IMinimap, IScreenComponent
+    public abstract class AbstractMinimap : MonoBehaviour, IMinimap
     {
         /// <summary>
         /// Default bounds for the minimap.
@@ -41,77 +39,99 @@ namespace com.nickmaltbie.MinimapTools.Simple
         /// </summary>
         [SerializeField]
         [Tooltip("Background image for the minimap.")]
-        private Sprite backgroundImage;
+        protected Sprite backgroundImage;
 
         /// <summary>
         /// Shape of the minimap mask.
         /// </summary>
         [SerializeField]
         [Tooltip("Shape of the minimap mask.")]
-        private Sprite MaskShape;
+        protected Sprite maskShape;
 
         /// <summary>
-        /// Source of bounds for the minimap.
+        /// Transform of background image.
         /// </summary>
-        private IBoundsSource source;
+        protected RectTransform backgroundRt;
 
         /// <summary>
         /// Collection of icons contained in this minimap.
         /// </summary>
-        private Dictionary<IMinimapIcon, GameObject> icons = new Dictionary<IMinimapIcon, GameObject>();
+        protected Dictionary<IMinimapIcon, GameObject> icons = new Dictionary<IMinimapIcon, GameObject>();
+
+        /// <summary>
+        /// Source of bounds for the minimap.
+        /// </summary>
+        public abstract IBoundsSource Source { get; }
+
+        /// <summary>
+        /// Scale of the map relative to minimap size.
+        /// A value of (1,1) means the minimap is always full size,
+        /// A value of (2,2) means the map zoomed in to be twice the size
+        /// of the original map.
+        /// </summary>
+        public abstract Vector2 MapScale { get; }
+
+        /// <summary>
+        /// Map offset for the minimap relative to the map size. A value of (0,0)
+        /// would indicate centered map. A value of (1,1) would indicate shift the
+        /// minimap by 1 unit of the minimap viewing area.
+        /// </summary>
+        public abstract Vector2 MapOffset { get; }
 
         /// <summary>
         /// Gets the world bounds for this simple minimap.
         /// </summary>
-        private Bounds WorldBounds => source?.GetBounds() ?? defaultBounds;
+        protected Bounds WorldBounds => Source?.GetBounds() ?? defaultBounds;
 
-        public void LateUpdate()
+        /// <summary>
+        /// Move each object following minimap rules.
+        /// </summary>
+        public virtual void LateUpdate()
         {
+            backgroundRt.localPosition = -MapOffset * GetComponent<RectTransform>().sizeDelta;
+            backgroundRt.localScale = MapScale;
+
             foreach (IMinimapIcon icon in icons.Keys)
             {
                 UpdateMinimapIconPosition(icon);
             }
         }
 
-        public void Start()
-        {
-            foreach (IMinimapIcon icon in GameObject.FindObjectsOfType<SpriteIcon>())
-            {
-                AddIcon(icon);
-            }
-        }
-
-        public void Awake()
+        /// <summary>
+        /// Initial minimap setup.
+        /// </summary>
+        public virtual void Awake()
         {
             _ = gameObject.AddComponent<Mask>();
             Image maskImage = gameObject.AddComponent<Image>();
-            maskImage.sprite = MaskShape;
+            maskImage.sprite = maskShape;
 
             var background = new GameObject();
             background.name = "Background";
             background.transform.SetParent(transform);
 
-            RectTransform backgroundTr = background.AddComponent<RectTransform>();
-            backgroundTr.anchorMin = Vector2.zero;
-            backgroundTr.anchorMax = Vector2.one;
-            backgroundTr.pivot = Vector3.zero;
-            backgroundTr.sizeDelta = Vector2.one;
-            backgroundTr.anchoredPosition = Vector2.zero;
+            backgroundRt = background.AddComponent<RectTransform>();
+            backgroundRt.pivot = new Vector2(0.5f, 0.5f);
+            backgroundRt.anchorMin = Vector2.zero;
+            backgroundRt.anchorMax = Vector2.one;
+            backgroundRt.sizeDelta = Vector3.zero;
+            backgroundRt.anchoredPosition = Vector2.zero;
+
+            backgroundRt.localScale = MapScale;
 
             Image image = background.AddComponent<Image>();
             image.sprite = backgroundImage;
         }
 
         /// <inheritdoc/>
-        public bool AddIcon(IMinimapIcon minimapIcon)
+        public virtual bool AddIcon(IMinimapIcon minimapIcon)
         {
             if (icons.ContainsKey(minimapIcon))
             {
                 return false;
             }
 
-            GameObject iconGo = minimapIcon.CreateIcon(GetComponent<RectTransform>());
-            iconGo.transform.SetParent(transform);
+            GameObject iconGo = minimapIcon.CreateIcon(backgroundRt);
             iconGo.name = "icon";
 
             icons.Add(minimapIcon, iconGo);
@@ -120,26 +140,13 @@ namespace com.nickmaltbie.MinimapTools.Simple
         }
 
         /// <inheritdoc/>
-        public bool InMap(Vector3 worldSpace)
+        public virtual bool InMap(Vector3 worldSpace)
         {
             return WorldBounds.Contains(worldSpace);
         }
 
         /// <inheritdoc/>
-        public void OnScreenLoaded()
-        {
-            // Update bounds source based on source in scene
-            source ??= GameObject.FindObjectOfType<BoxBoundsSource>() as IBoundsSource;
-        }
-
-        /// <inheritdoc/>
-        public void OnScreenUnloaded()
-        {
-
-        }
-
-        /// <inheritdoc/>
-        public bool RemoveIcon(IMinimapIcon minimapIcon)
+        public virtual bool RemoveIcon(IMinimapIcon minimapIcon)
         {
             if (icons.TryGetValue(minimapIcon, out GameObject go))
             {
@@ -150,10 +157,10 @@ namespace com.nickmaltbie.MinimapTools.Simple
         }
 
         /// <summary>
-        /// UPdate the position of a minimap icon based on its current position.
+        /// Update the position of a minimap icon based on its current position.
         /// </summary>
         /// <param name="icon">icon to update position of.</param>
-        private void UpdateMinimapIconPosition(IMinimapIcon icon)
+        protected virtual void UpdateMinimapIconPosition(IMinimapIcon icon)
         {
             if (icons.TryGetValue(icon, out GameObject iconGo))
             {
@@ -162,7 +169,9 @@ namespace com.nickmaltbie.MinimapTools.Simple
                 rectTransform.anchorMax = relativePosition;
                 rectTransform.anchorMin = relativePosition;
                 rectTransform.anchoredPosition = Vector2.zero;
-                rectTransform.rotation = Quaternion.Euler(0, 0, -icon.GetIconRotation().eulerAngles.y);
+                rectTransform.localRotation = Quaternion.Euler(0, 0, -icon.GetIconRotation().eulerAngles.y);
+
+                iconGo.transform.localScale = new Vector3(1 / MapScale.x, 1 / MapScale.y);
             }
         }
 
@@ -172,7 +181,7 @@ namespace com.nickmaltbie.MinimapTools.Simple
         /// <param name="worldPosition">Position of the object in world space.</param>
         /// <returns>Normalized minimap position, will scale positions within
         /// the minimap to between (0,0) and (1,1).</returns>
-        private Vector2 GetMinimapPosition(Vector3 worldPosition)
+        protected virtual Vector2 GetMinimapPosition(Vector3 worldPosition)
         {
             Vector3 relativePosition = worldPosition - WorldBounds.min;
             var normalizedPosition = new Vector2(relativePosition.x / WorldBounds.size.x, relativePosition.z / WorldBounds.size.z);

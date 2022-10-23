@@ -17,8 +17,8 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Icon;
+using com.nickmaltbie.MinimapTools.Minimap.Centered;
 using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
-using com.nickmaltbie.MinimapTools.Minimap.Simple;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
 using UnityEngine;
@@ -26,42 +26,44 @@ using UnityEngine;
 namespace nickmaltbie.MinimapTools.Tests.EditMode
 {
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.Simple.SimpleStaticMinimap"/>
+    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.Centered.CenteredMinimap"/>
     /// </summary>
     [TestFixture]
-    public class SimpleStaticMinimapTests : TestBase
+    public class CenteredMinimapTests : TestBase
     {
-        private SimpleStaticMinimap simpleMinimap;
+        private CenteredMinimap centeredMinimap;
         private SpriteIcon spriteIcon;
+        private GameObject followTarget;
 
         [SetUp]
         public void SetUp()
         {
-            Debug.Log($"Setting up test: {nameof(SimpleStaticMinimap)}");
+            Debug.Log($"Setting up test: {nameof(CenteredMinimapTests)}");
             GameObject canvas = base.CreateGameObject();
             canvas.AddComponent<Canvas>();
 
             GameObject boundsGo = base.CreateGameObject();
             GameObject minimapGo = base.CreateGameObject();
-            GameObject iconGo = base.CreateGameObject();
+            followTarget = base.CreateGameObject();
 
             minimapGo.transform.SetParent(canvas.transform);
 
             BoxBoundsSource boxBoundsSource = boundsGo.AddComponent<BoxBoundsSource>();
-            simpleMinimap = minimapGo.AddComponent<SimpleStaticMinimap>();
-            spriteIcon = iconGo.AddComponent<SpriteIcon>();
+            centeredMinimap = minimapGo.AddComponent<CenteredMinimap>();
 
-            simpleMinimap.Awake();
-            simpleMinimap.Start();
+            string followTargetTag = "FollowTarget";
+            string minimapBoundsTag = "MinimapBounds";
 
-            simpleMinimap.OnScreenLoaded();
-        }
+            spriteIcon = followTarget.AddComponent<SpriteIcon>();
+            centeredMinimap.followTargetTag = followTargetTag;
+            centeredMinimap.minimapBoundsTag = minimapBoundsTag;
 
-        [TearDown]
-        public override void TearDown()
-        {
-            simpleMinimap.OnScreenUnloaded();
-            base.TearDown();
+            centeredMinimap.Awake();
+
+            centeredMinimap.followTarget = spriteIcon;
+            centeredMinimap.boundsSource = boxBoundsSource;
+
+            centeredMinimap.Start();
         }
 
         /// <summary>
@@ -70,41 +72,34 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
         [Test]
         public void Validate_SimpleStaticMinimap_LateUpdate()
         {
-            Assert.AreEqual(simpleMinimap.transform.childCount, 1);
-            Assert.AreEqual(simpleMinimap.transform.GetChild(0).childCount, 1);
+            Assert.AreEqual(centeredMinimap.transform.childCount, 1);
+            Assert.AreEqual(centeredMinimap.transform.GetChild(0).childCount, 1);
 
-            simpleMinimap.LateUpdate();
+            centeredMinimap.LateUpdate();
         }
 
         /// <summary>
-        /// Simple sample script test to validate remove function.
+        /// Simple sample script test to move with the target.
         /// </summary>
         [Test]
-        public void Validate_SimpleStaticMinimap_RemoveIcon()
+        public void Validate_SimpleStaticMinimap_MoveWithTarget([Values(0.5f, 1.0f, 2.0f, 10.0f)] float scale)
         {
-            Transform minimapTransform = simpleMinimap.transform.GetChild(0);
-            // Remove icon multiple times.
-            Assert.AreEqual(minimapTransform.childCount, 1);
-            simpleMinimap.RemoveIcon(spriteIcon);
-            Assert.AreEqual(minimapTransform.childCount, 0);
-            simpleMinimap.RemoveIcon(spriteIcon);
-            Assert.AreEqual(minimapTransform.childCount, 0);
+            centeredMinimap.mapScale = Vector2.one * scale;
 
-            // Add duplicate icons.
-            simpleMinimap.AddIcon(spriteIcon);
-            Assert.AreEqual(minimapTransform.childCount, 1);
-            simpleMinimap.AddIcon(spriteIcon);
-            Assert.AreEqual(minimapTransform.childCount, 1);
-        }
+            centeredMinimap.LateUpdate();
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.zero);
 
-        /// <summary>
-        /// Check if an object is in the map.
-        /// </summary>
-        [Test]
-        public void Validate_SimpleStaticMinimap_InMap()
-        {
-            Assert.IsTrue(simpleMinimap.InMap(Vector3.zero));
-            Assert.IsFalse(simpleMinimap.InMap(new Vector3(10, 10, 10)));
+            followTarget.transform.position = Vector3.forward;
+            centeredMinimap.LateUpdate();
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.up * scale);
+
+            followTarget.transform.position = Vector3.right;
+            centeredMinimap.LateUpdate();
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.right * scale);
+
+            followTarget.transform.position = Vector3.up;
+            centeredMinimap.LateUpdate();
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.zero * scale);
         }
     }
 }

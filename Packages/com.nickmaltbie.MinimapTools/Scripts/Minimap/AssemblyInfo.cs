@@ -16,21 +16,7 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using UnityEngine;
+using System.Runtime.CompilerServices;
 
-namespace com.nickmaltbie.MinimapTools.Simple
-{
-    /// <summary>
-    /// Source of bounds from a box collider
-    /// </summary>
-    [RequireComponent(typeof(BoxCollider))]
-    public class BoxBoundsSource : MonoBehaviour, IBoundsSource
-    {
-        /// <inheritdoc/>
-        public Bounds GetBounds()
-        {
-            Bounds bounds = GetComponent<BoxCollider>().bounds;
-            return new Bounds(bounds.center + transform.position, bounds.size);
-        }
-    }
-}
+[assembly: InternalsVisibleTo("nickmaltbie.MinimapTools.Editor")]
+[assembly: InternalsVisibleTo("nickmaltbie.MinimapTools.Tests.EditMode")]

@@ -93,5 +93,34 @@ namespace nickmaltbie.MinimapTools.TestCommon
                     break;
             }
         }
+
+        /// <summary>
+        /// Assert that two vectors are within a specific bound of each other.
+        /// </summary>
+        /// <param name="actual">Actual vector found.</param>
+        /// <param name="expected">Expected vector to find.</param>
+        /// <param name="range">Range in units of acceptable error.</param>
+        /// <param name="errorMsg">Error message to log if failure, one will be generated if none is provided.</param>
+        /// <param name="bound">Allow the actual vector to be shorter, longer, or either.</param>
+        public static void AssertInBounds(Vector2 actual, Vector2 expected, float range = 0.001f, string errorMsg = null, BoundRange bound = BoundRange.GraterThanOrLessThan)
+        {
+            float delta = (expected - actual).magnitude;
+
+            switch (bound)
+            {
+                case BoundRange.LessThan:
+                    Assert.IsTrue(delta <= range && actual.magnitude <= expected.magnitude, errorMsg ?? $"Actual value {actual.ToString("F3")} is not less than expected value {expected.ToString("F3")} within range {range}");
+                    break;
+                case BoundRange.GraterThan:
+                    Assert.IsTrue(delta <= range && actual.magnitude >= expected.magnitude, errorMsg ?? $"Actual value {actual.ToString("F3")} is not grater than expected value {expected.ToString("F3")} within range {range}");
+                    break;
+                case BoundRange.GraterThanOrLessThan:
+                    Assert.IsTrue(delta <= range, errorMsg ?? $"Actual value {actual.ToString("F3")} is not close enough to expected value {expected.ToString("F3")} within range {range}, actual delta: {delta}");
+                    break;
+                default:
+                    Assert.Fail($"Found invalid bound:{bound} for {nameof(AssertInBounds)}");
+                    break;
+            }
+        }
     }
 }
