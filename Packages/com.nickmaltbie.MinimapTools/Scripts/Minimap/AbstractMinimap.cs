@@ -23,7 +23,7 @@ using nickmaltbie.ScreenManager;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace com.nickmaltbie.MinimapTools.Minimap.Simple
+namespace com.nickmaltbie.MinimapTools.Minimap
 {
     /// <summary>
     /// Abstract minimap that contains basic functions for  minimap.
@@ -88,9 +88,9 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Simple
         /// <summary>
         /// Move each object following minimap rules.
         /// </summary>
-        public void LateUpdate()
+        public virtual void LateUpdate()
         {
-            backgroundRt.anchoredPosition = MapOffset;
+            backgroundRt.localPosition = -MapOffset * GetComponent<RectTransform>().sizeDelta;
             backgroundRt.localScale = MapScale;
 
             foreach (IMinimapIcon icon in icons.Keys)
@@ -102,7 +102,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Simple
         /// <summary>
         /// Initial minimap setup.
         /// </summary>
-        public void Awake()
+        public virtual void Awake()
         {
             _ = gameObject.AddComponent<Mask>();
             Image maskImage = gameObject.AddComponent<Image>();
@@ -142,7 +142,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Simple
         }
 
         /// <inheritdoc/>
-        public bool InMap(Vector3 worldSpace)
+        public virtual bool InMap(Vector3 worldSpace)
         {
             return WorldBounds.Contains(worldSpace);
         }

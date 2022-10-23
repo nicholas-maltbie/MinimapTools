@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 193516856}
   m_Layer: 0
   m_Name: SimpleBoundsSource
-  m_TagString: Untagged
+  m_TagString: MinimapBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 919866753}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: MinimapTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -603,7 +603,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 00127d9a240c10d4abd9d09912e50518, type: 2}
+  - {fileID: 2100000, guid: 1d1b59f404e6b0841b011ff2ebd82c06, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

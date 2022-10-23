@@ -70,7 +70,8 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
         [Test]
         public void Validate_SimpleStaticMinimap_LateUpdate()
         {
-            Assert.AreEqual(simpleMinimap.transform.childCount, 2);
+            Assert.AreEqual(simpleMinimap.transform.childCount, 1);
+            Assert.AreEqual(simpleMinimap.transform.GetChild(0).childCount, 1);
 
             simpleMinimap.LateUpdate();
         }
@@ -81,18 +82,19 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
         [Test]
         public void Validate_SimpleStaticMinimap_RemoveIcon()
         {
+            Transform minimapTransform = simpleMinimap.transform.GetChild(0);
             // Remove icon multiple times.
-            Assert.AreEqual(simpleMinimap.transform.childCount, 2);
+            Assert.AreEqual(minimapTransform.childCount, 1);
             simpleMinimap.RemoveIcon(spriteIcon);
-            Assert.AreEqual(simpleMinimap.transform.childCount, 1);
+            Assert.AreEqual(minimapTransform.childCount, 0);
             simpleMinimap.RemoveIcon(spriteIcon);
-            Assert.AreEqual(simpleMinimap.transform.childCount, 1);
+            Assert.AreEqual(minimapTransform.childCount, 0);
 
             // Add duplicate icons.
             simpleMinimap.AddIcon(spriteIcon);
-            Assert.AreEqual(simpleMinimap.transform.childCount, 2);
+            Assert.AreEqual(minimapTransform.childCount, 1);
             simpleMinimap.AddIcon(spriteIcon);
-            Assert.AreEqual(simpleMinimap.transform.childCount, 2);
+            Assert.AreEqual(minimapTransform.childCount, 1);
         }
 
         /// <summary>
