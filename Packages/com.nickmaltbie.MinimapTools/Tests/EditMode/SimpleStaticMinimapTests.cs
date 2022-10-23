@@ -37,12 +37,12 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
         public void SetUp()
         {
             Debug.Log($"Setting up test: {nameof(SimpleStaticMinimap)}");
-            var canvas = base.CreateGameObject();
+            GameObject canvas = base.CreateGameObject();
             canvas.AddComponent<Canvas>();
 
-            var boundsGo = base.CreateGameObject();
-            var minimapGo = base.CreateGameObject();
-            var iconGo = base.CreateGameObject();
+            GameObject boundsGo = base.CreateGameObject();
+            GameObject minimapGo = base.CreateGameObject();
+            GameObject iconGo = base.CreateGameObject();
 
             minimapGo.transform.SetParent(canvas.transform);
 

@@ -83,7 +83,7 @@ namespace com.nickmaltbie.MinimapTools.Simple
 
         public void Awake()
         {
-            Mask mask = gameObject.AddComponent<Mask>();
+            _ = gameObject.AddComponent<Mask>();
             Image maskImage = gameObject.AddComponent<Image>();
             maskImage.sprite = MaskShape;
 
@@ -135,7 +135,7 @@ namespace com.nickmaltbie.MinimapTools.Simple
         /// <inheritdoc/>
         public void OnScreenUnloaded()
         {
-            
+
         }
 
         /// <inheritdoc/>
@@ -145,6 +145,7 @@ namespace com.nickmaltbie.MinimapTools.Simple
             {
                 GameObject.DestroyImmediate(go);
             }
+
             return icons.Remove(minimapIcon);
         }
 
