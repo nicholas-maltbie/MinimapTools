@@ -62,7 +62,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// <summary>
         /// Source of bounds for the minimap.
         /// </summary>
-        protected abstract IBoundsSource Source { get; }
+        public abstract IBoundsSource Source { get; }
 
 
         /// <summary>
@@ -71,14 +71,14 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// A value of (2,2) means the map zoomed in to be twice the size
         /// of the original map.
         /// </summary>
-        protected abstract Vector2 MapScale { get; }
+        public abstract Vector2 MapScale { get; }
 
         /// <summary>
         /// Map offset for the minimap relative to the map size. A value of (0,0)
         /// would indicate centered map. A value of (1,1) would indicate shift the
         /// minimap by 1 unit of the minimap viewing area.
         /// </summary>
-        protected abstract Vector2 MapOffset { get; }
+        public abstract Vector2 MapOffset { get; }
 
         /// <summary>
         /// Gets the world bounds for this simple minimap.

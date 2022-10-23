@@ -34,38 +34,38 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         /// </summary>
         [SerializeField]
         [Tooltip("Name of the tag to search for minimap bounds.")]
-        private string minimapBoundsTag;
+        public string minimapBoundsTag;
 
         /// <summary>
         /// Name of the tag to search for the follow target.
         /// </summary>
         [SerializeField]
         [Tooltip("Name of the tag to search for the follow target.")]
-        private string followTargetTag;
+        public string followTargetTag;
 
         /// <summary>
         /// Scale of minimap.
         /// </summary>
         [SerializeField]
         [Tooltip("Scale of minimap.")]
-        private Vector2 _mapScale = Vector2.one;
+        public Vector2 mapScale = Vector2.one;
 
         /// <summary>
         /// Should the minimap rotate with the follow target.
         /// </summary>
         [SerializeField]
         [Tooltip("Should the minimap rotate with the follow target.")]
-        private bool rotateMinimap = false;
+        public bool rotateMinimap = false;
 
         /// <summary>
         /// Follow target for the minimap to center on.
         /// </summary>
-        private IMinimapIcon followTarget;
+        internal IMinimapIcon followTarget;
 
         /// <summary>
         /// Bounds source for the minimap.
         /// </summary>
-        private IBoundsSource boundsSource;
+        internal IBoundsSource boundsSource;
 
         /// <summary>
         /// Map offset for following the target.
@@ -73,13 +73,13 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         private Vector2 _mapOffset;
 
         /// <inheritdoc/>
-        protected override IBoundsSource Source => boundsSource;
+        public override IBoundsSource Source => boundsSource;
 
         /// <inheritdoc/>
-        protected override Vector2 MapOffset => _mapOffset * MapScale - MapScale / 2;
+        public override Vector2 MapOffset => _mapOffset * MapScale - MapScale / 2;
 
         /// <inheritdoc/>
-        protected override Vector2 MapScale => _mapScale;
+        public override Vector2 MapScale => mapScale;
 
         /// <summary>
         /// Setup initial configuration of minimap.

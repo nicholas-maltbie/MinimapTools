@@ -36,13 +36,13 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Simple
         private IBoundsSource boundsSource;
 
         /// <inheritdoc/>
-        protected override IBoundsSource Source => boundsSource;
+        public override IBoundsSource Source => boundsSource;
 
         /// <inheritdoc/>
-        protected override Vector2 MapOffset => Vector2.zero;
+        public override Vector2 MapOffset => Vector2.zero;
 
         /// <inheritdoc/>
-        protected override Vector2 MapScale => Vector2.one;
+        public override Vector2 MapScale => Vector2.one;
 
         /// <inheritdoc/>
         public void OnScreenLoaded()
