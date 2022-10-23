@@ -25,7 +25,7 @@ using UnityEngine;
 namespace nickmaltbie.MinimapTools.Tests.EditMode
 {
     /// <summary>
-    /// Tests for the <see cref="SimpleStaticMinimap"/>
+    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Simple.SimpleStaticMinimap"/>
     /// </summary>
     [TestFixture]
     public class SimpleStaticMinimapTests : TestBase
