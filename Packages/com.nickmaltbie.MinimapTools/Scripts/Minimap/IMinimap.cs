@@ -46,5 +46,25 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// <param name="minimapIcon">Icon to remove to the minimap.</param>
         /// <returns>True if the object was removed successfully, false otherwise.</returns>
         bool RemoveIcon(IMinimapIcon minimapIcon);
+
+        /// <summary>
+        /// Translates a position from world space to normalized minimap space.
+        /// </summary>
+        /// <param name="worldPosition">Position of the object in world space.</param>
+        /// <returns>Normalized minimap position, will scale positions within
+        /// the minimap to between (0,0) and (1,1).</returns>
+        Vector2 GetMinimapPosition(Vector3 worldPosition);
+
+        /// <summary>
+        /// Get the world bounds for the minimap.
+        /// </summary>
+        /// <returns>World bound that the minimap represents.</returns>
+        Bounds GetWorldBounds();
+
+        /// <summary>
+        /// Get the size of the minimap texture in pixels.
+        /// </summary>
+        /// <returns>Vector2Int of the width and height of the minimap.</returns>
+        Vector2Int GetSize();
     }
 }

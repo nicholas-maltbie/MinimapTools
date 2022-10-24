@@ -17,6 +17,7 @@
 // SOFTWARE.
 
 using System.Collections.Generic;
+using com.nickmaltbie.MinimapTools.Background;
 using com.nickmaltbie.MinimapTools.Icon;
 using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
 using UnityEngine;
@@ -39,7 +40,14 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// </summary>
         [SerializeField]
         [Tooltip("Background image for the minimap.")]
-        protected Sprite backgroundImage;
+        protected Texture2D backgroundImage;
+
+        /// <summary>
+        /// Size of background image in pixels for minimap.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("Size of background image in pixels for minimap.")]
+        protected Vector2Int minimapSize = new Vector2Int(1024, 1024);
 
         /// <summary>
         /// Shape of the minimap mask.
@@ -78,10 +86,13 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// </summary>
         public abstract Vector2 MapOffset { get; }
 
+        /// <inheritdoc/>
+        public Bounds GetWorldBounds() => Source?.GetBounds() ?? defaultBounds;
+
         /// <summary>
-        /// Gets the world bounds for this simple minimap.
+        /// Background texture to render elements onto.
         /// </summary>
-        protected Bounds WorldBounds => Source?.GetBounds() ?? defaultBounds;
+        private BackgroundTexture backgroundTexture;
 
         /// <summary>
         /// Move each object following minimap rules.
@@ -119,8 +130,21 @@ namespace com.nickmaltbie.MinimapTools.Minimap
 
             backgroundRt.localScale = MapScale;
 
+            // Generate background image from scene elements
+            backgroundTexture = new BackgroundTexture(this, minimapSize, backgroundImage);
+            Texture2D tex = backgroundTexture.GetTexture2D();
+
+            foreach (AbstractMinimapElement minimapElement in GameObject.FindObjectsOfType<AbstractMinimapElement>())
+            {
+                Debug.Log($"Adding element to background texture: {minimapElement.name}");
+                backgroundTexture.AddElementToMinimap(minimapElement);
+            }
+
             Image image = background.AddComponent<Image>();
-            image.sprite = backgroundImage;
+            image.sprite = Sprite.Create(
+                tex,
+                new Rect(0.0f, 0.0f, tex.width, tex.height),
+                new Vector2(0.5f, 0.5f), 100.0f);
         }
 
         /// <inheritdoc/>
@@ -142,7 +166,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// <inheritdoc/>
         public virtual bool InMap(Vector3 worldSpace)
         {
-            return WorldBounds.Contains(worldSpace);
+            return GetWorldBounds().Contains(worldSpace);
         }
 
         /// <inheritdoc/>
@@ -175,17 +199,14 @@ namespace com.nickmaltbie.MinimapTools.Minimap
             }
         }
 
-        /// <summary>
-        /// Translates a position from world space to normalized minimap space.
-        /// </summary>
-        /// <param name="worldPosition">Position of the object in world space.</param>
-        /// <returns>Normalized minimap position, will scale positions within
-        /// the minimap to between (0,0) and (1,1).</returns>
-        protected virtual Vector2 GetMinimapPosition(Vector3 worldPosition)
+        /// <inheritdoc/>
+        public virtual Vector2 GetMinimapPosition(Vector3 worldPosition)
         {
-            Vector3 relativePosition = worldPosition - WorldBounds.min;
-            var normalizedPosition = new Vector2(relativePosition.x / WorldBounds.size.x, relativePosition.z / WorldBounds.size.z);
+            Vector3 relativePosition = worldPosition - GetWorldBounds().min;
+            var normalizedPosition = new Vector2(relativePosition.x / GetWorldBounds().size.x, relativePosition.z / GetWorldBounds().size.z);
             return normalizedPosition;
         }
+
+        public Vector2Int GetSize() => minimapSize;
     }
 }

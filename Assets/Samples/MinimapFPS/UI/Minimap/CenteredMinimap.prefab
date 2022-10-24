@@ -58,9 +58,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a32304b4e8fe1419e9210844b740c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundImage: {fileID: 21300000, guid: a93deafd9f0437c40ab6b2deb0eb8f54, type: 3}
+  backgroundImage: {fileID: 2800000, guid: a93deafd9f0437c40ab6b2deb0eb8f54, type: 3}
+  minimapSize: {x: 1024, y: 1024}
   maskShape: {fileID: 21300000, guid: 53e0766c00bc26440968f31ce927cb2f, type: 3}
   minimapBoundsTag: MinimapBounds
   followTargetTag: MinimapTarget
-  _mapScale: {x: 0.5, y: 0.5}
+  mapScale: {x: 1, y: 1}
   rotateMinimap: 0
