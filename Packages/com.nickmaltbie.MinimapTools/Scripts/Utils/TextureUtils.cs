@@ -66,12 +66,12 @@ namespace com.nickmaltbie.MinimapTools.Background
 
             Action<int, int, float, Color> UpdateColor = (int x, int y, float weight, Color source) =>
             {
-                if (x < 0 || x >= width || y < 0 || y >= width)
+                if (x < 0 || x >= width || y < 0 || y >= height)
                 {
                     return;
                 }
 
-                int idx = x * height + y;
+                int idx = x + y * width;
                 Color? current = colorTable[idx];
                 if (current == null)
                 {
@@ -98,17 +98,17 @@ namespace com.nickmaltbie.MinimapTools.Background
                     int x2 = Mathf.CeilToInt(x);
                     int y2 = Mathf.CeilToInt(y);
 
-                    bool xEqual = Mathf.Abs(x1 - x2) <= 0.000001f;
-                    bool yEqual = Mathf.Abs(y1 - y2) <= 0.000001f;
+                    bool onX = x - x1 <= 0.000001f && x2 - x <= 0.000001f;
+                    bool onY = y - y1 <= 0.000001f && y2 - y <= 0.000001f;
 
-                    if (xEqual && yEqual)
+                    if (onX && onY)
                     {
                         int x_ = Mathf.RoundToInt(x);
                         int y_ = Mathf.RoundToInt(y);
                         UpdateColor(x1, y1, 1, sourceColor);
                         continue;
                     }
-                    else if (xEqual && !yEqual)
+                    else if (onX && !onY)
                     {
                         int x_ = Mathf.RoundToInt(x);
                         float w1 = (y2 - y) / (y2 - y1);
@@ -117,7 +117,7 @@ namespace com.nickmaltbie.MinimapTools.Background
                         UpdateColor(x_, y2, w2, sourceColor);
                         continue;
                     }
-                    else if (!xEqual && yEqual)
+                    else if (!onX && onY)
                     {
                         int y_ = Mathf.RoundToInt(y);
                         float w1 = (x2 - x) / (x2 - x1);
