@@ -16,6 +16,8 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using System;
+using System.Linq;
 using UnityEngine;
 
 namespace com.nickmaltbie.MinimapTools.Background
@@ -25,6 +27,124 @@ namespace com.nickmaltbie.MinimapTools.Background
     /// </summary>
     public static class TextureUtils
     {
+        /// <summary>
+        /// Rotates a texture about its center.
+        /// </summary>
+        /// <param name="texture">Texture to rotate.</param>
+        /// <param name="rotation">Rotation of the image in degrees.</param>
+        /// <returns>Rotated texture.</returns>
+        public static Texture2D GetRotated(this Texture2D texture, float rotation)
+        {
+            float cos = Mathf.Cos(rotation * Mathf.Deg2Rad);
+            float sin = Mathf.Sin(rotation * Mathf.Deg2Rad);
+            
+            float[] xCorners = new float[]{
+                ( texture.width / 2) * cos - ( texture.height / 2) * sin,
+                ( texture.width / 2) * cos - (-texture.height / 2) * sin,
+                (-texture.width / 2) * cos - ( texture.height / 2) * sin,
+                (-texture.width / 2) * cos - (-texture.height / 2) * sin
+            };
+            float[] yCorners = new float[]{
+                ( texture.width / 2) * sin + ( texture.height / 2) * cos,
+                ( texture.width / 2) * sin + (-texture.height / 2) * cos,
+                (-texture.width / 2) * sin + ( texture.height / 2) * cos,
+                (-texture.width / 2) * sin + (-texture.height / 2) * cos
+            };
+
+            int minX = Mathf.FloorToInt(Mathf.Min(xCorners));
+            int maxX = Mathf.CeilToInt(Mathf.Max(xCorners));
+            int minY = Mathf.FloorToInt(Mathf.Min(yCorners));
+            int maxY = Mathf.CeilToInt(Mathf.Max(yCorners));
+            int width = maxX - minX;
+            int height = maxY - minY;
+
+            Texture2D rotated = new Texture2D(width, height);
+            rotated.Apply();
+
+            Color?[] colorTable = Enumerable.Repeat<Color?>(null, width * height).ToArray();
+            
+
+            Action<int, int, float, Color> UpdateColor = (int x, int y, float weight, Color source) =>
+            {
+                if (x < 0 || x >= width || y < 0 || y >= width)
+                {
+                    return;
+                }
+
+                int idx = x * height + y;
+                Color? current = colorTable[idx];
+                if (current == null)
+                {
+                    colorTable[idx] = new Color(source.r, source.g, source.b, weight);
+                }
+                else
+                {
+                    Color blended = Color.Lerp(current.Value, source, weight / (current.Value.a + weight));
+                    blended.a = current.Value.a + weight;
+                    colorTable[idx] = blended;
+                }
+            };
+
+            for (int sourceX = 0; sourceX < texture.width; sourceX++)
+            {
+                for (int sourceY = 0; sourceY < texture.height; sourceY++)
+                {
+                    Color sourceColor = texture.GetPixel(sourceX, sourceY);
+                    float x = (sourceX - texture.width / 2) * cos - (sourceY - texture.height / 2) * sin + width / 2;
+                    float y = (sourceX - texture.width / 2) * sin + (sourceY - texture.height / 2) * cos + height / 2;
+
+                    int x1 = Mathf.FloorToInt(x);
+                    int y1 = Mathf.FloorToInt(y);
+                    int x2 = Mathf.CeilToInt(x);
+                    int y2 = Mathf.CeilToInt(y);
+
+                    bool xEqual = Mathf.Abs(x1 - x2) <= 0.000001f;
+                    bool yEqual = Mathf.Abs(y1 - y2) <= 0.000001f;
+
+                    if (xEqual && yEqual)
+                    {
+                        int x_ = Mathf.RoundToInt(x);
+                        int y_ = Mathf.RoundToInt(y);
+                        UpdateColor(x1, y1, 1, sourceColor);
+                        continue;
+                    }
+                    else if (xEqual && !yEqual)
+                    {
+                        int x_ = Mathf.RoundToInt(x);
+                        float w1 = (y2 - y) / (y2 - y1);
+                        float w2 = (y - y1) / (y2 - y1);
+                        UpdateColor(x_, y1, w1, sourceColor);
+                        UpdateColor(x_, y2, w2, sourceColor);
+                        continue;
+                    }
+                    else if (!xEqual && yEqual)
+                    {
+                        int y_ = Mathf.RoundToInt(y);
+                        float w1 = (x2 - x) / (x2 - x1);
+                        float w2 = (x - x1) / (x2 - x1);
+                        UpdateColor(x1, y_, w1, sourceColor);
+                        UpdateColor(x2, y_, w2, sourceColor);
+                        continue;
+                    }
+
+                    // Set the four pixels closest to the dest with some anti-aliasing
+                    float w11 = (x2 - x) * (y2 - y) / (x2 - x1) / (y2 - y1);
+                    float w12 = (x2 - x) * (y - y1) / (x2 - x1) / (y2 - y1);
+                    float w21 = (x - x1) * (y2 - y) / (x2 - x1) / (y2 - y1);
+                    float w22 = (x - x1) * (y - y1) / (x2 - x1) / (y2 - y1);
+
+                    UpdateColor(x1, y1, w11, sourceColor);
+                    UpdateColor(x1, y2, w12, sourceColor);
+                    UpdateColor(x2, y1, w21, sourceColor);
+                    UpdateColor(x2, y2, w22, sourceColor);
+                }
+            }
+
+            rotated.SetPixels(colorTable.Select(color => color.HasValue ? color.Value : Color.clear).ToArray());
+            rotated.Apply();
+            return rotated;
+        }
+
         /// <summary>
         /// Get a resized Texture2D via GPU and RenderTexture.
         /// </summary>
@@ -52,9 +172,12 @@ namespace com.nickmaltbie.MinimapTools.Background
         /// center of the stamp on the source texture.</param>
         public static void DrawStampRelative(this Texture2D source, Texture2D stamp, Vector2 relativePosition)
         {
-            DrawStamp(source, stamp, new Vector2Int(
-                (int) Mathf.Round(relativePosition.x * source.width),
-                (int) Mathf.Round(relativePosition.y * source.height)));
+            DrawStamp(
+                source,
+                stamp,
+                new Vector2Int(
+                    (int) Mathf.Round(relativePosition.x * source.width),
+                    (int) Mathf.Round(relativePosition.y * source.height)));
         }
 
         /// <summary>
@@ -73,8 +196,8 @@ namespace com.nickmaltbie.MinimapTools.Background
                 for (int y = 0; y < stamp.height; y++)
                 {
                     // Identify where this pixel would be located on the target image
-                    int targetX = x + offsetPixels.x - stamp.width / 2;
-                    int targetY = y + offsetPixels.y - stamp.height / 2;
+                    int targetX = x - stamp.width / 2 + offsetPixels.x;
+                    int targetY = y - stamp.height / 2 + offsetPixels.y;
 
                     // If the target is not in the base image, skip this pixel
                     if (targetX < 0 || targetX >= source.width ||

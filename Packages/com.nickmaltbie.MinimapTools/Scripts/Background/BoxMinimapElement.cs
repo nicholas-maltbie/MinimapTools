@@ -16,6 +16,7 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using System.Linq;
 using com.nickmaltbie.MinimapTools.Minimap;
 using UnityEngine;
 
@@ -35,6 +36,11 @@ namespace com.nickmaltbie.MinimapTools.Background
         [Tooltip("Color of the box on the minimap.")]
         public Color color = Color.black;
 
+        public override float GetRotation()
+        {
+            return transform.eulerAngles.y;
+        }
+
         /// <inheritdoc/>
         public override Texture2D GetTexture(IMinimap minimap)
         {
@@ -51,17 +57,15 @@ namespace com.nickmaltbie.MinimapTools.Background
                 Mathf.RoundToInt(relativeWidth * mapSize.x),
                 Mathf.RoundToInt(relativeHeight * mapSize.y));
 
-            for (int x = 0; x < texture.width; x++)
-            {
-                for (int y = 0; y < texture.height; y++)
-                {
-                    texture.SetPixel(x, y, color);
-                }
-            }
-
+            texture.SetPixels(Enumerable.Repeat(color, texture.width * texture.height).ToArray());
             texture.Apply();
 
             return texture;
+        }
+
+        public override Vector3 WorldCenter()
+        {
+            return transform.position + Vector3.Scale(GetComponent<BoxCollider>().center, transform.lossyScale);
         }
     }
 }

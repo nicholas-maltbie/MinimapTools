@@ -35,15 +35,26 @@ namespace com.nickmaltbie.MinimapTools.Background
         abstract public Texture2D GetTexture(IMinimap minimap);
 
         /// <summary>
+        /// Get the center of this element in world space.
+        /// </summary>
+        abstract public Vector3 WorldCenter();
+
+        /// <summary>
+        /// Get the rotation of this object in world space.
+        /// </summary>
+        /// <returns>Rotation of the object in world space.</returns>
+        abstract public float GetRotation();
+
+        /// <summary>
         /// Draw this element on the background of a minimap.
         /// </summary>
         /// <param name="minimap">Minimap for getting space of element.</param>
         /// <param name="backgroundTexture">Background texture to draw minimap onto.</param>
         public void DrawOnBackground(IMinimap minimap, Texture2D backgroundTexture)
         {
-            Vector2 targetPos = minimap.GetMinimapPosition(transform.position);
+            Vector2 targetPos = minimap.GetMinimapPosition(WorldCenter());
             Debug.Log($"GameObject:{name} :: Drawing texture at relative position: {targetPos}");
-            backgroundTexture.DrawStampRelative(GetTexture(minimap), targetPos);
+            backgroundTexture.DrawStampRelative(GetTexture(minimap).GetRotated(-GetRotation()), targetPos);
         }
     }
 }
