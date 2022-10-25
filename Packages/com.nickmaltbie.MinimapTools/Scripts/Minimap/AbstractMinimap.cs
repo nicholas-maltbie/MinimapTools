@@ -197,7 +197,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap
                 rectTransform.anchorMax = relativePosition;
                 rectTransform.anchorMin = relativePosition;
                 rectTransform.anchoredPosition = Vector2.zero;
-                rectTransform.localRotation = Quaternion.Euler(0, 0, -icon.GetIconRotation().eulerAngles.y);
+                rectTransform.localRotation = Quaternion.Euler(0, 0, -(icon.GetIconRotation().eulerAngles.y + GetRotation()));
 
                 iconGo.transform.localScale = new Vector3(1 / MapScale.x, 1 / MapScale.y);
             }
@@ -212,6 +212,13 @@ namespace com.nickmaltbie.MinimapTools.Minimap
             return new Vector2(x1 / minimapBounds.size.x, y1 / minimapBounds.size.y);
         }
 
+        /// <inheritdoc/>
         public Vector2Int GetSize() => minimapSize;
+
+        /// <inheritdoc/>
+        public float GetRotation()
+        {
+            return MinimapBounds.rotation;
+        }
     }
 }

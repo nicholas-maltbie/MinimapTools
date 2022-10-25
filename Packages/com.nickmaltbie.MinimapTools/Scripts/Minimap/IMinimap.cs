@@ -35,6 +35,12 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         bool InMap(Vector3 worldSpace);
 
         /// <summary>
+        /// Get the rotation of the minimap with respect to the vertical axis.
+        /// </summary>
+        /// <returns>Rotation of the minimap in degrees.</returns>
+        float GetRotation();
+
+        /// <summary>
         /// Add an icon to the minimap.
         /// </summary>
         /// <param name="minimapIcon">Icon to add to the minimap.</param>

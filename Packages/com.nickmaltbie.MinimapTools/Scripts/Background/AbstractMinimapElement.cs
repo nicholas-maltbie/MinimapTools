@@ -17,6 +17,7 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Minimap;
+using com.nickmaltbie.MinimapTools.Utils;
 using UnityEngine;
 
 namespace com.nickmaltbie.MinimapTools.Background
@@ -53,7 +54,7 @@ namespace com.nickmaltbie.MinimapTools.Background
         public void DrawOnBackground(IMinimap minimap, Texture2D backgroundTexture)
         {
             Vector2 targetPos = minimap.GetMinimapPosition(WorldCenter());
-            backgroundTexture.DrawStampRelative(GetTexture(minimap).GetRotated(-GetRotation()), targetPos);
+            backgroundTexture.DrawStampRelative(GetTexture(minimap).GetRotated(-(GetRotation() + minimap.GetRotation())), targetPos);
         }
     }
 }

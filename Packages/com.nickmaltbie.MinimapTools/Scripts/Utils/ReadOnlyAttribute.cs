@@ -16,18 +16,15 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools.Minimap;
-using UnityEditor;
+using System;
+using System.Linq;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.EditorTools
+namespace com.nickmaltbie.MinimapTools.Utils
 {
     /// <summary>
-    /// Editor tool to modify bounds of a minimap.
+    /// Read Only attribute.
+    /// Attribute is use only to mark ReadOnly properties.
     /// </summary>
-    [CustomEditor(typeof(AbstractMinimap))]
-    public abstract class BoundsEditor : Editor
-    {
-        
-    }
+    public class ReadOnlyAttribute : PropertyAttribute { }
 }

@@ -17,25 +17,36 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Utils;
+using UnityEditor;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Minimap.Shape
+namespace com.nickmaltbie.MinimapTools.EditorTools
 {
     /// <summary>
-    /// Source of bounds for a minimap or minimap object in the world
+    /// This class contain custom drawer for ReadOnly attribute.
     /// </summary>
-    public class MinimapBoundsSource : MonoBehaviour
+    [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
+    public class ReadOnlyDrawer : PropertyDrawer
     {
         /// <summary>
-        /// Shape of the minimap.
+        /// Unity method for drawing GUI in Editor
         /// </summary>
-        [SerializeField]
-        public MinimapSquare minimapShape;
+        /// <param name="position">Position.</param>
+        /// <param name="property">Property.</param>
+        /// <param name="label">Label.</param>
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            // Saving previous GUI enabled value
+            var previousGUIState = GUI.enabled;
 
-        /// <summary>
-        /// Gets the shape of the minimap.
-        /// </summary>
-        /// <returns>The shape of the minimap as a MinimapSquare object.</returns>
-        public MinimapSquare GetShape() => minimapShape;
+            // Disabling edit for property
+            GUI.enabled = false;
+
+            // Drawing Property
+            EditorGUI.PropertyField(position, property, label);
+
+            // Setting old GUI enabled value
+            GUI.enabled = previousGUIState;
+        }
     }
 }

@@ -17,9 +17,7 @@
 // SOFTWARE.
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using com.nickmaltbie.MinimapTools.Background;
+using com.nickmaltbie.MinimapTools.Utils;
 using UnityEngine;
 
 namespace com.nickmaltbie.MinimapTools.Minimap.Shape
@@ -28,12 +26,19 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Shape
     /// Source of bounds for a minimap or minimap object.
     /// </summary>
     [Serializable]
-    public struct MinimapSquare : IMinimapShape
+    public class MinimapSquare : IMinimapShape
     {
         /// <summary>
         /// Center of the object in world space.
         /// </summary>
+        [ReadOnly]
         public Vector2 center;
+
+        /// <summary>
+        /// Rotation of the object about the vertical axis.
+        /// </summary>
+        [ReadOnly]
+        public float rotation;
 
         /// <summary>
         /// Size of the object in world space.
@@ -41,9 +46,9 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Shape
         public Vector2 size;
 
         /// <summary>
-        /// Rotation of the object about the vertical axis.
+        /// Should the aspect ratio of the size be locked.
         /// </summary>
-        public float rotation;
+        public bool lockAspectRatio;
 
         /// <summary>
         /// Create a minimap square with a given configuration.
@@ -134,7 +139,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Shape
         /// </summary>
         /// <returns>Corners of the minimap square rotated about the center.
         /// Returns the points in order ((x1, y1), (x2, y2), (x3, y3), (x4, y4))</returns>
-        private ((float, float), (float, float), (float, float), (float, float)) GetCorners()
+        public ((float, float), (float, float), (float, float), (float, float)) GetCorners()
         {
             return (
                 MathUtils.GetRotatedPoint(center.x - size.x / 2, center.y - size.y / 2, center.x, center.y, rotation),

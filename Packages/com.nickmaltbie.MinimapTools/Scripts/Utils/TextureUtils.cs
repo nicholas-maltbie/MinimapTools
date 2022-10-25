@@ -20,7 +20,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Background
+namespace com.nickmaltbie.MinimapTools.Utils
 {
     /// <summary>
     /// Utility functions for texture utils.

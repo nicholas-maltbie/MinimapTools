@@ -20,7 +20,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Background
+namespace com.nickmaltbie.MinimapTools.Utils
 {
     /// <summary>
     /// Utility functions for math equations and features.
@@ -77,8 +77,8 @@ namespace com.nickmaltbie.MinimapTools.Background
             float cos = Mathf.Cos(rotation * Mathf.Deg2Rad);
             float sin = Mathf.Sin(rotation * Mathf.Deg2Rad);
 
-            float x2 = (x1 - pivotX) * cos - (y1 - pivotY) * sin;
-            float y2 = (x1 - pivotX) * sin + (y1 - pivotY) * cos;
+            float x2 = (x1 - pivotX) * cos - (y1 - pivotY) * sin + pivotX;
+            float y2 = (x1 - pivotX) * sin + (y1 - pivotY) * cos + pivotY;
 
             return (x2, y2);
         }

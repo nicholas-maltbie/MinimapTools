@@ -17,6 +17,7 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Minimap;
+using com.nickmaltbie.MinimapTools.Utils;
 using UnityEngine;
 
 namespace com.nickmaltbie.MinimapTools.Background

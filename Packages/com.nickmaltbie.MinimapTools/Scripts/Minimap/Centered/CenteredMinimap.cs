@@ -83,11 +83,16 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         /// <summary>
         /// Setup initial configuration of minimap.
         /// </summary>
-        public void Start()
+        public override void Awake()
         {
             boundsSource ??= GameObject.FindGameObjectWithTag(minimapBoundsTag).GetComponent<MinimapBoundsSource>();
             followTarget ??= GameObject.FindGameObjectWithTag(followTargetTag).GetComponent<IMinimapIcon>();
 
+            base.Awake();
+        }
+
+        public void Start()
+        {
             if (followTarget != null)
             {
                 base.AddIcon(followTarget);

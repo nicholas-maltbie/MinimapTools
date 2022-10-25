@@ -44,11 +44,17 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Simple
         /// <inheritdoc/>
         public override Vector2 MapScale => Vector2.one;
 
-        /// <inheritdoc/>
-        public void OnScreenLoaded()
+        public override void Awake()
         {
             // Update bounds source based on source in scene
             boundsSource ??= GameObject.FindObjectOfType<MinimapBoundsSource>();
+            base.Awake();
+        }
+
+        /// <inheritdoc/>
+        public void OnScreenLoaded()
+        {
+        
         }
 
         /// <inheritdoc/>
