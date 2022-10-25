@@ -16,35 +16,34 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools.Minimap;
-using com.nickmaltbie.MinimapTools.Minimap.Shape;
+using com.nickmaltbie.MinimapTools.Background;
 using UnityEditor;
 using UnityEngine;
 
 namespace com.nickmaltbie.MinimapTools.EditorTools
 {
     /// <summary>
-    /// Editor tool to modify bounds of a minimap.
+    /// Editor tool to modify size of a SpriteMinimapElement.
     /// </summary>
-    [CustomEditor(typeof(MinimapBoundsSource))]
-    public class MinimapBoundsSourceEditor : Editor
+    [CustomEditor(typeof(SpriteMinimapElement))]
+    public class SpriteMinimapElementEditor : Editor
     {
         public void OnSceneGUI()
         {
-            var minimapBounds = (target as MinimapBoundsSource);
-            float rotation = minimapBounds.transform.rotation.eulerAngles.y;
+            var spriteElement = (target as SpriteMinimapElement);
+            float rotation = spriteElement.transform.rotation.eulerAngles.y;
 
-            minimapBounds.minimapShape.center = new Vector2(minimapBounds.transform.position.x, minimapBounds.transform.position.z);
-            minimapBounds.minimapShape.rotation = -rotation % 360;
+            spriteElement.minimapBounds.center = new Vector2(spriteElement.transform.position.x, spriteElement.transform.position.z);
+            spriteElement.minimapBounds.rotation = -rotation % 360;
 
-            minimapBounds.transform.rotation = Quaternion.Euler(0, rotation, 0);
+            spriteElement.transform.rotation = Quaternion.Euler(0, rotation, 0);
 
-            MinimapSquareUtils.RenderMinimapSquare(minimapBounds.minimapShape, minimapBounds.transform.position.y);
+            MinimapSquareUtils.RenderMinimapSquare(spriteElement.minimapBounds, spriteElement.transform.position.y);
 
-            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.right);
-            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.left);
-            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.up);
-            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.down);
+            MinimapSquareUtils.DrawSizeHandle(spriteElement.minimapBounds, spriteElement.transform, Vector2.right);
+            MinimapSquareUtils.DrawSizeHandle(spriteElement.minimapBounds, spriteElement.transform, Vector2.left);
+            MinimapSquareUtils.DrawSizeHandle(spriteElement.minimapBounds, spriteElement.transform, Vector2.up);
+            MinimapSquareUtils.DrawSizeHandle(spriteElement.minimapBounds, spriteElement.transform, Vector2.down);
         }
     }
 }

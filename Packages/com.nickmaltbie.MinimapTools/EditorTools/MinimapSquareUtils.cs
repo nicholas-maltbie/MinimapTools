@@ -45,5 +45,42 @@ namespace com.nickmaltbie.MinimapTools.EditorTools
             Handles.DrawLine(new Vector3(x3, verticalOffset, y3), new Vector3(x4, verticalOffset, y4));
             Handles.DrawLine(new Vector3(x4, verticalOffset, y4), new Vector3(x1, verticalOffset, y1));
         }
+
+        public static void DrawSizeHandle(MinimapSquare minimapSquare, Transform origin, Vector2 direction)
+        {
+            EditorGUI.BeginChangeCheck();
+            Vector3 dir = origin.rotation * new Vector3(direction.x, 0, direction.y);
+            Vector3 handlePos = origin.position + dir * Mathf.Abs(Vector2.Dot(minimapSquare.size, direction)) / 2;
+            float size = HandleUtility.GetHandleSize(handlePos) * 0.5f;
+
+            Vector3 newTargetPosition = Handles.Slider(handlePos, dir, size, Handles.ConeHandleCap, 0.1f);
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(origin.gameObject, "Adjust size of minimap bounds");
+                Vector3 move = newTargetPosition - handlePos;
+                var delta = new Vector2(move.x, move.z);
+                delta.Scale(direction);
+
+                bool lockRatio = minimapSquare.lockAspectRatio;
+
+                float ratio = minimapSquare.size.x / minimapSquare.size.y;
+
+                if (lockRatio)
+                {
+                    if (delta.x == 0)
+                    {
+                        delta.x = delta.y * ratio;
+                    }
+                    else if (delta.y == 0)
+                    {
+                        delta.y = delta.x / ratio;
+                    }
+                }
+
+                minimapSquare.size += delta;
+                minimapSquare.size.x = Mathf.Max(1, minimapSquare.size.x);
+                minimapSquare.size.y = Mathf.Max(1, minimapSquare.size.y);
+            }
+        }
     }
 }

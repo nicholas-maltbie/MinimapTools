@@ -28,6 +28,13 @@ namespace com.nickmaltbie.MinimapTools.Background
     public abstract class AbstractMinimapElement : MonoBehaviour, IMinimapElement
     {
         /// <summary>
+        /// Order that this should be drawn on the minimap.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("Order that this should be drawn on the minimap.")]
+        public int drawOrder = 1;
+
+        /// <summary>
         /// Gets the texture associated with this minimap element for a given
         /// minimap.
         /// </summary>
@@ -56,5 +63,7 @@ namespace com.nickmaltbie.MinimapTools.Background
             Vector2 targetPos = minimap.GetMinimapPosition(WorldCenter());
             backgroundTexture.DrawStampRelative(GetTexture(minimap).GetRotated(-(GetRotation() + minimap.GetRotation())), targetPos);
         }
+
+        public int GetOrder() => drawOrder;
     }
 }

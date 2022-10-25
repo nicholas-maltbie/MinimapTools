@@ -43,7 +43,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Shape
         /// <summary>
         /// Size of the object in world space.
         /// </summary>
-        public Vector2 size;
+        public Vector2 size = Vector2.one;
 
         /// <summary>
         /// Should the aspect ratio of the size be locked.

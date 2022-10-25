@@ -18,5 +18,5 @@
 
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("nickmaltbie.MinimapTools.Editor")]
+[assembly: InternalsVisibleTo("nickmaltbie.MinimapTools.EditorTools")]
 [assembly: InternalsVisibleTo("nickmaltbie.MinimapTools.Tests.EditMode")]

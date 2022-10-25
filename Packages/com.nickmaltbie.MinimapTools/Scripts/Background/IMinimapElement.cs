@@ -32,5 +32,11 @@ namespace com.nickmaltbie.MinimapTools.Background
         /// <param name="minimap">Minimap for getting space of element.</param>
         /// <param name="backgroundTexture">Background texture to draw minimap onto.</param>
         void DrawOnBackground(IMinimap minimap, Texture2D backgroundTexture);
+
+        /// <summary>
+        /// Get the order that this element should be drawn on the background.
+        /// </summary>
+        /// <returns>Integer representing order with lowest number taking priority.</returns>
+        int GetOrder();
     }
 }

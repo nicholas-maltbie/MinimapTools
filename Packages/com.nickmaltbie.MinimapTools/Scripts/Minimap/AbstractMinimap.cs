@@ -17,6 +17,7 @@
 // SOFTWARE.
 
 using System.Collections.Generic;
+using System.Linq;
 using com.nickmaltbie.MinimapTools.Background;
 using com.nickmaltbie.MinimapTools.Icon;
 using com.nickmaltbie.MinimapTools.Minimap.Shape;
@@ -139,7 +140,10 @@ namespace com.nickmaltbie.MinimapTools.Minimap
             backgroundTexture = new BackgroundTexture(this, minimapSize, backgroundImage);
             Texture2D tex = backgroundTexture.GetTexture2D();
 
-            foreach (AbstractMinimapElement minimapElement in GameObject.FindObjectsOfType<AbstractMinimapElement>())
+            foreach (
+                AbstractMinimapElement minimapElement in
+                GameObject.FindObjectsOfType<AbstractMinimapElement>()
+                    .OrderBy(e => e.GetOrder()))
             {
                 backgroundTexture.AddElementToMinimap(minimapElement);
             }
