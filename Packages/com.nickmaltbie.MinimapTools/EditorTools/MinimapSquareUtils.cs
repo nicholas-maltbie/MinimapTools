@@ -46,7 +46,7 @@ namespace com.nickmaltbie.MinimapTools.EditorTools
             Handles.DrawLine(new Vector3(x4, verticalOffset, y4), new Vector3(x1, verticalOffset, y1));
         }
 
-        public static void DrawSizeHandle(MinimapSquare minimapSquare, Transform origin, Vector2 direction)
+        public static void DrawSizeHandle(MinimapSquare minimapSquare, Transform origin, Vector2 direction, Object objectToUndo = null)
         {
             EditorGUI.BeginChangeCheck();
             Vector3 dir = origin.rotation * new Vector3(direction.x, 0, direction.y);
@@ -56,7 +56,7 @@ namespace com.nickmaltbie.MinimapTools.EditorTools
             Vector3 newTargetPosition = Handles.Slider(handlePos, dir, size, Handles.ConeHandleCap, 0.1f);
             if (EditorGUI.EndChangeCheck())
             {
-                Undo.RecordObject(origin.gameObject, "Adjust size of minimap bounds");
+                Undo.RecordObject(objectToUndo ?? origin.gameObject, "Adjust size of minimap bounds");
                 Vector3 move = newTargetPosition - handlePos;
                 var delta = new Vector2(move.x, move.z);
                 delta.Scale(direction);

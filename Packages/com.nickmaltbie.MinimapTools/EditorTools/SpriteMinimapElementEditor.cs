@@ -40,10 +40,10 @@ namespace com.nickmaltbie.MinimapTools.EditorTools
 
             MinimapSquareUtils.RenderMinimapSquare(spriteElement.elementBounds, spriteElement.transform.position.y);
 
-            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.right);
-            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.left);
-            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.up);
-            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.down);
+            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.right, spriteElement);
+            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.left, spriteElement);
+            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.up, spriteElement);
+            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.down, spriteElement);
         }
     }
 }

@@ -41,10 +41,10 @@ namespace com.nickmaltbie.MinimapTools.EditorTools
 
             MinimapSquareUtils.RenderMinimapSquare(minimapBounds.minimapShape, minimapBounds.transform.position.y);
 
-            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.right);
-            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.left);
-            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.up);
-            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.down);
+            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.right, minimapBounds);
+            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.left, minimapBounds);
+            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.up, minimapBounds);
+            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.down, minimapBounds);
         }
     }
 }
