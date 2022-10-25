@@ -18,19 +18,23 @@
 
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Minimap.MinimapBounds
+namespace com.nickmaltbie.MinimapTools.Minimap.Shape
 {
     /// <summary>
-    /// Source of bounds from a box collider
+    /// Source of bounds for a minimap or minimap object in the world
     /// </summary>
-    [RequireComponent(typeof(BoxCollider))]
-    public class BoxBoundsSource : MonoBehaviour, IBoundsSource
+    public class MinimapBoundsSource : MonoBehaviour
     {
-        /// <inheritdoc/>
-        public Bounds GetBounds()
-        {
-            Bounds bounds = GetComponent<BoxCollider>().bounds;
-            return new Bounds(bounds.center + transform.position, bounds.size);
-        }
+        /// <summary>
+        /// Shape of the minimap.
+        /// </summary>
+        [SerializeField]
+        protected MinimapSquare minimapShape = AbstractMinimap.defaultShape;
+
+        /// <summary>
+        /// Gets the shape of the minimap.
+        /// </summary>
+        /// <returns>The shape of the minimap as a MinimapSquare object.</returns>
+        public MinimapSquare GetShape() => minimapShape;
     }
 }

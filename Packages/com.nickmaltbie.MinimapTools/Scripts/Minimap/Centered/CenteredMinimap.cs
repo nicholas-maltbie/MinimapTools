@@ -17,7 +17,7 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Icon;
-using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
+using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using UnityEngine;
 
 namespace com.nickmaltbie.MinimapTools.Minimap.Centered
@@ -64,7 +64,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         /// <summary>
         /// Bounds source for the minimap.
         /// </summary>
-        internal IBoundsSource boundsSource;
+        internal MinimapBoundsSource boundsSource;
 
         /// <summary>
         /// Map offset for following the target.
@@ -72,7 +72,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         private Vector2 _mapOffset;
 
         /// <inheritdoc/>
-        public override IBoundsSource Source => boundsSource;
+        protected override MinimapBoundsSource Source => boundsSource;
 
         /// <inheritdoc/>
         public override Vector2 MapOffset => _mapOffset * MapScale - MapScale / 2;
@@ -85,7 +85,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         /// </summary>
         public void Start()
         {
-            boundsSource ??= GameObject.FindGameObjectWithTag(minimapBoundsTag).GetComponent<IBoundsSource>();
+            boundsSource ??= GameObject.FindGameObjectWithTag(minimapBoundsTag).GetComponent<MinimapBoundsSource>();
             followTarget ??= GameObject.FindGameObjectWithTag(followTargetTag).GetComponent<IMinimapIcon>();
 
             if (followTarget != null)

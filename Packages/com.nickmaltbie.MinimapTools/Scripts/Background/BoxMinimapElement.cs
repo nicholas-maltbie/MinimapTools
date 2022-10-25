@@ -18,6 +18,7 @@
 
 using System.Linq;
 using com.nickmaltbie.MinimapTools.Minimap;
+using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using UnityEngine;
 
 namespace com.nickmaltbie.MinimapTools.Background
@@ -45,15 +46,15 @@ namespace com.nickmaltbie.MinimapTools.Background
         public override Texture2D GetTexture(IMinimap minimap)
         {
             // Get the size of the box relative to the size of the minimap
-            Bounds minimapBounds = minimap.GetWorldBounds();
+            IMinimapShape minimapBounds = minimap.GetWorldBounds();
             Vector3 boxSize = GetComponent<BoxCollider>().size;
             
-            float relativeWidth = boxSize.x * transform.lossyScale.x / minimapBounds.size.x;
-            float relativeHeight = boxSize.z * transform.lossyScale.z / minimapBounds.size.z;
+            float relativeWidth = boxSize.x * transform.lossyScale.x / minimapBounds.Size.x;
+            float relativeHeight = boxSize.z * transform.lossyScale.z / minimapBounds.Size.y;
 
             Vector2Int mapSize = minimap.GetSize();
 
-            Texture2D texture = new Texture2D(
+            var texture = new Texture2D(
                 Mathf.RoundToInt(relativeWidth * mapSize.x),
                 Mathf.RoundToInt(relativeHeight * mapSize.y));
 

@@ -17,7 +17,7 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Icon;
-using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
+using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using com.nickmaltbie.MinimapTools.Minimap.Simple;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
@@ -47,7 +47,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
 
             minimapGo.transform.SetParent(canvas.transform);
 
-            BoxBoundsSource boxBoundsSource = boundsGo.AddComponent<BoxBoundsSource>();
+            MinimapBoundsSource boxBoundsSource = boundsGo.AddComponent<MinimapBoundsSource>();
             simpleMinimap = minimapGo.AddComponent<SimpleStaticMinimap>();
             spriteIcon = iconGo.AddComponent<SpriteIcon>();
 

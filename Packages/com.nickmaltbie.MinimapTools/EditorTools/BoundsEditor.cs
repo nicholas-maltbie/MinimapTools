@@ -16,19 +16,18 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using com.nickmaltbie.MinimapTools.Minimap;
+using UnityEditor;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Minimap.MinimapBounds
+namespace com.nickmaltbie.MinimapTools.EditorTools
 {
     /// <summary>
-    /// Source of bounds for a minimap
+    /// Editor tool to modify bounds of a minimap.
     /// </summary>
-    public interface IBoundsSource
+    [CustomEditor(typeof(AbstractMinimap))]
+    public abstract class BoundsEditor : Editor
     {
-        /// <summary>
-        /// Get the bounds for this bounds source.
-        /// </summary>
-        /// <returns>Get the bounds for this minimap source.</returns>
-        Bounds GetBounds();
+        
     }
 }

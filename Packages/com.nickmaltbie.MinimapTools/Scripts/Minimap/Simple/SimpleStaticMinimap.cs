@@ -17,7 +17,7 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Icon;
-using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
+using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using nickmaltbie.ScreenManager;
 using UnityEngine;
 
@@ -33,10 +33,10 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Simple
         /// <summary>
         /// Bounds source for the minimap.
         /// </summary>
-        private IBoundsSource boundsSource;
+        private MinimapBoundsSource boundsSource;
 
         /// <inheritdoc/>
-        public override IBoundsSource Source => boundsSource;
+        protected override MinimapBoundsSource Source => boundsSource;
 
         /// <inheritdoc/>
         public override Vector2 MapOffset => Vector2.zero;
@@ -48,7 +48,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Simple
         public void OnScreenLoaded()
         {
             // Update bounds source based on source in scene
-            boundsSource ??= GameObject.FindObjectOfType<BoxBoundsSource>() as IBoundsSource;
+            boundsSource ??= GameObject.FindObjectOfType<MinimapBoundsSource>();
         }
 
         /// <inheritdoc/>

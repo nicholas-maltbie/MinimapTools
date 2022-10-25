@@ -18,7 +18,7 @@
 
 using com.nickmaltbie.MinimapTools.Icon;
 using com.nickmaltbie.MinimapTools.Minimap.Centered;
-using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
+using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
 using UnityEngine;
@@ -48,7 +48,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
 
             minimapGo.transform.SetParent(canvas.transform);
 
-            BoxBoundsSource boxBoundsSource = boundsGo.AddComponent<BoxBoundsSource>();
+            MinimapBoundsSource boxBoundsSource = boundsGo.AddComponent<MinimapBoundsSource>();
             centeredMinimap = minimapGo.AddComponent<CenteredMinimap>();
 
             string followTargetTag = "FollowTarget";

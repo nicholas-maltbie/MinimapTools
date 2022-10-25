@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.nickmaltbie.minimaptools": {
-      "version": "file:com.nickmaltbie.minimaptools",
+      "version": "file:com.nickmaltbie.MinimapTools",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

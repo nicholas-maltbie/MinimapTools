@@ -37,28 +37,21 @@ namespace com.nickmaltbie.MinimapTools.Background
         {
             float cos = Mathf.Cos(rotation * Mathf.Deg2Rad);
             float sin = Mathf.Sin(rotation * Mathf.Deg2Rad);
-            
-            float[] xCorners = new float[]{
-                ( texture.width / 2) * cos - ( texture.height / 2) * sin,
-                ( texture.width / 2) * cos - (-texture.height / 2) * sin,
-                (-texture.width / 2) * cos - ( texture.height / 2) * sin,
-                (-texture.width / 2) * cos - (-texture.height / 2) * sin
-            };
-            float[] yCorners = new float[]{
-                ( texture.width / 2) * sin + ( texture.height / 2) * cos,
-                ( texture.width / 2) * sin + (-texture.height / 2) * cos,
-                (-texture.width / 2) * sin + ( texture.height / 2) * cos,
-                (-texture.width / 2) * sin + (-texture.height / 2) * cos
-            };
 
-            int minX = Mathf.FloorToInt(Mathf.Min(xCorners));
-            int maxX = Mathf.CeilToInt(Mathf.Max(xCorners));
-            int minY = Mathf.FloorToInt(Mathf.Min(yCorners));
-            int maxY = Mathf.CeilToInt(Mathf.Max(yCorners));
+            float c1x, c1y, c2x, c2y, c3x, c3y, c4x, c4y;
+            (c1x, c1y) = MathUtils.GetRotatedAboutOrigin( texture.width / 2.0f,  texture.height / 2.0f, rotation);
+            (c2x, c2y) = MathUtils.GetRotatedAboutOrigin( texture.width / 2.0f, -texture.height / 2.0f, rotation);
+            (c3x, c3y) = MathUtils.GetRotatedAboutOrigin(-texture.width / 2.0f,  texture.height / 2.0f, rotation);
+            (c4x, c4y) = MathUtils.GetRotatedAboutOrigin(-texture.width / 2.0f, -texture.height / 2.0f, rotation);
+
+            int minX = Mathf.FloorToInt(Mathf.Min(c1x, c2x, c3x, c4x));
+            int maxX = Mathf.CeilToInt(Mathf.Max(c1x, c2x, c3x, c4x));
+            int minY = Mathf.FloorToInt(Mathf.Min(c1y, c2y, c3y, c4y));
+            int maxY = Mathf.CeilToInt(Mathf.Max(c1y, c2y, c3y, c4y));
             int width = maxX - minX;
             int height = maxY - minY;
 
-            Texture2D rotated = new Texture2D(width, height);
+            var rotated = new Texture2D(width, height);
             rotated.Apply();
 
             Color?[] colorTable = Enumerable.Repeat<Color?>(null, width * height).ToArray();
@@ -79,7 +72,7 @@ namespace com.nickmaltbie.MinimapTools.Background
                 }
                 else
                 {
-                    Color blended = Color.Lerp(current.Value, source, weight / (current.Value.a + weight));
+                    var blended = Color.Lerp(current.Value, source, weight / (current.Value.a + weight));
                     blended.a = current.Value.a + weight;
                     colorTable[idx] = blended;
                 }

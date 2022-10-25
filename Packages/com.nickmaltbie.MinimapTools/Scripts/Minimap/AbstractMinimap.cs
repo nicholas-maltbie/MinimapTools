@@ -19,7 +19,7 @@
 using System.Collections.Generic;
 using com.nickmaltbie.MinimapTools.Background;
 using com.nickmaltbie.MinimapTools.Icon;
-using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
+using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,7 +33,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// <summary>
         /// Default bounds for the minimap.
         /// </summary>
-        private static readonly Bounds defaultBounds = new Bounds(Vector3.zero, Vector3.one * 10);
+        public static readonly MinimapSquare defaultShape = new MinimapSquare(Vector3.zero, Vector3.one * 10, 0);
 
         /// <summary>
         /// Background image for the minimap.
@@ -55,6 +55,11 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         [SerializeField]
         [Tooltip("Shape of the minimap mask.")]
         protected Sprite maskShape;
+        
+        /// <summary>
+        /// Source of shape for the minimap.
+        /// </summary>
+        protected abstract MinimapBoundsSource Source { get; }
 
         /// <summary>
         /// Transform of background image.
@@ -65,11 +70,6 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// Collection of icons contained in this minimap.
         /// </summary>
         protected Dictionary<IMinimapIcon, GameObject> icons = new Dictionary<IMinimapIcon, GameObject>();
-
-        /// <summary>
-        /// Source of bounds for the minimap.
-        /// </summary>
-        public abstract IBoundsSource Source { get; }
 
         /// <summary>
         /// Scale of the map relative to minimap size.
@@ -86,8 +86,13 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// </summary>
         public abstract Vector2 MapOffset { get; }
 
+        /// <summary>
+        /// Get the MinimapSquare version of the minimap bounds.
+        /// </summary>
+        protected MinimapSquare MinimapBounds => Source?.GetShape() ?? defaultShape;
+
         /// <inheritdoc/>
-        public Bounds GetWorldBounds() => Source?.GetBounds() ?? defaultBounds;
+        public IMinimapShape GetWorldBounds() => MinimapBounds;
 
         /// <summary>
         /// Background texture to render elements onto.
@@ -202,9 +207,10 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// <inheritdoc/>
         public virtual Vector2 GetMinimapPosition(Vector3 worldPosition)
         {
-            Vector3 relativePosition = worldPosition - GetWorldBounds().min;
-            var normalizedPosition = new Vector2(relativePosition.x / GetWorldBounds().size.x, relativePosition.z / GetWorldBounds().size.z);
-            return normalizedPosition;
+            float x1, y1;
+            MinimapSquare minimapBounds = MinimapBounds;
+            (x1, y1) = minimapBounds.GetPositionRelativeToP1(new Vector2(worldPosition.x, worldPosition.z));
+            return new Vector2(x1 / minimapBounds.size.x, y1 / minimapBounds.size.y);
         }
 
         public Vector2Int GetSize() => minimapSize;

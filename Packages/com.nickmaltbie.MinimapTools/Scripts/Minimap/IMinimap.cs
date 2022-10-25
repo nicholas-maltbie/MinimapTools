@@ -17,6 +17,7 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Icon;
+using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using UnityEngine;
 
 namespace com.nickmaltbie.MinimapTools.Minimap
@@ -59,7 +60,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// Get the world bounds for the minimap.
         /// </summary>
         /// <returns>World bound that the minimap represents.</returns>
-        Bounds GetWorldBounds();
+        IMinimapShape GetWorldBounds();
 
         /// <summary>
         /// Get the size of the minimap texture in pixels.
