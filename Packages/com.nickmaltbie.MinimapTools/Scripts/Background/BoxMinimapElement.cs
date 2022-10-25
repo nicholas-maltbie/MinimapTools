@@ -37,6 +37,7 @@ namespace com.nickmaltbie.MinimapTools.Background
         [Tooltip("Color of the box on the minimap.")]
         public Color color = Color.black;
 
+        /// <inheritdoc/>
         public override float GetRotation()
         {
             return transform.eulerAngles.y;
@@ -64,6 +65,7 @@ namespace com.nickmaltbie.MinimapTools.Background
             return texture;
         }
 
+        /// <inheritdoc/>
         public override Vector3 WorldCenter()
         {
             return transform.position + Vector3.Scale(GetComponent<BoxCollider>().center, transform.lossyScale);
