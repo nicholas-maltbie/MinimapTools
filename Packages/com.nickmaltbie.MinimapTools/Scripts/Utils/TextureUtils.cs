@@ -68,12 +68,12 @@ namespace com.nickmaltbie.MinimapTools.Utils
                 Color? current = colorTable[idx];
                 if (current == null)
                 {
-                    colorTable[idx] = new Color(source.r, source.g, source.b, weight);
+                    colorTable[idx] = new Color(source.r, source.g, source.b, weight * source.a);
                 }
                 else
                 {
                     var blended = Color.Lerp(current.Value, source, weight / (current.Value.a + weight));
-                    blended.a = current.Value.a + weight;
+                    blended.a = current.Value.a + weight * source.a;
                     colorTable[idx] = blended;
                 }
             };
@@ -147,10 +147,10 @@ namespace com.nickmaltbie.MinimapTools.Utils
         /// <returns>Newly created resized texture.</returns>
         public static Texture2D GetResized(this Texture2D texture, Vector2Int size, int depth=32)
         {
-            RenderTexture renderTexture = new RenderTexture(size.x, size.y, 32);
+            var renderTexture = new RenderTexture(size.x, size.y, 32);
             RenderTexture.active = renderTexture;
             Graphics.Blit(texture, renderTexture);
-            Texture2D result=new Texture2D(size.x, size.y);
+            var result = new Texture2D(size.x, size.y);
             result.ReadPixels(new Rect(0, 0, size.x, size.y), 0, 0);
             result.Apply();
             return result;
