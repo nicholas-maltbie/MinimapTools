@@ -16,7 +16,6 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using System.Linq;
 using com.nickmaltbie.MinimapTools.Minimap;
 using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using com.nickmaltbie.MinimapTools.Utils;
@@ -28,7 +27,6 @@ namespace com.nickmaltbie.MinimapTools.Background
     /// Minimap element that will draw a box based on a
     /// set of bounds from a given box collider.
     /// </summary>
-    [RequireComponent(typeof(BoxCollider))]
     public class SpriteMinimapElement : AbstractMinimapElement
     {
         /// <summary>
@@ -42,7 +40,7 @@ namespace com.nickmaltbie.MinimapTools.Background
         /// Bounds of the sprite on the minimap.
         /// </summary>
         [SerializeField]
-        internal MinimapSquare minimapBounds;
+        internal MinimapSquare elementBounds;
 
         /// <summary>
         /// Color of the box on the minimap.
@@ -56,13 +54,12 @@ namespace com.nickmaltbie.MinimapTools.Background
         {
             // Get the size of the box relative to the size of the minimap
             IMinimapShape minimapBounds = minimap.GetWorldBounds();
-            Vector3 boxSize = GetComponent<BoxCollider>().size;
             
-            float relativeWidth = boxSize.x * transform.lossyScale.x / minimapBounds.Size.x;
-            float relativeHeight = boxSize.z * transform.lossyScale.z / minimapBounds.Size.y;
+            float relativeWidth = (float) elementBounds.Size.x / minimapBounds.Size.x;
+            float relativeHeight = (float) elementBounds.Size.y / minimapBounds.Size.y;
 
             Vector2Int mapSize = minimap.GetSize();
-            var texture = elementTexture.GetResized(new Vector2Int(
+            Texture2D texture = elementTexture.GetResized(new Vector2Int(
                 Mathf.RoundToInt(relativeWidth * mapSize.x), 
                 Mathf.RoundToInt(relativeHeight * mapSize.y)));
 
@@ -72,13 +69,13 @@ namespace com.nickmaltbie.MinimapTools.Background
         /// <inheritdoc/>
         public override Vector3 WorldCenter()
         {
-            return minimapBounds.center;
+            return transform.position;
         }
 
         /// <inheritdoc/>
         public override float GetRotation()
         {
-            return -minimapBounds.rotation;
+            return -elementBounds.rotation + 180;
         }
     }
 }

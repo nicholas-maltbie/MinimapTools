@@ -33,17 +33,17 @@ namespace com.nickmaltbie.MinimapTools.EditorTools
             var spriteElement = (target as SpriteMinimapElement);
             float rotation = spriteElement.transform.rotation.eulerAngles.y;
 
-            spriteElement.minimapBounds.center = new Vector2(spriteElement.transform.position.x, spriteElement.transform.position.z);
-            spriteElement.minimapBounds.rotation = -rotation % 360;
+            spriteElement.elementBounds.center = new Vector2(spriteElement.transform.position.x, spriteElement.transform.position.z);
+            spriteElement.elementBounds.rotation = -rotation % 360;
 
             spriteElement.transform.rotation = Quaternion.Euler(0, rotation, 0);
 
-            MinimapSquareUtils.RenderMinimapSquare(spriteElement.minimapBounds, spriteElement.transform.position.y);
+            MinimapSquareUtils.RenderMinimapSquare(spriteElement.elementBounds, spriteElement.transform.position.y);
 
-            MinimapSquareUtils.DrawSizeHandle(spriteElement.minimapBounds, spriteElement.transform, Vector2.right);
-            MinimapSquareUtils.DrawSizeHandle(spriteElement.minimapBounds, spriteElement.transform, Vector2.left);
-            MinimapSquareUtils.DrawSizeHandle(spriteElement.minimapBounds, spriteElement.transform, Vector2.up);
-            MinimapSquareUtils.DrawSizeHandle(spriteElement.minimapBounds, spriteElement.transform, Vector2.down);
+            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.right);
+            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.left);
+            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.up);
+            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.down);
         }
     }
 }
