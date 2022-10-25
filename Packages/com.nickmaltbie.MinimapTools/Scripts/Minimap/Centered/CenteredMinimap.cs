@@ -85,8 +85,8 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         /// </summary>
         public override void Awake()
         {
-            boundsSource ??= GameObject.FindGameObjectWithTag(minimapBoundsTag).GetComponent<MinimapBoundsSource>();
-            followTarget ??= GameObject.FindGameObjectWithTag(followTargetTag).GetComponent<IMinimapIcon>();
+            boundsSource = string.IsNullOrEmpty(minimapBoundsTag) ? null : GameObject.FindGameObjectWithTag(minimapBoundsTag)?.GetComponent<MinimapBoundsSource>();
+            followTarget = string.IsNullOrEmpty(followTargetTag) ? null : GameObject.FindGameObjectWithTag(followTargetTag)?.GetComponent<IMinimapIcon>();
 
             base.Awake();
         }

@@ -50,8 +50,8 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
             MinimapBoundsSource boxBoundsSource = boundsGo.AddComponent<MinimapBoundsSource>();
             centeredMinimap = minimapGo.AddComponent<CenteredMinimap>();
 
-            string followTargetTag = "FollowTarget";
-            string minimapBoundsTag = "MinimapBounds";
+            string followTargetTag = "";
+            string minimapBoundsTag = "";
 
             spriteIcon = followTarget.AddComponent<SpriteIcon>();
             centeredMinimap.followTargetTag = followTargetTag;
@@ -90,15 +90,15 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
 
             followTarget.transform.position = Vector3.forward;
             centeredMinimap.LateUpdate();
-            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.up * scale);
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.up * scale / 10);
 
             followTarget.transform.position = Vector3.right;
             centeredMinimap.LateUpdate();
-            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.right * scale);
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.right * scale / 10);
 
             followTarget.transform.position = Vector3.up;
             centeredMinimap.LateUpdate();
-            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.zero * scale);
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.zero * scale / 10);
         }
     }
 }
