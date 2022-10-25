@@ -37,7 +37,6 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
         [SetUp]
         public void SetUp()
         {
-            Debug.Log($"Setting up test: {nameof(SimpleStaticMinimap)}");
             GameObject canvas = base.CreateGameObject();
             canvas.AddComponent<Canvas>();
 

@@ -118,16 +118,14 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Shape
 
             // Compute the horizontal and vertical components of distance
             // relative to the bottom left corner.
-            float dx = MathUtils.Dot(diagx, diagy, xbot, ybot);
-            float dy = MathUtils.Dot(diagx, diagy, xleft, yleft);
-
-            Debug.Log($"Computing relative position ({point.x}, {point.y}) for square ({x1}, {y1}), ({x2}, {y2}), ({x4}, {y4}) as ({dx}, {dy})");
+            float dx = MathUtils.Dot(diagx, diagy, xbot, ybot) / MathUtils.Length(xbot, ybot);
+            float dy = MathUtils.Dot(diagx, diagy, xleft, yleft) / MathUtils.Length(xleft, yleft);
 
             return (dx, dy);
         }
 
         /// <summary>
-        /// Get the four corners of this minimap sqaure rotated about the center.
+        /// Get the four corners of this minimap square rotated about the center.
         /// <pre>
         ///     [1] x2,y2 --- [2] x3,y3
         ///      |                   |

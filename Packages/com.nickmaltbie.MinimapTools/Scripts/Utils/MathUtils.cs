@@ -28,6 +28,17 @@ namespace com.nickmaltbie.MinimapTools.Background
     public static class MathUtils
     {
         /// <summary>
+        /// Get the length of a vector.
+        /// </summary>
+        /// <param name="x1">X component of the vector</param>
+        /// <param name="y1">Y component of the vector</param>
+        /// <returns>Length of the vector</returns>
+        public static float Length(float x1, float y1)
+        {
+            return Mathf.Sqrt(x1 * x1 + y1 * y1);
+        }
+
+        /// <summary>
         /// Get the dot product of two vectors v1 and v2.
         /// </summary>
         /// <param name="x1">X component of v1</param>

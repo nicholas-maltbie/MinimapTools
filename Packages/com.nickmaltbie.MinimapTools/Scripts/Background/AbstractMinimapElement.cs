@@ -53,7 +53,6 @@ namespace com.nickmaltbie.MinimapTools.Background
         public void DrawOnBackground(IMinimap minimap, Texture2D backgroundTexture)
         {
             Vector2 targetPos = minimap.GetMinimapPosition(WorldCenter());
-            Debug.Log($"GameObject:{name} :: Drawing texture at relative position: {targetPos}");
             backgroundTexture.DrawStampRelative(GetTexture(minimap).GetRotated(-GetRotation()), targetPos);
         }
     }

@@ -181,8 +181,6 @@ namespace com.nickmaltbie.MinimapTools.Background
         /// <param name="offsetPixels">Center offset of stamp on the source image.</param>
         public static void DrawStamp(this Texture2D source, Texture2D stamp, Vector2Int offsetPixels)
         {
-            Debug.Log($"Drawing stamp (size:{stamp.width},{stamp.height}) on source (size:{source.width},{source.height}) at offset {offsetPixels.x},{offsetPixels.y}");
-
             // Go through each pixel in the stamp
             for (int x = 0; x < stamp.width; x++)
             {

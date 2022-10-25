@@ -141,7 +141,6 @@ namespace com.nickmaltbie.MinimapTools.Minimap
 
             foreach (AbstractMinimapElement minimapElement in GameObject.FindObjectsOfType<AbstractMinimapElement>())
             {
-                Debug.Log($"Adding element to background texture: {minimapElement.name}");
                 backgroundTexture.AddElementToMinimap(minimapElement);
             }
 
