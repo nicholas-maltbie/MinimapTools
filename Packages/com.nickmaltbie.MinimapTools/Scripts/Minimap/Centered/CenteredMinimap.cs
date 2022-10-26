@@ -17,7 +17,7 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Icon;
-using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
+using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using UnityEngine;
 
 namespace com.nickmaltbie.MinimapTools.Minimap.Centered
@@ -64,7 +64,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         /// <summary>
         /// Bounds source for the minimap.
         /// </summary>
-        internal IBoundsSource boundsSource;
+        internal MinimapBoundsSource boundsSource;
 
         /// <summary>
         /// Map offset for following the target.
@@ -72,7 +72,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         private Vector2 _mapOffset;
 
         /// <inheritdoc/>
-        public override IBoundsSource Source => boundsSource;
+        protected override MinimapBoundsSource Source => boundsSource;
 
         /// <inheritdoc/>
         public override Vector2 MapOffset => _mapOffset * MapScale - MapScale / 2;
@@ -83,14 +83,24 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         /// <summary>
         /// Setup initial configuration of minimap.
         /// </summary>
+        public override void Awake()
+        {
+            boundsSource = string.IsNullOrEmpty(minimapBoundsTag) ? null : GameObject.FindGameObjectWithTag(minimapBoundsTag)?.GetComponent<MinimapBoundsSource>();
+            followTarget = string.IsNullOrEmpty(followTargetTag) ? null : GameObject.FindGameObjectWithTag(followTargetTag)?.GetComponent<IMinimapIcon>();
+
+            base.Awake();
+        }
+
         public void Start()
         {
-            boundsSource ??= GameObject.FindGameObjectWithTag(minimapBoundsTag).GetComponent<IBoundsSource>();
-            followTarget ??= GameObject.FindGameObjectWithTag(followTargetTag).GetComponent<IMinimapIcon>();
-
             if (followTarget != null)
             {
                 base.AddIcon(followTarget);
+            }
+
+            foreach (IMinimapIcon icon in GameObject.FindObjectsOfType<SpriteIcon>())
+            {
+                base.AddIcon(icon);
             }
         }
 
@@ -98,7 +108,8 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         public override void LateUpdate()
         {
             _mapOffset = base.GetMinimapPosition(followTarget.GetWorldSpace());
-            transform.rotation = Quaternion.Euler(0, 0, rotateMinimap ? followTarget.GetIconRotation().eulerAngles.y : 0);
+            float rotation = rotateMinimap ? followTarget.GetIconRotation().eulerAngles.y + base.GetRotation() : 0;
+            transform.rotation = Quaternion.Euler(0, 0, rotation);
 
             base.LateUpdate();
         }

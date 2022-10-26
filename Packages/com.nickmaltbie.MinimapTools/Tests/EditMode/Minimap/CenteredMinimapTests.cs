@@ -18,12 +18,12 @@
 
 using com.nickmaltbie.MinimapTools.Icon;
 using com.nickmaltbie.MinimapTools.Minimap.Centered;
-using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
+using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace nickmaltbie.MinimapTools.Tests.EditMode
+namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
 {
     /// <summary>
     /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.Centered.CenteredMinimap"/>
@@ -38,7 +38,6 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
         [SetUp]
         public void SetUp()
         {
-            Debug.Log($"Setting up test: {nameof(CenteredMinimapTests)}");
             GameObject canvas = base.CreateGameObject();
             canvas.AddComponent<Canvas>();
 
@@ -48,11 +47,11 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
 
             minimapGo.transform.SetParent(canvas.transform);
 
-            BoxBoundsSource boxBoundsSource = boundsGo.AddComponent<BoxBoundsSource>();
+            MinimapBoundsSource boxBoundsSource = boundsGo.AddComponent<MinimapBoundsSource>();
             centeredMinimap = minimapGo.AddComponent<CenteredMinimap>();
 
-            string followTargetTag = "FollowTarget";
-            string minimapBoundsTag = "MinimapBounds";
+            string followTargetTag = "";
+            string minimapBoundsTag = "";
 
             spriteIcon = followTarget.AddComponent<SpriteIcon>();
             centeredMinimap.followTargetTag = followTargetTag;
@@ -91,15 +90,15 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
 
             followTarget.transform.position = Vector3.forward;
             centeredMinimap.LateUpdate();
-            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.up * scale);
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.up * scale / 10);
 
             followTarget.transform.position = Vector3.right;
             centeredMinimap.LateUpdate();
-            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.right * scale);
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.right * scale / 10);
 
             followTarget.transform.position = Vector3.up;
             centeredMinimap.LateUpdate();
-            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.zero * scale);
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.zero * scale / 10);
         }
     }
 }

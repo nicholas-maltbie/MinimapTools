@@ -18,17 +18,11 @@
 
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Minimap.MinimapBounds
+namespace com.nickmaltbie.MinimapTools.Utils
 {
     /// <summary>
-    /// Source of bounds for a minimap
+    /// Read Only attribute.
+    /// Attribute is use only to mark ReadOnly properties.
     /// </summary>
-    public interface IBoundsSource
-    {
-        /// <summary>
-        /// Get the bounds for this bounds source.
-        /// </summary>
-        /// <returns>Get the bounds for this minimap source.</returns>
-        Bounds GetBounds();
-    }
+    public class ReadOnlyAttribute : PropertyAttribute { }
 }

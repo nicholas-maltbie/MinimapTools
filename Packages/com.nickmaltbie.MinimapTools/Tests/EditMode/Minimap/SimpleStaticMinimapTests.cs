@@ -17,13 +17,13 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Icon;
-using com.nickmaltbie.MinimapTools.Minimap.MinimapBounds;
+using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using com.nickmaltbie.MinimapTools.Minimap.Simple;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace nickmaltbie.MinimapTools.Tests.EditMode
+namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
 {
     /// <summary>
     /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.Simple.SimpleStaticMinimap"/>
@@ -37,7 +37,6 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
         [SetUp]
         public void SetUp()
         {
-            Debug.Log($"Setting up test: {nameof(SimpleStaticMinimap)}");
             GameObject canvas = base.CreateGameObject();
             canvas.AddComponent<Canvas>();
 
@@ -46,8 +45,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode
             GameObject iconGo = base.CreateGameObject();
 
             minimapGo.transform.SetParent(canvas.transform);
-
-            BoxBoundsSource boxBoundsSource = boundsGo.AddComponent<BoxBoundsSource>();
+            _ = boundsGo.AddComponent<MinimapBoundsSource>();
             simpleMinimap = minimapGo.AddComponent<SimpleStaticMinimap>();
             spriteIcon = iconGo.AddComponent<SpriteIcon>();
 

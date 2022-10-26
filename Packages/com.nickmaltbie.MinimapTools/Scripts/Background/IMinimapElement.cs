@@ -16,7 +16,27 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using System.Runtime.CompilerServices;
+using com.nickmaltbie.MinimapTools.Minimap;
+using UnityEngine;
 
-[assembly: InternalsVisibleTo("nickmaltbie.MinimapTools.EditorTools")]
-[assembly: InternalsVisibleTo("nickmaltbie.MinimapTools.Tests.EditMode")]
+namespace com.nickmaltbie.MinimapTools.Background
+{
+    /// <summary>
+    /// Element that can be added to the background of the minimap.
+    /// </summary>
+    public interface IMinimapElement
+    {
+        /// <summary>
+        /// Draw this element on the background of a minimap.
+        /// </summary>
+        /// <param name="minimap">Minimap for getting space of element.</param>
+        /// <param name="backgroundTexture">Background texture to draw minimap onto.</param>
+        void DrawOnBackground(IMinimap minimap, Texture2D backgroundTexture);
+
+        /// <summary>
+        /// Get the order that this element should be drawn on the background.
+        /// </summary>
+        /// <returns>Integer representing order with lowest number taking priority.</returns>
+        int GetOrder();
+    }
+}

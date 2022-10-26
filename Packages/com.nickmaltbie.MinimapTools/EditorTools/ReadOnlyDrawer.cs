@@ -16,21 +16,37 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using com.nickmaltbie.MinimapTools.Utils;
+using UnityEditor;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Minimap.MinimapBounds
+namespace com.nickmaltbie.MinimapTools.EditorTools
 {
     /// <summary>
-    /// Source of bounds from a box collider
+    /// This class contain custom drawer for ReadOnly attribute.
     /// </summary>
-    [RequireComponent(typeof(BoxCollider))]
-    public class BoxBoundsSource : MonoBehaviour, IBoundsSource
+    [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
+    public class ReadOnlyDrawer : PropertyDrawer
     {
-        /// <inheritdoc/>
-        public Bounds GetBounds()
+        /// <summary>
+        /// Unity method for drawing GUI in Editor
+        /// </summary>
+        /// <param name="position">Position.</param>
+        /// <param name="property">Property.</param>
+        /// <param name="label">Label.</param>
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            Bounds bounds = GetComponent<BoxCollider>().bounds;
-            return new Bounds(bounds.center + transform.position, bounds.size);
+            // Saving previous GUI enabled value
+            bool previousGUIState = GUI.enabled;
+
+            // Disabling edit for property
+            GUI.enabled = false;
+
+            // Drawing Property
+            EditorGUI.PropertyField(position, property, label);
+
+            // Setting old GUI enabled value
+            GUI.enabled = previousGUIState;
         }
     }
 }

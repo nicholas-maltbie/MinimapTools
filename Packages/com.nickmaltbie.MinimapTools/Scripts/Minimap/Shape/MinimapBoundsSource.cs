@@ -16,7 +16,25 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using System.Runtime.CompilerServices;
+using UnityEngine;
 
-[assembly: InternalsVisibleTo("nickmaltbie.MinimapTools.EditorTools")]
-[assembly: InternalsVisibleTo("nickmaltbie.MinimapTools.Tests.EditMode")]
+namespace com.nickmaltbie.MinimapTools.Minimap.Shape
+{
+    /// <summary>
+    /// Source of bounds for a minimap or minimap object in the world
+    /// </summary>
+    public class MinimapBoundsSource : MonoBehaviour
+    {
+        /// <summary>
+        /// Shape of the minimap.
+        /// </summary>
+        [SerializeField]
+        public MinimapSquare minimapShape;
+
+        /// <summary>
+        /// Gets the shape of the minimap.
+        /// </summary>
+        /// <returns>The shape of the minimap as a MinimapSquare object.</returns>
+        public MinimapSquare GetShape() => minimapShape;
+    }
+}
