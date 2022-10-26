@@ -16,6 +16,7 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using System.Linq;
 using com.nickmaltbie.MinimapTools.Minimap;
 using com.nickmaltbie.MinimapTools.Utils;
 using UnityEngine;
@@ -37,15 +38,14 @@ namespace com.nickmaltbie.MinimapTools.Background
         /// Reference to minimap for the texture.
         /// </summary>
         private IMinimap minimap;
-        
+
         /// <summary>
         /// Create a background texture.
         /// </summary>
         /// <param name="minimap">Minimap reference.</param>
         /// <param name="size">Size of texture in pixels.</param>
-        /// <param name="background">Background of the minimap, leave as null for
-        /// an empty minimap.</param>
-        public BackgroundTexture(IMinimap minimap, Vector2Int size, Texture2D background=null)
+        /// <param name="background">Background of the minimap.</param>
+        public BackgroundTexture(IMinimap minimap, Vector2Int size, Texture2D background)
         {
             if (background != null)
             {
@@ -53,9 +53,21 @@ namespace com.nickmaltbie.MinimapTools.Background
             }
             else
             {
-                texture = new Texture2D(size.x, size.y);
+                texture = TextureUtils.CreateTexture(size.x, size.y);
             }
 
+            this.minimap = minimap;
+        }
+        
+        /// <summary>
+        /// Create a background texture.
+        /// </summary>
+        /// <param name="minimap">Minimap reference.</param>
+        /// <param name="size">Size of texture in pixels.</param>
+        /// <param name="background">Background color of the minimap.</param>
+        public BackgroundTexture(IMinimap minimap, Vector2Int size, Color? color = null)
+        {
+            texture = TextureUtils.CreateTexture(size.x, size.y, color);
             this.minimap = minimap;
         }
 

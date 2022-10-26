@@ -23,7 +23,7 @@ using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace nickmaltbie.MinimapTools.Tests.EditMode
+namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
 {
     /// <summary>
     /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.Simple.SimpleStaticMinimap"/>

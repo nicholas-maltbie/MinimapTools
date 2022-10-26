@@ -19,6 +19,7 @@
 using System.Linq;
 using com.nickmaltbie.MinimapTools.Minimap;
 using com.nickmaltbie.MinimapTools.Minimap.Shape;
+using com.nickmaltbie.MinimapTools.Utils;
 using UnityEngine;
 
 namespace com.nickmaltbie.MinimapTools.Background
@@ -55,12 +56,10 @@ namespace com.nickmaltbie.MinimapTools.Background
 
             Vector2Int mapSize = minimap.GetSize();
 
-            var texture = new Texture2D(
+            var texture = TextureUtils.CreateTexture(
                 Mathf.RoundToInt(relativeWidth * mapSize.x),
-                Mathf.RoundToInt(relativeHeight * mapSize.y));
-
-            texture.SetPixels(Enumerable.Repeat(color, texture.width * texture.height).ToArray());
-            texture.Apply();
+                Mathf.RoundToInt(relativeHeight * mapSize.y),
+                color);
 
             return texture;
         }

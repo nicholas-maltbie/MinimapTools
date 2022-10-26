@@ -58,7 +58,7 @@ namespace com.nickmaltbie.MinimapTools.Background
         /// </summary>
         /// <param name="minimap">Minimap for getting space of element.</param>
         /// <param name="backgroundTexture">Background texture to draw minimap onto.</param>
-        public void DrawOnBackground(IMinimap minimap, Texture2D backgroundTexture)
+        public virtual void DrawOnBackground(IMinimap minimap, Texture2D backgroundTexture)
         {
             Vector2 targetPos = minimap.GetMinimapPosition(WorldCenter());
             backgroundTexture.DrawStampRelative(GetTexture(minimap).GetRotated(-(GetRotation() + minimap.GetRotation())), targetPos);

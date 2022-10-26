@@ -165,12 +165,26 @@ namespace com.nickmaltbie.MinimapTools.Utils
         /// center of the stamp on the source texture.</param>
         public static void DrawStampRelative(this Texture2D source, Texture2D stamp, Vector2 relativePosition)
         {
-            DrawStamp(
-                source,
+            source.DrawStamp(
                 stamp,
                 new Vector2Int(
-                    (int) Mathf.Round(relativePosition.x * source.width),
-                    (int) Mathf.Round(relativePosition.y * source.height)));
+                    Mathf.RoundToInt(relativePosition.x * source.width),
+                    Mathf.RoundToInt(relativePosition.y * source.height)));
+        }
+
+        /// <summary>
+        /// Create a texture of a given size with a given color.
+        /// </summary>
+        /// <param name="width">Width fo texture.</param>
+        /// <param name="height">Height of texture</param>
+        /// <param name="color">Color to make texture.</param>
+        public static Texture2D CreateTexture(int width, int height, Color? color = null)
+        {
+            Color bg = color ?? Color.clear;
+            Texture2D texture = new Texture2D(width, height);
+            texture.SetPixels(Enumerable.Repeat(bg, width * height).ToArray());
+            texture.Apply();
+            return texture;
         }
 
         /// <summary>

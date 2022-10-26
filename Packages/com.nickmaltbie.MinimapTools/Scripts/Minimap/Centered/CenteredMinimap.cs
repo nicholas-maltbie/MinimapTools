@@ -97,13 +97,19 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
             {
                 base.AddIcon(followTarget);
             }
+
+            foreach (IMinimapIcon icon in GameObject.FindObjectsOfType<SpriteIcon>())
+            {
+                base.AddIcon(icon);
+            }
         }
 
         /// <inheritdoc/>
         public override void LateUpdate()
         {
             _mapOffset = base.GetMinimapPosition(followTarget.GetWorldSpace());
-            transform.rotation = Quaternion.Euler(0, 0, rotateMinimap ? followTarget.GetIconRotation().eulerAngles.y : 0);
+            float rotation = rotateMinimap ? followTarget.GetIconRotation().eulerAngles.y + base.GetRotation() : 0;
+            transform.rotation = Quaternion.Euler(0, 0, rotation);
 
             base.LateUpdate();
         }
