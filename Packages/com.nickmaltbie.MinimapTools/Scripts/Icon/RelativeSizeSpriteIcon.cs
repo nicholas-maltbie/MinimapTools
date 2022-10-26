@@ -17,46 +17,33 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Minimap;
-using com.nickmaltbie.MinimapTools.Utils;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Background
+namespace com.nickmaltbie.MinimapTools.Icon
 {
     /// <summary>
-    /// Minimap element that will draw a box based on a
-    /// set of bounds from a given box collider.
+    /// Icon for a minimap composed of a simple sprite of a relative
+    /// size to its real world size.
     /// </summary>
-    [RequireComponent(typeof(BoxCollider))]
-    public class BoxMinimapElement : AbstractMinimapElement
+    public class RelativeSizeSpriteIcon : AbstractSpriteIcon
     {
         /// <summary>
-        /// Color of the box on the minimap.
+        /// Size of the sprite in units.
         /// </summary>
         [SerializeField]
-        [Tooltip("Color of the box on the minimap.")]
-        public Color color = Color.black;
+        internal Vector2 worldSize;
 
         /// <inheritdoc/>
-        public override float GetRotation()
+        public override Vector2Int GetPixelSize(IMinimap minimap)
         {
-            return transform.eulerAngles.y;
+            Vector2 pixelSize = worldSize * minimap.PixelsPerUnit;
+            return new Vector2Int(Mathf.RoundToInt(pixelSize.x), Mathf.RoundToInt(pixelSize.y));
         }
 
         /// <inheritdoc/>
-        public override Texture2D GetTexture(IMinimap minimap)
-        {
-            // Get the size of the box relative to the size of the minimap
-            Vector3 boxSize = GetComponent<BoxCollider>().size;
-            int sizeX = Mathf.RoundToInt(boxSize.x * transform.lossyScale.x * minimap.PixelsPerUnit);
-            int sizeY = Mathf.RoundToInt(boxSize.z * transform.lossyScale.z * minimap.PixelsPerUnit);
-            Texture2D texture = TextureUtils.CreateTexture(sizeX, sizeY, color);
-            return texture;
-        }
+        public override bool ScaleWithMap() => true;
 
         /// <inheritdoc/>
-        public override Vector3 WorldCenter()
-        {
-            return transform.position + Vector3.Scale(GetComponent<BoxCollider>().center, transform.lossyScale);
-        }
+        public override Vector2 GetWorldSize() => worldSize;
     }
 }

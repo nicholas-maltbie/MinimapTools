@@ -44,11 +44,11 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         protected Texture2D backgroundImage;
 
         /// <summary>
-        /// Size of background image in pixels for minimap.
+        /// Number of pixels per unit in the background map.
         /// </summary>
         [SerializeField]
-        [Tooltip("Size of background image in pixels for minimap.")]
-        protected Vector2Int minimapSize = new Vector2Int(1024, 1024);
+        [Tooltip("Number of pixels per unit in the background map.")]
+        internal float pixelsPerUnit = 10;
 
         /// <summary>
         /// Shape of the minimap mask.
@@ -73,14 +73,6 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         protected Dictionary<IMinimapIcon, GameObject> icons = new Dictionary<IMinimapIcon, GameObject>();
 
         /// <summary>
-        /// Scale of the map relative to minimap size.
-        /// A value of (1,1) means the minimap is always full size,
-        /// A value of (2,2) means the map zoomed in to be twice the size
-        /// of the original map.
-        /// </summary>
-        public abstract Vector2 MapScale { get; }
-
-        /// <summary>
         /// Map offset for the minimap relative to the map size. A value of (0,0)
         /// would indicate centered map. A value of (1,1) would indicate shift the
         /// minimap by 1 unit of the minimap viewing area.
@@ -95,18 +87,27 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// <inheritdoc/>
         public IMinimapShape GetWorldBounds() => MinimapBounds;
 
+        /// <inheritdoc/>
+        public float PixelsPerUnit => pixelsPerUnit;
+
         /// <summary>
         /// Background texture to render elements onto.
         /// </summary>
         private BackgroundTexture backgroundTexture;
 
         /// <summary>
+        /// Scale factor for map on screen.
+        /// </summary>
+        [SerializeField]
+        public abstract float MapScale { get; }
+
+        /// <summary>
         /// Move each object following minimap rules.
         /// </summary>
         public virtual void LateUpdate()
         {
-            backgroundRt.localPosition = -MapOffset * GetComponent<RectTransform>().sizeDelta;
-            backgroundRt.localScale = MapScale;
+            backgroundRt.localPosition = -MapOffset * backgroundRt.sizeDelta * MapScale;
+            backgroundRt.localScale = Vector3.one * MapScale;
 
             foreach (IMinimapIcon icon in icons.Keys)
             {
@@ -134,12 +135,29 @@ namespace com.nickmaltbie.MinimapTools.Minimap
             backgroundRt.sizeDelta = Vector3.zero;
             backgroundRt.anchoredPosition = Vector2.zero;
 
-            backgroundRt.localScale = MapScale;
-
             // Generate background image from scene elements
-            backgroundTexture = new BackgroundTexture(this, minimapSize, backgroundImage);
+            backgroundTexture = new BackgroundTexture(
+                this,
+                GetSize(),
+                backgroundImage);
             Texture2D tex = backgroundTexture.GetTexture2D();
 
+            Image image = background.AddComponent<Image>();
+            image.sprite = Sprite.Create(
+                tex,
+                new Rect(0.0f, 0.0f, tex.width, tex.height),
+                new Vector2(0.5f, 0.5f),
+                100);
+            RectTransform rt = image.GetComponent<RectTransform>();
+            rt.sizeDelta = GetSize();
+            rt.localScale = Vector3.one * MapScale;
+        }
+
+        /// <summary>
+        /// Add any icons from the minimap to this object during the start.
+        /// </summary>
+        public virtual void Start()
+        {
             foreach (
                 AbstractMinimapElement minimapElement in
                 GameObject.FindObjectsOfType<AbstractMinimapElement>()
@@ -147,12 +165,6 @@ namespace com.nickmaltbie.MinimapTools.Minimap
             {
                 backgroundTexture.AddElementToMinimap(minimapElement);
             }
-
-            Image image = background.AddComponent<Image>();
-            image.sprite = Sprite.Create(
-                tex,
-                new Rect(0.0f, 0.0f, tex.width, tex.height),
-                new Vector2(0.5f, 0.5f), 100.0f);
         }
 
         /// <inheritdoc/>
@@ -163,7 +175,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap
                 return false;
             }
 
-            GameObject iconGo = minimapIcon.CreateIcon(backgroundRt);
+            GameObject iconGo = minimapIcon.CreateIcon(this, backgroundRt);
             iconGo.name = "icon";
 
             icons.Add(minimapIcon, iconGo);
@@ -201,9 +213,24 @@ namespace com.nickmaltbie.MinimapTools.Minimap
                 rectTransform.anchorMax = relativePosition;
                 rectTransform.anchorMin = relativePosition;
                 rectTransform.anchoredPosition = Vector2.zero;
-                rectTransform.localRotation = Quaternion.Euler(0, 0, -(icon.GetIconRotation().eulerAngles.y + GetRotation()));
 
-                iconGo.transform.localScale = new Vector3(1 / MapScale.x, 1 / MapScale.y);
+                if (icon.RotateWithMap())
+                {
+                    rectTransform.localRotation = Quaternion.Euler(0, 0, -(icon.GetIconRotation().eulerAngles.y + GetRotation()));
+                }
+                else
+                {
+                    rectTransform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+
+                if (icon.ScaleWithMap())
+                {
+                    rectTransform.localScale = Vector3.one;
+                }
+                else
+                {
+                    rectTransform.localScale = Vector3.one / MapScale;
+                }
             }
         }
 
@@ -217,7 +244,11 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         }
 
         /// <inheritdoc/>
-        public Vector2Int GetSize() => minimapSize;
+        public Vector2Int GetSize()
+        {
+            Vector2 minimapSize = MinimapBounds.Size * pixelsPerUnit;
+            return new Vector2Int(Mathf.RoundToInt(minimapSize.x), Mathf.RoundToInt(minimapSize.y));
+        }
 
         /// <inheritdoc/>
         public float GetRotation()

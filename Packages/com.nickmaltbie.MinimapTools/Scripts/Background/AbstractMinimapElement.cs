@@ -64,6 +64,7 @@ namespace com.nickmaltbie.MinimapTools.Background
             backgroundTexture.DrawStampRelative(GetTexture(minimap).GetRotated(-(GetRotation() + minimap.GetRotation())), targetPos);
         }
 
+        /// <inheritdoc/>
         public int GetOrder() => drawOrder;
     }
 }

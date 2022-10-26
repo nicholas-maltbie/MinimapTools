@@ -17,6 +17,7 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Background;
+using com.nickmaltbie.MinimapTools.Icon;
 using com.nickmaltbie.MinimapTools.Minimap;
 using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using nickmaltbie.MinimapTools.TestCommon;
@@ -48,10 +49,18 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
     public class ExampleMinimap : AbstractMinimap
     {
         public MinimapBoundsSource boundsSource;
-
-        public override Vector2 MapScale => Vector2.one;
         public override Vector2 MapOffset => Vector3.zero;
+        public override float MapScale => 1.0f;
         protected override MinimapBoundsSource Source => boundsSource;
+    }
+
+    public class ExampleMinimapIcon : AbstractSpriteIcon
+    {
+        public Vector2Int pixelSize = new Vector2Int(10, 10);
+        public bool scaleWithMap;
+
+        public override Vector2Int GetPixelSize(IMinimap minimap) => pixelSize;
+        public override bool ScaleWithMap() => scaleWithMap;
     }
 
     /// <summary>
@@ -75,6 +84,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
             minimapGo.transform.SetParent(canvas.transform);
             exampleMinimap = minimapGo.AddComponent<ExampleMinimap>();
             exampleMinimap.boundsSource = boundsSource;
+            exampleMinimap.Awake();
         }
 
         [Test]
@@ -83,8 +93,16 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
             ExampleMinimapElement example = base.CreateGameObject().AddComponent<ExampleMinimapElement>();
             Assert.AreEqual(example.drawCount, 0);
 
-            exampleMinimap.Awake();
+            exampleMinimap.Start();
             Assert.AreEqual(example.drawCount, 1);
+        }
+
+        [Test]
+        public void Verify_AbstractMinimap_PixelsPerUnit([Values(10, 20, 5)] float scale)
+        {
+            exampleMinimap.pixelsPerUnit = scale;
+            Assert.AreEqual(exampleMinimap.PixelsPerUnit, scale);
+            Assert.AreEqual(exampleMinimap.PixelsPerUnit, exampleMinimap.pixelsPerUnit);
         }
 
         [Test]
@@ -94,6 +112,22 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
 
             exampleMinimap.boundsSource = null;
             Assert.AreEqual(AbstractMinimap.defaultShape, exampleMinimap.GetWorldBounds());
+        }
+
+        [Test]
+        public void Verify_AbstractMinimap_IconPlacement(
+            [Values] bool rotateWithMap,
+            [Values] bool scaleWithMap)
+        {
+            GameObject go = CreateGameObject();
+            ExampleMinimapIcon icon = go.AddComponent<ExampleMinimapIcon>();
+            icon.rotateIcon = rotateWithMap;
+            icon.scaleWithMap = scaleWithMap;
+            icon.sprite = Sprite.Create(Texture2D.blackTexture, Rect.zero, Vector2.one);
+
+            exampleMinimap.Start();
+            exampleMinimap.AddIcon(icon);
+            exampleMinimap.LateUpdate();
         }
 
         [Test]
@@ -115,7 +149,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
             Assert.AreEqual(e1.drawCount, 0);
             Assert.AreEqual(e2.drawCount, 0);
 
-            exampleMinimap.Awake();
+            exampleMinimap.Start();
 
             Assert.AreEqual(e0.drawCount, 1);
             Assert.AreEqual(e1.drawCount, 1);

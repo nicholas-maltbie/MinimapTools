@@ -52,16 +52,9 @@ namespace com.nickmaltbie.MinimapTools.Background
         /// <inheritdoc/>
         public override Texture2D GetTexture(IMinimap minimap)
         {
-            // Get the size of the box relative to the size of the minimap
-            IMinimapShape minimapBounds = minimap.GetWorldBounds();
-
-            float relativeWidth = (float)elementBounds.Size.x / minimapBounds.Size.x;
-            float relativeHeight = (float)elementBounds.Size.y / minimapBounds.Size.y;
-
-            Vector2Int mapSize = minimap.GetSize();
             Texture2D texture = elementTexture.GetResized(new Vector2Int(
-                Mathf.RoundToInt(relativeWidth * mapSize.x),
-                Mathf.RoundToInt(relativeHeight * mapSize.y)));
+                Mathf.RoundToInt(elementBounds.Size.x * minimap.PixelsPerUnit),
+                Mathf.RoundToInt(elementBounds.Size.y * minimap.PixelsPerUnit)));
 
             return texture;
         }

@@ -17,46 +17,26 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Minimap;
-using com.nickmaltbie.MinimapTools.Utils;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Background
+namespace com.nickmaltbie.MinimapTools.Icon
 {
     /// <summary>
-    /// Minimap element that will draw a box based on a
-    /// set of bounds from a given box collider.
+    /// Icon for a minimap composed of a simple sprite of a fixed pixel
+    /// size.
     /// </summary>
-    [RequireComponent(typeof(BoxCollider))]
-    public class BoxMinimapElement : AbstractMinimapElement
+    public class FixedSizeSpriteIcon : AbstractSpriteIcon
     {
         /// <summary>
-        /// Color of the box on the minimap.
+        /// Size of the sprite icon in pixels.
         /// </summary>
         [SerializeField]
-        [Tooltip("Color of the box on the minimap.")]
-        public Color color = Color.black;
+        internal Vector2Int pixelSize = new Vector2Int(10, 10);
 
         /// <inheritdoc/>
-        public override float GetRotation()
-        {
-            return transform.eulerAngles.y;
-        }
+        public override Vector2Int GetPixelSize(IMinimap minimap) => pixelSize;
 
         /// <inheritdoc/>
-        public override Texture2D GetTexture(IMinimap minimap)
-        {
-            // Get the size of the box relative to the size of the minimap
-            Vector3 boxSize = GetComponent<BoxCollider>().size;
-            int sizeX = Mathf.RoundToInt(boxSize.x * transform.lossyScale.x * minimap.PixelsPerUnit);
-            int sizeY = Mathf.RoundToInt(boxSize.z * transform.lossyScale.z * minimap.PixelsPerUnit);
-            Texture2D texture = TextureUtils.CreateTexture(sizeX, sizeY, color);
-            return texture;
-        }
-
-        /// <inheritdoc/>
-        public override Vector3 WorldCenter()
-        {
-            return transform.position + Vector3.Scale(GetComponent<BoxCollider>().center, transform.lossyScale);
-        }
+        public override bool ScaleWithMap() => false;
     }
 }
