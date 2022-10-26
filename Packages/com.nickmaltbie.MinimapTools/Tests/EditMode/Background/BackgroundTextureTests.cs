@@ -17,11 +17,7 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Background;
-using com.nickmaltbie.MinimapTools.Icon;
 using com.nickmaltbie.MinimapTools.Minimap;
-using com.nickmaltbie.MinimapTools.Minimap.Centered;
-using com.nickmaltbie.MinimapTools.Minimap.Shape;
-using com.nickmaltbie.MinimapTools.Minimap.Simple;
 using Moq;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
@@ -30,7 +26,7 @@ using UnityEngine;
 namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
 {
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.Background.BackgroundTextureTests"/>
+    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Background.BackgroundTexture"/>
     /// </summary>
     [TestFixture]
     public class BackgroundTextureTests : TestBase
@@ -38,12 +34,12 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
         [Test]
         public void Validate_BackgroundTexture_SetupTexture()
         {
-            Mock<IMinimap> minimapMock = new Mock<IMinimap>();
+            var minimapMock = new Mock<IMinimap>();
             Texture2D texture = Texture2D.blackTexture;
-            BackgroundTexture background = new BackgroundTexture(minimapMock.Object, Vector2Int.one * 100, texture);
+            var background = new BackgroundTexture(minimapMock.Object, Vector2Int.one * 100, texture);
 
             int drawCount = 0;
-            Mock<IMinimapElement> minimapElementMock = new Mock<IMinimapElement>();
+            var minimapElementMock = new Mock<IMinimapElement>();
             minimapElementMock.Setup(e => e.DrawOnBackground(It.IsAny<IMinimap>(), It.IsAny<Texture2D>()))
                 .Callback((IMinimap minimap, Texture2D tex) => drawCount++);
             background.AddElementToMinimap(minimapElementMock.Object);
@@ -52,11 +48,11 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
         [Test]
         public void Validate_BackgroundTexture_SetupBGColor()
         {
-            Mock<IMinimap> minimapMock = new Mock<IMinimap>();
-            BackgroundTexture background = new BackgroundTexture(minimapMock.Object, Vector2Int.one * 100, Color.clear);
+            var minimapMock = new Mock<IMinimap>();
+            var background = new BackgroundTexture(minimapMock.Object, Vector2Int.one * 100, Color.clear);
 
             int drawCount = 0;
-            Mock<IMinimapElement> minimapElementMock = new Mock<IMinimapElement>();
+            var minimapElementMock = new Mock<IMinimapElement>();
             minimapElementMock.Setup(e => e.DrawOnBackground(It.IsAny<IMinimap>(), It.IsAny<Texture2D>()))
                 .Callback((IMinimap minimap, Texture2D tex) => drawCount++);
             background.AddElementToMinimap(minimapElementMock.Object);

@@ -40,18 +40,18 @@ namespace com.nickmaltbie.MinimapTools.Background
         /// </summary>
         /// <param name="minimap">Minimap to get the target texture for.</param>
         /// <returns>Texture to draw on the background of the minimap.</returns>
-        abstract public Texture2D GetTexture(IMinimap minimap);
+        public abstract Texture2D GetTexture(IMinimap minimap);
 
         /// <summary>
         /// Get the center of this element in world space.
         /// </summary>
-        abstract public Vector3 WorldCenter();
+        public abstract Vector3 WorldCenter();
 
         /// <summary>
         /// Get the rotation of this object in world space.
         /// </summary>
         /// <returns>Rotation of the object in world space.</returns>
-        abstract public float GetRotation();
+        public abstract float GetRotation();
 
         /// <summary>
         /// Draw this element on the background of a minimap.

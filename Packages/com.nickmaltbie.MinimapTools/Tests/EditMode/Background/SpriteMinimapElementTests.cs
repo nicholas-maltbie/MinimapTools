@@ -16,12 +16,9 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using System.Collections.Generic;
 using System.Linq;
 using com.nickmaltbie.MinimapTools.Background;
-using com.nickmaltbie.MinimapTools.Icon;
 using com.nickmaltbie.MinimapTools.Minimap;
-using com.nickmaltbie.MinimapTools.Minimap.Centered;
 using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using Moq;
 using nickmaltbie.MinimapTools.TestCommon;
@@ -31,7 +28,7 @@ using UnityEngine;
 namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
 {
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.Background.SpriteMinimapElementTests"/>
+    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Background.SpriteMinimapElement"/>
     /// </summary>
     [TestFixture]
     public class SpriteMinimapElementTests : TestBase
@@ -44,11 +41,11 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
         [SetUp]
         public void SetUp()
         {
-            var go = base.CreateGameObject();
+            GameObject go = base.CreateGameObject();
             spriteMinimapElement = go.AddComponent<SpriteMinimapElement>();
             spriteMinimapElement.elementTexture = new Texture2D(10, 10);
             spriteMinimapElement.elementBounds = new MinimapSquare(Vector2.zero, Vector2.one, 0);
-            
+
             // Fill sprite with random pixels
             spriteMinimapElement.elementTexture.SetPixels(
                 Enumerable.Range(0, spriteMinimapElement.elementTexture.width * spriteMinimapElement.elementTexture.height)
@@ -75,7 +72,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
         public void Validate_SpriteMinimapElement_DrawOnBackground()
         {
             spriteMinimapElement.DrawOnBackground(minimapMock.Object, backgroundTexture);
-            
+
             // Box should be drawn on pixel (0,0), assert that the color
             // is found there
             Assert.AreEqual(

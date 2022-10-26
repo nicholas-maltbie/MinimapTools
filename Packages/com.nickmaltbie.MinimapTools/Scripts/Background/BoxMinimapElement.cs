@@ -16,7 +16,6 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using System.Linq;
 using com.nickmaltbie.MinimapTools.Minimap;
 using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using com.nickmaltbie.MinimapTools.Utils;
@@ -50,13 +49,13 @@ namespace com.nickmaltbie.MinimapTools.Background
             // Get the size of the box relative to the size of the minimap
             IMinimapShape minimapBounds = minimap.GetWorldBounds();
             Vector3 boxSize = GetComponent<BoxCollider>().size;
-            
+
             float relativeWidth = boxSize.x * transform.lossyScale.x / minimapBounds.Size.x;
             float relativeHeight = boxSize.z * transform.lossyScale.z / minimapBounds.Size.y;
 
             Vector2Int mapSize = minimap.GetSize();
 
-            var texture = TextureUtils.CreateTexture(
+            Texture2D texture = TextureUtils.CreateTexture(
                 Mathf.RoundToInt(relativeWidth * mapSize.x),
                 Mathf.RoundToInt(relativeHeight * mapSize.y),
                 color);

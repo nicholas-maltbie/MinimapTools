@@ -19,9 +19,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using com.nickmaltbie.MinimapTools.Background;
-using com.nickmaltbie.MinimapTools.Icon;
 using com.nickmaltbie.MinimapTools.Minimap;
-using com.nickmaltbie.MinimapTools.Minimap.Centered;
 using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using Moq;
 using nickmaltbie.MinimapTools.TestCommon;
@@ -31,7 +29,7 @@ using UnityEngine;
 namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
 {
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.Background.BoxMinimapElement"/>
+    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Background.BoxMinimapElement"/>
     /// </summary>
     [TestFixture]
     public class BoxMinimapElementTests : TestBase
@@ -45,7 +43,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
         [SetUp]
         public void SetUp()
         {
-            var go = base.CreateGameObject();
+            GameObject go = base.CreateGameObject();
             go.transform.localScale = new Vector3(4, 1, 8);
 
             boxMinimapElement = go.AddComponent<BoxMinimapElement>();
@@ -68,14 +66,14 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
             boxCollider.size = Vector3.one;
         }
 
-        public static IEnumerable<Color> TestColors = new[]{Color.red, Color.blue, Color.green};
+        public static IEnumerable<Color> TestColors = new[] { Color.red, Color.blue, Color.green };
 
         [Test]
         public void Validate_BoxMinimapElement_DrawOnBackground([ValueSource(nameof(TestColors))] Color color)
         {
             boxMinimapElement.color = color;
             boxMinimapElement.DrawOnBackground(minimapMock.Object, backgroundTexture);
-            
+
             // Box should be drawn on pixel (0,0), assert that the color
             // is found there
             Assert.AreEqual(
@@ -91,7 +89,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
             boxMinimapElement.color = color;
             boxMinimapElement.DrawOnBackground(minimapMock.Object, backgroundTexture);
             boxMinimapElement.transform.rotation = Quaternion.Euler(0, 30, 0);
-            
+
             // Box should be drawn on pixel (0,0), assert that the color
             // is found there
             Assert.AreEqual(

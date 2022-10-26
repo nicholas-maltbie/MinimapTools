@@ -39,9 +39,9 @@ namespace com.nickmaltbie.MinimapTools.Utils
             float sin = Mathf.Sin(rotation * Mathf.Deg2Rad);
 
             float c1x, c1y, c2x, c2y, c3x, c3y, c4x, c4y;
-            (c1x, c1y) = MathUtils.GetRotatedAboutOrigin( texture.width / 2.0f,  texture.height / 2.0f, rotation);
-            (c2x, c2y) = MathUtils.GetRotatedAboutOrigin( texture.width / 2.0f, -texture.height / 2.0f, rotation);
-            (c3x, c3y) = MathUtils.GetRotatedAboutOrigin(-texture.width / 2.0f,  texture.height / 2.0f, rotation);
+            (c1x, c1y) = MathUtils.GetRotatedAboutOrigin(texture.width / 2.0f, texture.height / 2.0f, rotation);
+            (c2x, c2y) = MathUtils.GetRotatedAboutOrigin(texture.width / 2.0f, -texture.height / 2.0f, rotation);
+            (c3x, c3y) = MathUtils.GetRotatedAboutOrigin(-texture.width / 2.0f, texture.height / 2.0f, rotation);
             (c4x, c4y) = MathUtils.GetRotatedAboutOrigin(-texture.width / 2.0f, -texture.height / 2.0f, rotation);
 
             int minX = Mathf.FloorToInt(Mathf.Min(c1x, c2x, c3x, c4x));
@@ -55,7 +55,6 @@ namespace com.nickmaltbie.MinimapTools.Utils
             rotated.Apply();
 
             Color?[] colorTable = Enumerable.Repeat<Color?>(null, width * height).ToArray();
-            
 
             Action<int, int, float, Color> UpdateColor = (int x, int y, float weight, Color source) =>
             {
@@ -145,9 +144,9 @@ namespace com.nickmaltbie.MinimapTools.Utils
         /// <param name="size">Size to scale texture to.</param>
         /// <param name="depth">Number of values per pixel, 24 for rgb, 32 for rgba</param>
         /// <returns>Newly created resized texture.</returns>
-        public static Texture2D GetResized(this Texture2D texture, Vector2Int size, int depth=32)
+        public static Texture2D GetResized(this Texture2D texture, Vector2Int size, int depth = 32)
         {
-            var renderTexture = new RenderTexture(size.x, size.y, 32);
+            var renderTexture = new RenderTexture(size.x, size.y, depth);
             RenderTexture.active = renderTexture;
             Graphics.Blit(texture, renderTexture);
             var result = new Texture2D(size.x, size.y);
@@ -181,7 +180,7 @@ namespace com.nickmaltbie.MinimapTools.Utils
         public static Texture2D CreateTexture(int width, int height, Color? color = null)
         {
             Color bg = color ?? Color.clear;
-            Texture2D texture = new Texture2D(width, height);
+            var texture = new Texture2D(width, height);
             texture.SetPixels(Enumerable.Repeat(bg, width * height).ToArray());
             texture.Apply();
             return texture;

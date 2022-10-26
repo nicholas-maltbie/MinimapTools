@@ -24,7 +24,7 @@ using UnityEngine;
 namespace nickmaltbie.MinimapTools.Tests.EditMode.Shape
 {
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.Shape.MinimapSquareTests"/>
+    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.Shape.MinimapSquare"/>
     /// </summary>
     [TestFixture]
     public class MinimapSquareTests

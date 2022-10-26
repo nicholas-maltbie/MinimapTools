@@ -36,7 +36,7 @@ namespace com.nickmaltbie.MinimapTools.EditorTools
 
             float rotation = minimapBox.transform.rotation.eulerAngles.y;
 
-            MinimapSquare minimapShape = new MinimapSquare(
+            var minimapShape = new MinimapSquare(
                 new Vector2(
                     minimapBox.WorldCenter().x,
                     minimapBox.WorldCenter().z),

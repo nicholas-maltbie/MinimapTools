@@ -25,12 +25,12 @@ using UnityEngine;
 namespace nickmaltbie.MinimapTools.Tests.EditMode.Utils
 {
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.Utils.TextureUtils"/>
+    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Utils.TextureUtils"/>
     /// </summary>
     [TestFixture]
     public class TextureUtilsTests : TestBase
     {
-        private static readonly Color[] TestColors = new Color[] {Color.cyan, Color.yellow};
+        private static readonly Color[] TestColors = new Color[] { Color.cyan, Color.yellow };
 
         [Test]
         public void Validate_CreateTexture(
@@ -41,7 +41,11 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Utils
             Texture2D texture = TextureUtils.CreateTexture(width, height, color);
             Assert.AreEqual(width, texture.width);
             Assert.AreEqual(height, texture.height);
-            Assert.IsTrue(texture.GetPixels().All(c => {TestUtils.AssertInBounds(c, color); return true; }));
+            Assert.IsTrue(texture.GetPixels().All(c =>
+            {
+                TestUtils.AssertInBounds(c, color);
+                return true;
+            }));
         }
 
         [Test]
@@ -79,7 +83,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Utils
             [NUnit.Framework.Range(10, 40, 13)] int height
         )
         {
-            Texture2D texture = new Texture2D(width, height);
+            var texture = new Texture2D(width, height);
             texture.SetPixels(
                 Enumerable.Range(0, width * height)
                     .Select(_ => Random.ColorHSV())
@@ -96,7 +100,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Utils
             [NUnit.Framework.Range(-90, 90, 15)] float rotation
         )
         {
-            Texture2D texture = new Texture2D(10, 10);
+            var texture = new Texture2D(10, 10);
             texture.SetPixels(
                 Enumerable.Range(0, 100)
                     .Select(_ => Random.ColorHSV())

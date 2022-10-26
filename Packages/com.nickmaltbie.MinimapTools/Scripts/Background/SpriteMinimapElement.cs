@@ -54,13 +54,13 @@ namespace com.nickmaltbie.MinimapTools.Background
         {
             // Get the size of the box relative to the size of the minimap
             IMinimapShape minimapBounds = minimap.GetWorldBounds();
-            
-            float relativeWidth = (float) elementBounds.Size.x / minimapBounds.Size.x;
-            float relativeHeight = (float) elementBounds.Size.y / minimapBounds.Size.y;
+
+            float relativeWidth = (float)elementBounds.Size.x / minimapBounds.Size.x;
+            float relativeHeight = (float)elementBounds.Size.y / minimapBounds.Size.y;
 
             Vector2Int mapSize = minimap.GetSize();
             Texture2D texture = elementTexture.GetResized(new Vector2Int(
-                Mathf.RoundToInt(relativeWidth * mapSize.x), 
+                Mathf.RoundToInt(relativeWidth * mapSize.x),
                 Mathf.RoundToInt(relativeHeight * mapSize.y)));
 
             return texture;

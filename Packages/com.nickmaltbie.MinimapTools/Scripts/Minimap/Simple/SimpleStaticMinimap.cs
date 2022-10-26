@@ -54,7 +54,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Simple
         /// <inheritdoc/>
         public void OnScreenLoaded()
         {
-        
+
         }
 
         /// <inheritdoc/>

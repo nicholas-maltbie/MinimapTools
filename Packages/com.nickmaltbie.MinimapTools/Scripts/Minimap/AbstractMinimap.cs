@@ -56,7 +56,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         [SerializeField]
         [Tooltip("Shape of the minimap mask.")]
         protected Sprite maskShape;
-        
+
         /// <summary>
         /// Source of shape for the minimap.
         /// </summary>

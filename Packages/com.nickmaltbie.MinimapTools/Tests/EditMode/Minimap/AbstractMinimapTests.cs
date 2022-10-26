@@ -17,9 +17,7 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Background;
-using com.nickmaltbie.MinimapTools.Icon;
 using com.nickmaltbie.MinimapTools.Minimap;
-using com.nickmaltbie.MinimapTools.Minimap.Centered;
 using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
@@ -62,8 +60,8 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
     [TestFixture]
     public class AbstractMinimapTests : TestBase
     {
-        ExampleMinimap exampleMinimap;
-        MinimapBoundsSource boundsSource;
+        private ExampleMinimap exampleMinimap;
+        private MinimapBoundsSource boundsSource;
 
         [SetUp]
         public void SetUp()
@@ -125,7 +123,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
 
             // Assert that they were drawn in the order of their priority
             foreach ((ExampleMinimapElement, ExampleMinimapElement) tuple in
-                new (ExampleMinimapElement, ExampleMinimapElement)[] {(e0, e1), (e1, e2), (e2, e0)})
+                new (ExampleMinimapElement, ExampleMinimapElement)[] { (e0, e1), (e1, e2), (e2, e0) })
             {
                 int compare = tuple.Item1.drawOrder.CompareTo(tuple.Item2.drawOrder);
                 if (compare != 0)
