@@ -98,6 +98,14 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
         }
 
         [Test]
+        public void Verify_AbstractMinimap_PixelsPerUnit([Values(10, 20, 5)] float scale)
+        {
+            exampleMinimap.pixelsPerUnit = scale;
+            Assert.AreEqual(exampleMinimap.PixelsPerUnit, scale);
+            Assert.AreEqual(exampleMinimap.PixelsPerUnit, exampleMinimap.pixelsPerUnit);
+        }
+
+        [Test]
         public void Verify_AbstractMinimap_UninitializedShape()
         {
             Assert.AreEqual(boundsSource.minimapShape, exampleMinimap.GetWorldBounds());

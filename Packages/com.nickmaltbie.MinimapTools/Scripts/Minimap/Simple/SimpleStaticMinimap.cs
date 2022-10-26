@@ -44,10 +44,10 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Simple
         /// <inheritdoc/>
         public override float MapScale
         {
-            get 
+            get
             {
                 RectTransform rt = GetComponent<RectTransform>();
-                return Mathf.Min(rt.sizeDelta.x / backgroundRt.sizeDelta.x, rt.sizeDelta.y / backgroundRt.sizeDelta.y );
+                return Mathf.Min(rt.sizeDelta.x / backgroundRt.sizeDelta.x, rt.sizeDelta.y / backgroundRt.sizeDelta.y);
             }
         }
 

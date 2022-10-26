@@ -18,7 +18,6 @@
 
 using com.nickmaltbie.MinimapTools.Minimap;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace com.nickmaltbie.MinimapTools.Icon
 {

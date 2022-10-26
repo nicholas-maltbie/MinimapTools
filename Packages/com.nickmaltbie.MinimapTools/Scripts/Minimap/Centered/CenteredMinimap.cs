@@ -90,7 +90,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
 
         public override float MapScale
         {
-            get 
+            get
             {
                 RectTransform rt = GetComponent<RectTransform>();
                 Vector2 worldSize = GetWorldBounds().Size;

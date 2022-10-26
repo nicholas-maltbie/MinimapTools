@@ -17,7 +17,6 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Minimap;
-using com.nickmaltbie.MinimapTools.Minimap.Shape;
 using com.nickmaltbie.MinimapTools.Utils;
 using UnityEngine;
 

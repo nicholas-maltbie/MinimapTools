@@ -48,7 +48,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// </summary>
         [SerializeField]
         [Tooltip("Number of pixels per unit in the background map.")]
-        protected float pixelsPerUnit = 10;
+        internal float pixelsPerUnit = 10;
 
         /// <summary>
         /// Shape of the minimap mask.
@@ -213,7 +213,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap
                 rectTransform.anchorMax = relativePosition;
                 rectTransform.anchorMin = relativePosition;
                 rectTransform.anchoredPosition = Vector2.zero;
-                
+
                 if (icon.RotateWithMap())
                 {
                     rectTransform.localRotation = Quaternion.Euler(0, 0, -(icon.GetIconRotation().eulerAngles.y + GetRotation()));
