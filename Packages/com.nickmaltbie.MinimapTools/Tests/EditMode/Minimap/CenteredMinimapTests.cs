@@ -32,7 +32,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
     public class CenteredMinimapTests : TestBase
     {
         private CenteredMinimap centeredMinimap;
-        private SpriteIcon spriteIcon;
+        private AbstractSpriteIcon spriteIcon;
         private GameObject followTarget;
 
         [SetUp]
@@ -53,7 +53,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
             string followTargetTag = "";
             string minimapBoundsTag = "";
 
-            spriteIcon = followTarget.AddComponent<SpriteIcon>();
+            spriteIcon = followTarget.AddComponent<AbstractSpriteIcon>();
             centeredMinimap.followTargetTag = followTargetTag;
             centeredMinimap.minimapBoundsTag = minimapBoundsTag;
 
@@ -83,8 +83,6 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
         [Test]
         public void Validate_SimpleStaticMinimap_MoveWithTarget([Values(0.5f, 1.0f, 2.0f, 10.0f)] float scale)
         {
-            centeredMinimap.mapScale = Vector2.one * scale;
-
             centeredMinimap.LateUpdate();
             TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.zero);
 

@@ -32,7 +32,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
     public class SimpleStaticMinimapTests : TestBase
     {
         private SimpleStaticMinimap simpleMinimap;
-        private SpriteIcon spriteIcon;
+        private AbstractSpriteIcon spriteIcon;
 
         [SetUp]
         public void SetUp()
@@ -47,7 +47,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
             minimapGo.transform.SetParent(canvas.transform);
             _ = boundsGo.AddComponent<MinimapBoundsSource>();
             simpleMinimap = minimapGo.AddComponent<SimpleStaticMinimap>();
-            spriteIcon = iconGo.AddComponent<SpriteIcon>();
+            spriteIcon = iconGo.AddComponent<AbstractSpriteIcon>();
 
             simpleMinimap.Awake();
             simpleMinimap.Start();

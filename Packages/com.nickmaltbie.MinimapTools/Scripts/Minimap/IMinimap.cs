@@ -28,6 +28,12 @@ namespace com.nickmaltbie.MinimapTools.Minimap
     public interface IMinimap
     {
         /// <summary>
+        /// Number of pixels per unit of the minimap size.
+        /// </summary>
+        /// <returns>Returns the number of pixels per unit for sizing the minimap.</returns>
+        float PixelsPerUnit { get; }
+
+        /// <summary>
         /// Check if a location is in the minimap space.
         /// </summary>
         /// <param name="worldSpace">World space of the object.</param>

@@ -50,7 +50,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
             boxCollider = go.GetComponent<BoxCollider>();
 
             minimapMock = new Mock<IMinimap>();
-            minimapSquare = new MinimapSquare(Vector2.zero, Vector2.one * 100, 0);
+            minimapSquare = new MinimapSquare(Vector2.zero, Vector2.one * 10, 0);
 
             backgroundTexture = new Texture2D(100, 100);
             backgroundTexture.SetPixels(
@@ -59,7 +59,8 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
 
             minimapMock.Setup(m => m.GetWorldBounds()).Returns(minimapSquare);
             minimapMock.Setup(m => m.GetRotation()).Returns(0);
-            minimapMock.Setup(m => m.GetSize()).Returns(Vector2Int.one * 100);
+            minimapMock.Setup(m => m.PixelsPerUnit).Returns(10);
+            minimapMock.Setup(m => m.GetSize()).Returns(new Vector2Int(backgroundTexture.width, backgroundTexture.height));
             minimapMock.Setup(m => m.GetMinimapPosition(It.IsAny<Vector3>()))
                 .Returns((Vector3 v) => new Vector2(0.5f, 0.5f));
 

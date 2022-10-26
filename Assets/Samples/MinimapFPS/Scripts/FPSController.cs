@@ -82,6 +82,20 @@ namespace com.nickmaltbie.MinimapTools.MinimapFPS
             movePlayer.action.Enable();
         }
 
+        public void OnControllerColliderHit(ControllerColliderHit hit)
+        {
+            Rigidbody body = hit.collider?.attachedRigidbody;
+
+            // no rigidbody
+            if (body == null || body.isKinematic)
+            {
+                return;
+            }
+
+            var pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+            body.velocity = pushDir * 5.0f;
+        }
+
         // Update is called once per frame
         public void Update()
         {

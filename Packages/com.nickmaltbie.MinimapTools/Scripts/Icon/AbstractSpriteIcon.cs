@@ -16,6 +16,8 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using com.nickmaltbie.MinimapTools.Minimap;
+using com.nickmaltbie.MinimapTools.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,49 +26,58 @@ namespace com.nickmaltbie.MinimapTools.Icon
     /// <summary>
     /// Icon for a minimap composed of a simple sprite.
     /// </summary>
-    public class SpriteIcon : MonoBehaviour, IMinimapIcon
+    public abstract class AbstractSpriteIcon : MonoBehaviour, IMinimapIcon
     {
         /// <summary>
         /// Icon for this object on the minimap.
         /// </summary>
         [Tooltip("Icon for this object on the minimap.")]
-        public Sprite _sprite;
-
-        /// <summary>
-        /// Width of the icon in pixels.
-        /// </summary>
-        [Tooltip("Width of the icon in pixels.")]
-        public float width = 10;
-
-        /// <summary>
-        /// Height of the icon in pixels.
-        /// </summary>
-        [Tooltip("Height of the icon in pixels.")]
-        public float height = 10;
+        public Sprite sprite;
 
         /// <summary>
         /// Should the icon rotate with the object's rotation.
         /// </summary>
         [Tooltip("Should the icon rotate with the object's rotation")]
-        public bool rotateIcon = false;
+        public bool rotateIcon = true;
+
+        /// <summary>
+        /// Size of the icon in pixels.
+        /// </summary>
+        /// <param name="minimap">Minimap the icon will be drawn on.
+        /// May affect the size of the icon.</param>
+        /// <returns>Size of the icon in pixels.</returns>
+        public abstract Vector2Int GetPixelSize(IMinimap minimap);
+
+        /// <inheritdoc/>
+        public abstract bool ScaleWithMap();
 
         /// <inheritdoc/>
         public Vector3 GetWorldSpace() => transform.position;
 
         /// <inheritdoc/>
-        public Quaternion GetIconRotation() => rotateIcon ? Quaternion.identity : transform.rotation;
+        public Quaternion GetIconRotation() => transform.rotation;
 
         /// <inheritdoc/>
-        public GameObject CreateIcon(RectTransform minimapTransform)
+        public bool RotateWithMap() => rotateIcon;
+
+        /// <inheritdoc/>
+        public GameObject CreateIcon(IMinimap minimap, RectTransform minimapTransform)
         {
             var go = new GameObject();
             Image image = go.AddComponent<Image>();
-            image.sprite = _sprite;
             RectTransform rt = go.GetComponent<RectTransform>();
             rt.SetParent(minimapTransform);
-            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
+
+            image.sprite = sprite;
+            rt.anchorMin = Vector2.one * 0.5f;
+            rt.anchorMax = Vector2.one * 0.5f;
+            Vector2Int pixelSize = GetPixelSize(minimap);
+            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, pixelSize.x);
+            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, pixelSize.y);
             return go;
         }
+
+        /// <inheritdoc/>
+        public virtual Vector2 GetWorldSize() => Vector2.one;
     }
 }

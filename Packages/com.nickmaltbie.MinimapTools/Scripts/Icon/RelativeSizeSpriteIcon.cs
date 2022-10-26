@@ -17,58 +17,34 @@
 // SOFTWARE.
 
 using com.nickmaltbie.MinimapTools.Minimap;
-using com.nickmaltbie.MinimapTools.Minimap.Shape;
-using com.nickmaltbie.MinimapTools.Utils;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace com.nickmaltbie.MinimapTools.Background
+namespace com.nickmaltbie.MinimapTools.Icon
 {
     /// <summary>
-    /// Minimap element that will draw a box based on a
-    /// set of bounds from a given box collider.
+    /// Icon for a minimap composed of a simple sprite of a relative
+    /// size to its real world size.
     /// </summary>
-    public class SpriteMinimapElement : AbstractMinimapElement
+    public class RelativeSizeSpriteIcon : AbstractSpriteIcon
     {
         /// <summary>
-        /// Texture to draw on the minimap.
+        /// Size of the sprite in units.
         /// </summary>
         [SerializeField]
-        [Tooltip("Texture to draw on the minimap.")]
-        internal Texture2D elementTexture;
-
-        /// <summary>
-        /// Bounds of the sprite on the minimap.
-        /// </summary>
-        [SerializeField]
-        internal MinimapSquare elementBounds;
-
-        /// <summary>
-        /// Color of the box on the minimap.
-        /// </summary>
-        [SerializeField]
-        [Tooltip("Color of the box on the minimap.")]
-        public Color color = Color.black;
+        internal Vector2 worldSize;
 
         /// <inheritdoc/>
-        public override Texture2D GetTexture(IMinimap minimap)
+        public override Vector2Int GetPixelSize(IMinimap minimap)
         {
-            Texture2D texture = elementTexture.GetResized(new Vector2Int(
-                Mathf.RoundToInt(elementBounds.Size.x * minimap.PixelsPerUnit),
-                Mathf.RoundToInt(elementBounds.Size.y * minimap.PixelsPerUnit)));
-
-            return texture;
+            Vector2 pixelSize = worldSize * minimap.PixelsPerUnit;
+            return new Vector2Int(Mathf.RoundToInt(pixelSize.x), Mathf.RoundToInt(pixelSize.y));
         }
 
         /// <inheritdoc/>
-        public override Vector3 WorldCenter()
-        {
-            return transform.position;
-        }
+        public override bool ScaleWithMap() => true;
 
         /// <inheritdoc/>
-        public override float GetRotation()
-        {
-            return -elementBounds.rotation + 180;
-        }
+        public override Vector2 GetWorldSize() => worldSize;
     }
 }

@@ -41,8 +41,14 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Simple
         /// <inheritdoc/>
         public override Vector2 MapOffset => Vector2.zero;
 
-        /// <inheritdoc/>
-        public override Vector2 MapScale => Vector2.one;
+        protected override float MapScale
+        {
+            get 
+            {
+                RectTransform rt = GetComponent<RectTransform>();
+                return Mathf.Min(rt.sizeDelta.x / backgroundRt.sizeDelta.x, rt.sizeDelta.y / backgroundRt.sizeDelta.y );
+            }
+        }
 
         public override void Awake()
         {
@@ -63,12 +69,14 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Simple
 
         }
 
-        public void Start()
+        public override void Start()
         {
-            foreach (IMinimapIcon icon in GameObject.FindObjectsOfType<SpriteIcon>())
+            foreach (IMinimapIcon icon in GameObject.FindObjectsOfType<AbstractSpriteIcon>())
             {
                 AddIcon(icon);
             }
+
+            base.Start();
         }
     }
 }

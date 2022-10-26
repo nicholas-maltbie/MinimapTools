@@ -43,18 +43,18 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         public string followTargetTag;
 
         /// <summary>
-        /// Scale of minimap.
-        /// </summary>
-        [SerializeField]
-        [Tooltip("Scale of minimap.")]
-        public Vector2 mapScale = Vector2.one;
-
-        /// <summary>
         /// Should the minimap rotate with the follow target.
         /// </summary>
         [SerializeField]
         [Tooltip("Should the minimap rotate with the follow target.")]
         public bool rotateMinimap = false;
+
+        /// <summary>
+        /// Radius of the minimap in world units.
+        /// </summary>
+        [SerializeField]
+        [Tooltip("Radius of the minimap in world units.")]
+        public float mapRadius = 10;
 
         /// <summary>
         /// Follow target for the minimap to center on.
@@ -75,10 +75,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
         protected override MinimapBoundsSource Source => boundsSource;
 
         /// <inheritdoc/>
-        public override Vector2 MapOffset => _mapOffset * MapScale - MapScale / 2;
-
-        /// <inheritdoc/>
-        public override Vector2 MapScale => mapScale;
+        public override Vector2 MapOffset => _mapOffset;
 
         /// <summary>
         /// Setup initial configuration of minimap.
@@ -91,23 +88,38 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
             base.Awake();
         }
 
-        public void Start()
+        protected override float MapScale
+        {
+            get 
+            {
+                RectTransform rt = GetComponent<RectTransform>();
+                Vector2 worldSize = GetWorldBounds().Size;
+                float mapScale = Mathf.Min(
+                    rt.sizeDelta.x / backgroundRt.sizeDelta.x * worldSize.x,
+                    rt.sizeDelta.y / backgroundRt.sizeDelta.y * worldSize.y);
+                return mapScale / mapRadius / 2;
+            }
+        }
+
+        public override void Start()
         {
             if (followTarget != null)
             {
                 base.AddIcon(followTarget);
             }
 
-            foreach (IMinimapIcon icon in GameObject.FindObjectsOfType<SpriteIcon>())
+            foreach (IMinimapIcon icon in GameObject.FindObjectsOfType<AbstractSpriteIcon>())
             {
                 base.AddIcon(icon);
             }
+
+            base.Start();
         }
 
         /// <inheritdoc/>
         public override void LateUpdate()
         {
-            _mapOffset = base.GetMinimapPosition(followTarget.GetWorldSpace());
+            _mapOffset = base.GetMinimapPosition(followTarget.GetWorldSpace()) - Vector2.one * 0.5f;
             float rotation = rotateMinimap ? followTarget.GetIconRotation().eulerAngles.y + base.GetRotation() : 0;
             transform.rotation = Quaternion.Euler(0, 0, rotation);
 

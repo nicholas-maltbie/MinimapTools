@@ -48,9 +48,8 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
     public class ExampleMinimap : AbstractMinimap
     {
         public MinimapBoundsSource boundsSource;
-
-        public override Vector2 MapScale => Vector2.one;
         public override Vector2 MapOffset => Vector3.zero;
+        protected override float MapScale => 1.0f;
         protected override MinimapBoundsSource Source => boundsSource;
     }
 

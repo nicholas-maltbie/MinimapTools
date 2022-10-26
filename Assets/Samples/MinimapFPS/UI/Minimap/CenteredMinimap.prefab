@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 0}
-  minimapSize: {x: 1024, y: 1024}
+  pixelsPerUnit: 30
   maskShape: {fileID: 21300000, guid: 53e0766c00bc26440968f31ce927cb2f, type: 3}
   minimapBoundsTag: MinimapBounds
   followTargetTag: MinimapTarget
-  mapScale: {x: 5, y: 5}
   rotateMinimap: 0
+  mapRadius: 5

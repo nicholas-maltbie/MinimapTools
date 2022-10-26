@@ -16,6 +16,7 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using com.nickmaltbie.MinimapTools.Minimap;
 using UnityEngine;
 
 namespace com.nickmaltbie.MinimapTools.Icon
@@ -38,10 +39,32 @@ namespace com.nickmaltbie.MinimapTools.Icon
         Quaternion GetIconRotation();
 
         /// <summary>
+        /// Should the element rotate with the map.
+        /// </summary>
+        /// <returns>True if the element should rotate with the map, false otherwise.</returns>
+        bool RotateWithMap();
+
+        /// <summary>
+        /// Should the icon scale with the map scale.
+        /// </summary>
+        /// <returns>If true, will scale with the map, if false will not scale
+        /// with the map.</returns>
+        bool ScaleWithMap();
+
+        /// <summary>
+        /// If this element scales with the map size, this will scale
+        /// the element to be larger or smaller based on its world size.
+        /// </summary>
+        /// <returns>Size of the object in world units.</returns>
+        Vector2 GetWorldSize();
+
+        /// <summary>
         /// Create an icon to represent this object on the minimap.
         /// </summary>
+        /// <param name="minimap">Reference to minimap this icon will be added to,
+        /// useful for scaling and manipulating the icon</param>
         /// <param name="minimapTransform">Transform of the parent minimap this is being added to.</param>
         /// <returns>The newly created icon for this object.</returns>
-        GameObject CreateIcon(RectTransform minimapTransform);
+        GameObject CreateIcon(IMinimap minimap, RectTransform minimapTransform);
     }
 }
