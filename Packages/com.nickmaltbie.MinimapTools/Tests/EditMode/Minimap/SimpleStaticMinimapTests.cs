@@ -47,7 +47,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
             minimapGo.transform.SetParent(canvas.transform);
             _ = boundsGo.AddComponent<MinimapBoundsSource>();
             simpleMinimap = minimapGo.AddComponent<SimpleStaticMinimap>();
-            spriteIcon = iconGo.AddComponent<AbstractSpriteIcon>();
+            spriteIcon = iconGo.AddComponent<FixedSizeSpriteIcon>();
 
             simpleMinimap.Awake();
             simpleMinimap.Start();

@@ -99,7 +99,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap
         /// Scale factor for map on screen.
         /// </summary>
         [SerializeField]
-        protected abstract float MapScale { get; }
+        public abstract float MapScale { get; }
 
         /// <summary>
         /// Move each object following minimap rules.

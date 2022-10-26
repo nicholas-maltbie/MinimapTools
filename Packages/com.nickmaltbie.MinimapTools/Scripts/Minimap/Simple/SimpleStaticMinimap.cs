@@ -41,7 +41,8 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Simple
         /// <inheritdoc/>
         public override Vector2 MapOffset => Vector2.zero;
 
-        protected override float MapScale
+        /// <inheritdoc/>
+        public override float MapScale
         {
             get 
             {

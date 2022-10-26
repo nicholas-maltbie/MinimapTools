@@ -105,8 +105,8 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
         {
             boxMinimapElement.color = color;
             Texture2D texture = boxMinimapElement.GetTexture(minimapMock.Object);
-            Assert.AreEqual(boxCollider.size.x * boxCollider.transform.lossyScale.x, texture.width);
-            Assert.AreEqual(boxCollider.size.y * boxCollider.transform.lossyScale.z, texture.height);
+            Assert.AreEqual(boxCollider.size.x * boxCollider.transform.lossyScale.x, texture.width / minimapMock.Object.PixelsPerUnit);
+            Assert.AreEqual(boxCollider.size.y * boxCollider.transform.lossyScale.z, texture.height / minimapMock.Object.PixelsPerUnit);
             Assert.IsTrue(texture.GetPixels().All(c => c.Equals(color)));
         }
     }

@@ -53,7 +53,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
             string followTargetTag = "";
             string minimapBoundsTag = "";
 
-            spriteIcon = followTarget.AddComponent<AbstractSpriteIcon>();
+            spriteIcon = followTarget.AddComponent<FixedSizeSpriteIcon>();
             centeredMinimap.followTargetTag = followTargetTag;
             centeredMinimap.minimapBoundsTag = minimapBoundsTag;
 
@@ -83,20 +83,22 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
         [Test]
         public void Validate_SimpleStaticMinimap_MoveWithTarget([Values(0.5f, 1.0f, 2.0f, 10.0f)] float scale)
         {
+            centeredMinimap.mapRadius = scale;
+
             centeredMinimap.LateUpdate();
-            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.zero);
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.zero / 10);
 
             followTarget.transform.position = Vector3.forward;
             centeredMinimap.LateUpdate();
-            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.up * scale / 10);
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.up / 10);
 
             followTarget.transform.position = Vector3.right;
             centeredMinimap.LateUpdate();
-            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.right * scale / 10);
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.right / 10);
 
             followTarget.transform.position = Vector3.up;
             centeredMinimap.LateUpdate();
-            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.zero * scale / 10);
+            TestUtils.AssertInBounds(centeredMinimap.MapOffset, Vector2.zero / 10);
         }
     }
 }

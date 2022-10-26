@@ -88,7 +88,7 @@ namespace com.nickmaltbie.MinimapTools.Minimap.Centered
             base.Awake();
         }
 
-        protected override float MapScale
+        public override float MapScale
         {
             get 
             {

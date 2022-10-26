@@ -63,6 +63,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
 
             minimapMock.Setup(m => m.GetWorldBounds()).Returns(minimapSquare);
             minimapMock.Setup(m => m.GetRotation()).Returns(0);
+            minimapMock.Setup(m => m.PixelsPerUnit).Returns(10);
             minimapMock.Setup(m => m.GetSize()).Returns(Vector2Int.one * 100);
             minimapMock.Setup(m => m.GetMinimapPosition(It.IsAny<Vector3>()))
                 .Returns((Vector3 v) => Vector2.one * 0.5f);
