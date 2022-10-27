@@ -16,11 +16,11 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools.Minimap;
-using com.nickmaltbie.MinimapTools.Utils;
+using nickmaltbie.MinimapTools.Minimap;
+using nickmaltbie.MinimapTools.Utils;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Background
+namespace nickmaltbie.MinimapTools.Background
 {
     /// <summary>
     /// Minimap element that supports drawing a texture on a background.

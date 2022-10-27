@@ -16,12 +16,12 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools.Icon;
-using com.nickmaltbie.MinimapTools.Minimap.Shape;
+using nickmaltbie.MinimapTools.Icon;
+using nickmaltbie.MinimapTools.Minimap.Shape;
 using nickmaltbie.ScreenManager;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Minimap.Simple
+namespace nickmaltbie.MinimapTools.Minimap.Simple
 {
     /// <summary>
     /// Simple, static minimap that does not move (static) and simply displays

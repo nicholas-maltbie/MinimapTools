@@ -19,7 +19,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace com.nickmaltbie.MinimapTools.MinimapFPS
+namespace nickmaltbie.MinimapTools.MinimapFPS
 {
     [RequireComponent(typeof(CharacterController))]
     public class FPSController : MonoBehaviour

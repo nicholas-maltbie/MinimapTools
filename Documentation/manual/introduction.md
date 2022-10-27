@@ -6,10 +6,15 @@ for showing and exploring minimaps.
 
 ## Usage
 
-Please see the [Usage] section about how to use
+Please see the [Usage](usage.md) section about how to use
 the Minimap tools in your own project.
 
-## Design
+## Code Layout
+
+The code design and layout of the project is described
+in the [Code Design](code-design.md) page.
+
+## Requirements Design
 
 To see the design of the MinimapTools package, please see the
 [Minimap Design](minimap-design.md) document.

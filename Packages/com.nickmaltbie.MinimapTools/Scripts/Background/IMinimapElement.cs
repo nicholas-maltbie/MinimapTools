@@ -16,10 +16,10 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools.Minimap;
+using nickmaltbie.MinimapTools.Minimap;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Background
+namespace nickmaltbie.MinimapTools.Background
 {
     /// <summary>
     /// Element that can be added to the background of the minimap.

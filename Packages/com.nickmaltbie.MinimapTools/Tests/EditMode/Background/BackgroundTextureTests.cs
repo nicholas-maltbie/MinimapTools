@@ -16,8 +16,8 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools.Background;
-using com.nickmaltbie.MinimapTools.Minimap;
+using nickmaltbie.MinimapTools.Background;
+using nickmaltbie.MinimapTools.Minimap;
 using Moq;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
@@ -26,7 +26,7 @@ using UnityEngine;
 namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
 {
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Background.BackgroundTexture"/>
+    /// Tests for the <see cref="nickmaltbie.MinimapTools.Background.BackgroundTexture"/>
     /// </summary>
     [TestFixture]
     public class BackgroundTextureTests : TestBase

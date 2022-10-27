@@ -18,9 +18,9 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using com.nickmaltbie.MinimapTools.Background;
-using com.nickmaltbie.MinimapTools.Minimap;
-using com.nickmaltbie.MinimapTools.Minimap.Shape;
+using nickmaltbie.MinimapTools.Background;
+using nickmaltbie.MinimapTools.Minimap;
+using nickmaltbie.MinimapTools.Minimap.Shape;
 using Moq;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
@@ -29,7 +29,7 @@ using UnityEngine;
 namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
 {
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Background.BoxMinimapElement"/>
+    /// Tests for the <see cref="nickmaltbie.MinimapTools.Background.BoxMinimapElement"/>
     /// </summary>
     [TestFixture]
     public class BoxMinimapElementTests : TestBase

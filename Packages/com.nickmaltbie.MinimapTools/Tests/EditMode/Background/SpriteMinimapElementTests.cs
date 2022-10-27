@@ -17,9 +17,9 @@
 // SOFTWARE.
 
 using System.Linq;
-using com.nickmaltbie.MinimapTools.Background;
-using com.nickmaltbie.MinimapTools.Minimap;
-using com.nickmaltbie.MinimapTools.Minimap.Shape;
+using nickmaltbie.MinimapTools.Background;
+using nickmaltbie.MinimapTools.Minimap;
+using nickmaltbie.MinimapTools.Minimap.Shape;
 using Moq;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
@@ -28,7 +28,7 @@ using UnityEngine;
 namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
 {
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Background.SpriteMinimapElement"/>
+    /// Tests for the <see cref="nickmaltbie.MinimapTools.Background.SpriteMinimapElement"/>
     /// </summary>
     [TestFixture]
     public class SpriteMinimapElementTests : TestBase

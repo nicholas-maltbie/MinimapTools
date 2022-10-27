@@ -16,11 +16,11 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools.Utils;
+using nickmaltbie.MinimapTools.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.EditorTools
+namespace nickmaltbie.MinimapTools.EditorTools
 {
     /// <summary>
     /// This class contain custom drawer for ReadOnly attribute.
