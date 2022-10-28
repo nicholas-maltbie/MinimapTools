@@ -6,8 +6,7 @@
       "source": "embedded",
       "dependencies": {
         "com.unity.inputsystem": "1.0.2",
-        "com.unity.textmeshpro": "3.0.6",
-        "com.nickmaltbie.screenmanager": "3.1.0"
+        "com.unity.textmeshpro": "3.0.6"
       }
     },
     "com.nickmaltbie.screenmanager": {

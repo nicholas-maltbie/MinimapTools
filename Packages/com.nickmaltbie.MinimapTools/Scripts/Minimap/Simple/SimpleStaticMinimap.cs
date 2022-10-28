@@ -18,7 +18,6 @@
 
 using nickmaltbie.MinimapTools.Icon;
 using nickmaltbie.MinimapTools.Minimap.Shape;
-using nickmaltbie.ScreenManager;
 using UnityEngine;
 
 namespace nickmaltbie.MinimapTools.Minimap.Simple
@@ -28,7 +27,7 @@ namespace nickmaltbie.MinimapTools.Minimap.Simple
     /// objects on top of a pre-rendered background image. Icons added to the
     /// map will have their position updated each frame to follow the minimap.
     /// </summary>
-    public class SimpleStaticMinimap : AbstractMinimap, IScreenComponent
+    public class SimpleStaticMinimap : AbstractMinimap
     {
         /// <summary>
         /// Bounds source for the minimap.
@@ -47,7 +46,7 @@ namespace nickmaltbie.MinimapTools.Minimap.Simple
             get
             {
                 RectTransform rt = GetComponent<RectTransform>();
-                return Mathf.Min(rt.sizeDelta.x / backgroundRt.sizeDelta.x, rt.sizeDelta.y / backgroundRt.sizeDelta.y);
+                return Mathf.Min(rt.rect.width / backgroundRt.rect.width, rt.rect.height / backgroundRt.rect.height);
             }
         }
 
@@ -58,18 +57,6 @@ namespace nickmaltbie.MinimapTools.Minimap.Simple
             base.Awake();
         }
 
-        /// <inheritdoc/>
-        public void OnScreenLoaded()
-        {
-
-        }
-
-        /// <inheritdoc/>
-        public void OnScreenUnloaded()
-        {
-
-        }
-
         public override void Start()
         {
             foreach (IMinimapIcon icon in GameObject.FindObjectsOfType<AbstractSpriteIcon>())
@@ -78,6 +65,15 @@ namespace nickmaltbie.MinimapTools.Minimap.Simple
             }
 
             base.Start();
+
+            RectTransform rt = GetComponent<RectTransform>();
+            Vector2 size = GetSize();
+            
+            float widthRatio = (float) size.x / rt.rect.width;
+            float heightRatio = (float) size.y / rt.rect.height;
+
+            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rt.rect.width / heightRatio);
+            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, rt.rect.height / widthRatio);
         }
     }
 }

@@ -91,6 +91,8 @@ manager will be able to download it from the registry at
 ```json
 "dependencies": {
   "com.nickmaltbie.MinimapTools": "1.0.0",
+  "com.unity.inputsystem": "1.0.2",
+  "com.unity.textmeshpro": "3.0.6"
 }
 ```
 

@@ -400,7 +400,7 @@ MonoBehaviour:
   minimapShape:
     center: {x: -0.45, y: 0.5}
     rotation: -0
-    size: {x: 68.80374, y: 68.80374}
+    size: {x: 35, y: 35}
     lockAspectRatio: 1
 --- !u!114 &269746997 stripped
 MonoBehaviour:

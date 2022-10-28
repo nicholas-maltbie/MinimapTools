@@ -494,6 +494,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - inputAction: {fileID: -2985889681323428345, guid: a91fe66733285db4bb5daf7067d48a9f, type: 3}
+    OnPressed:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1292730286106825495, guid: d34568cd617084e4eaf6bc88f4e16818, type: 3}
+          m_TargetAssemblyTypeName: nickmaltbie.ScreenManager.MenuController, ScreenManager
+          m_MethodName: SetScreen
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 6101108449083475876, guid: dd21129533c02f7409779aac8501c129, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &-1407876555020766783
 MonoBehaviour:
   m_ObjectHideFlags: 0

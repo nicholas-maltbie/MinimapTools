@@ -150,7 +150,7 @@ namespace nickmaltbie.MinimapTools.Minimap
                 100);
             RectTransform rt = image.GetComponent<RectTransform>();
             rt.sizeDelta = GetSize();
-            rt.localScale = Vector3.one * MapScale;
+            rt.localScale = Vector3.one;
         }
 
         /// <summary>

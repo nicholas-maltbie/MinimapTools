@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
@@ -147,6 +148,7 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: -8822090747999447430, guid: a91fe66733285db4bb5daf7067d48a9f, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!114 &576314974741431280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +165,7 @@ MonoBehaviour:
   - {fileID: 486149923664253863, guid: d34568cd617084e4eaf6bc88f4e16818, type: 3}
   - {fileID: 3127225395034414389, guid: bbdeba7712aa3844088cdc65a0b3a297, type: 3}
   - {fileID: -1115252214597416267, guid: 178097701acde2841946c6ae24a6aa61, type: 3}
+  - {fileID: 486149923664253863, guid: dd21129533c02f7409779aac8501c129, type: 3}
   initialScreen: 0
   inputActions: {fileID: -944628639613478452, guid: cd7e51aeaf5ab844ba9a3c53086a8e80, type: 3}
   maxScreenHistory: 100

@@ -2,8 +2,7 @@
     "name": "nickmaltbie.MinimapTools",
     "rootNamespace": "nickmaltbie.MinimapTools",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:33ba47153cb20554cb9674037eacaed0"
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
