@@ -98,7 +98,6 @@ namespace nickmaltbie.MinimapTools.Minimap
         /// <summary>
         /// Scale factor for map on screen.
         /// </summary>
-        [SerializeField]
         public abstract float MapScale { get; }
 
         /// <summary>

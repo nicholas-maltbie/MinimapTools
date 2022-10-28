@@ -54,26 +54,32 @@ namespace nickmaltbie.MinimapTools.Minimap.Simple
         {
             // Update bounds source based on source in scene
             boundsSource ??= GameObject.FindObjectOfType<MinimapBoundsSource>();
+
             base.Awake();
         }
 
         public override void Start()
         {
+            RectTransform rt = GetComponent<RectTransform>();
+            Vector2 size = GetSize();
+
+            float scale = Mathf.Min(rt.rect.width / size.x, rt.rect.height / size.y);
+
+            float targetWidth = scale * size.x;
+            float targetHeight = scale * size.y;
+
+            rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.anchorMin = new Vector2(0.5f, 0.5f);
+
+            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, targetWidth);
+            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, targetHeight);
+
+            base.Start();
+
             foreach (IMinimapIcon icon in GameObject.FindObjectsOfType<AbstractSpriteIcon>())
             {
                 AddIcon(icon);
             }
-
-            base.Start();
-
-            RectTransform rt = GetComponent<RectTransform>();
-            Vector2 size = GetSize();
-            
-            float widthRatio = (float) size.x / rt.rect.width;
-            float heightRatio = (float) size.y / rt.rect.height;
-
-            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rt.rect.width / heightRatio);
-            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, rt.rect.height / widthRatio);
         }
     }
 }
