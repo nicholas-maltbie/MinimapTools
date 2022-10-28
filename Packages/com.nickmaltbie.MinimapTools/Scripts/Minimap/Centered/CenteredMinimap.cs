@@ -19,6 +19,7 @@
 using nickmaltbie.MinimapTools.Icon;
 using nickmaltbie.MinimapTools.Minimap.Shape;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace nickmaltbie.MinimapTools.Minimap.Centered
 {
@@ -114,6 +115,8 @@ namespace nickmaltbie.MinimapTools.Minimap.Centered
             }
 
             base.Start();
+
+            backgroundRt.GetComponent<Image>().SetNativeSize();
         }
 
         /// <inheritdoc/>

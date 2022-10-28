@@ -18,7 +18,6 @@
 
 using nickmaltbie.MinimapTools.Icon;
 using nickmaltbie.MinimapTools.Minimap.Shape;
-using nickmaltbie.ScreenManager;
 using UnityEngine;
 
 namespace nickmaltbie.MinimapTools.Minimap.Simple
@@ -28,7 +27,7 @@ namespace nickmaltbie.MinimapTools.Minimap.Simple
     /// objects on top of a pre-rendered background image. Icons added to the
     /// map will have their position updated each frame to follow the minimap.
     /// </summary>
-    public class SimpleStaticMinimap : AbstractMinimap, IScreenComponent
+    public class SimpleStaticMinimap : AbstractMinimap
     {
         /// <summary>
         /// Bounds source for the minimap.
@@ -47,7 +46,7 @@ namespace nickmaltbie.MinimapTools.Minimap.Simple
             get
             {
                 RectTransform rt = GetComponent<RectTransform>();
-                return Mathf.Min(rt.sizeDelta.x / backgroundRt.sizeDelta.x, rt.sizeDelta.y / backgroundRt.sizeDelta.y);
+                return Mathf.Min(rt.rect.width / backgroundRt.rect.width, rt.rect.height / backgroundRt.rect.height);
             }
         }
 
@@ -55,29 +54,32 @@ namespace nickmaltbie.MinimapTools.Minimap.Simple
         {
             // Update bounds source based on source in scene
             boundsSource ??= GameObject.FindObjectOfType<MinimapBoundsSource>();
+
             base.Awake();
-        }
-
-        /// <inheritdoc/>
-        public void OnScreenLoaded()
-        {
-
-        }
-
-        /// <inheritdoc/>
-        public void OnScreenUnloaded()
-        {
-
         }
 
         public override void Start()
         {
+            RectTransform rt = GetComponent<RectTransform>();
+            Vector2 size = GetSize();
+
+            float scale = Mathf.Min(rt.rect.width / size.x, rt.rect.height / size.y);
+
+            float targetWidth = scale * size.x;
+            float targetHeight = scale * size.y;
+
+            rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.anchorMin = new Vector2(0.5f, 0.5f);
+
+            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, targetWidth);
+            rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, targetHeight);
+
+            base.Start();
+
             foreach (IMinimapIcon icon in GameObject.FindObjectsOfType<AbstractSpriteIcon>())
             {
                 AddIcon(icon);
             }
-
-            base.Start();
         }
     }
 }

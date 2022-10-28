@@ -51,15 +51,6 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
 
             simpleMinimap.Awake();
             simpleMinimap.Start();
-
-            simpleMinimap.OnScreenLoaded();
-        }
-
-        [TearDown]
-        public override void TearDown()
-        {
-            simpleMinimap.OnScreenUnloaded();
-            base.TearDown();
         }
 
         /// <summary>
