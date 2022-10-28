@@ -16,9 +16,9 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools.Icon;
-using com.nickmaltbie.MinimapTools.Minimap.Centered;
-using com.nickmaltbie.MinimapTools.Minimap.Shape;
+using nickmaltbie.MinimapTools.Icon;
+using nickmaltbie.MinimapTools.Minimap.Centered;
+using nickmaltbie.MinimapTools.Minimap.Shape;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
 using UnityEngine;
@@ -26,7 +26,7 @@ using UnityEngine;
 namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
 {
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.Centered.CenteredMinimap"/>
+    /// Tests for the <see cref="nickmaltbie.MinimapTools.Minimap.Centered.CenteredMinimap"/>
     /// </summary>
     [TestFixture]
     public class CenteredMinimapTests : TestBase

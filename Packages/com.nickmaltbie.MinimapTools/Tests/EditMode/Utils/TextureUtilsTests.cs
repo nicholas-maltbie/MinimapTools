@@ -17,15 +17,15 @@
 // SOFTWARE.
 
 using System.Linq;
-using com.nickmaltbie.MinimapTools.Utils;
 using nickmaltbie.MinimapTools.TestCommon;
+using nickmaltbie.MinimapTools.Utils;
 using NUnit.Framework;
 using UnityEngine;
 
 namespace nickmaltbie.MinimapTools.Tests.EditMode.Utils
 {
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Utils.TextureUtils"/>
+    /// Tests for the <see cref="nickmaltbie.MinimapTools.Utils.TextureUtils"/>
     /// </summary>
     [TestFixture]
     public class TextureUtilsTests : TestBase

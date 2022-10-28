@@ -18,13 +18,13 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using com.nickmaltbie.MinimapTools.Background;
-using com.nickmaltbie.MinimapTools.Icon;
-using com.nickmaltbie.MinimapTools.Minimap.Shape;
+using nickmaltbie.MinimapTools.Background;
+using nickmaltbie.MinimapTools.Icon;
+using nickmaltbie.MinimapTools.Minimap.Shape;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace com.nickmaltbie.MinimapTools.Minimap
+namespace nickmaltbie.MinimapTools.Minimap
 {
     /// <summary>
     /// Abstract minimap that contains basic functions for  minimap.

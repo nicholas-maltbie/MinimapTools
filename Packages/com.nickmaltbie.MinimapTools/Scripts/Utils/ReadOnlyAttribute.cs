@@ -18,7 +18,7 @@
 
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Utils
+namespace nickmaltbie.MinimapTools.Utils
 {
     /// <summary>
     /// Read Only attribute.

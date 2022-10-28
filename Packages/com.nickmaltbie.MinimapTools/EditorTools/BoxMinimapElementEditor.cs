@@ -16,12 +16,12 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools.Background;
-using com.nickmaltbie.MinimapTools.Minimap.Shape;
+using nickmaltbie.MinimapTools.Background;
+using nickmaltbie.MinimapTools.Minimap.Shape;
 using UnityEditor;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.EditorTools
+namespace nickmaltbie.MinimapTools.EditorTools
 {
     /// <summary>
     /// Editor tool to modify bounds of a minimap.

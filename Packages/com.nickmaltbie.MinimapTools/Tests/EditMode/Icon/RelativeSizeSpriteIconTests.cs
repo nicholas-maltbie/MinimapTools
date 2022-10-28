@@ -16,9 +16,9 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools.Icon;
-using com.nickmaltbie.MinimapTools.Minimap;
 using Moq;
+using nickmaltbie.MinimapTools.Icon;
+using nickmaltbie.MinimapTools.Minimap;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
 using UnityEngine;
@@ -26,7 +26,7 @@ using UnityEngine;
 namespace nickmaltbie.MinimapTools.Tests.EditMode.Icon
 {
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Icon.RelativeSizeSpriteIcon"/>
+    /// Tests for the <see cref="nickmaltbie.MinimapTools.Icon.RelativeSizeSpriteIcon"/>
     /// </summary>
     [TestFixture]
     public class RelativeSizeSpriteIconTests : TestBase

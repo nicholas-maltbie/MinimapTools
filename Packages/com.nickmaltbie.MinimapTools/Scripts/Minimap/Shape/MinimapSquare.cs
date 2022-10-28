@@ -17,10 +17,10 @@
 // SOFTWARE.
 
 using System;
-using com.nickmaltbie.MinimapTools.Utils;
+using nickmaltbie.MinimapTools.Utils;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Minimap.Shape
+namespace nickmaltbie.MinimapTools.Minimap.Shape
 {
     /// <summary>
     /// Source of bounds for a minimap or minimap object.

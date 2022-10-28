@@ -16,11 +16,11 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools.Icon;
-using com.nickmaltbie.MinimapTools.Minimap.Shape;
+using nickmaltbie.MinimapTools.Icon;
+using nickmaltbie.MinimapTools.Minimap.Shape;
 using UnityEngine;
 
-namespace com.nickmaltbie.MinimapTools.Minimap
+namespace nickmaltbie.MinimapTools.Minimap
 {
     /// <summary>
     /// Minimap for managing state.

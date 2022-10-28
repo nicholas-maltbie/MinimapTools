@@ -16,10 +16,10 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools.Background;
-using com.nickmaltbie.MinimapTools.Icon;
-using com.nickmaltbie.MinimapTools.Minimap;
-using com.nickmaltbie.MinimapTools.Minimap.Shape;
+using nickmaltbie.MinimapTools.Background;
+using nickmaltbie.MinimapTools.Icon;
+using nickmaltbie.MinimapTools.Minimap;
+using nickmaltbie.MinimapTools.Minimap.Shape;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
 using UnityEngine;
@@ -64,7 +64,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
     }
 
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.AbstractMinimap"/>
+    /// Tests for the <see cref="nickmaltbie.MinimapTools.Minimap.AbstractMinimap"/>
     /// </summary>
     [TestFixture]
     public class AbstractMinimapTests : TestBase

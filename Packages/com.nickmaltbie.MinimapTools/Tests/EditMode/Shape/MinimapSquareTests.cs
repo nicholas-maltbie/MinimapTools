@@ -16,7 +16,7 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-using com.nickmaltbie.MinimapTools.Minimap.Shape;
+using nickmaltbie.MinimapTools.Minimap.Shape;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
 using UnityEngine;
@@ -24,7 +24,7 @@ using UnityEngine;
 namespace nickmaltbie.MinimapTools.Tests.EditMode.Shape
 {
     /// <summary>
-    /// Tests for the <see cref="com.nickmaltbie.MinimapTools.Minimap.Shape.MinimapSquare"/>
+    /// Tests for the <see cref="nickmaltbie.MinimapTools.Minimap.Shape.MinimapSquare"/>
     /// </summary>
     [TestFixture]
     public class MinimapSquareTests
