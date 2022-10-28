@@ -16,9 +16,9 @@
 // ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+using Moq;
 using nickmaltbie.MinimapTools.Icon;
 using nickmaltbie.MinimapTools.Minimap;
-using Moq;
 using nickmaltbie.MinimapTools.TestCommon;
 using NUnit.Framework;
 using UnityEngine;

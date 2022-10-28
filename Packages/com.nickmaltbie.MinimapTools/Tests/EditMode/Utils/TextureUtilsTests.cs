@@ -17,8 +17,8 @@
 // SOFTWARE.
 
 using System.Linq;
-using nickmaltbie.MinimapTools.Utils;
 using nickmaltbie.MinimapTools.TestCommon;
+using nickmaltbie.MinimapTools.Utils;
 using NUnit.Framework;
 using UnityEngine;
 

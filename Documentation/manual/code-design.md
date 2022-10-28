@@ -11,7 +11,8 @@ Minimap is composed of a few components.
 ## Minimap Implementations
 
 The interface @nickmaltbie.MinimapTools.Minimap.IMinimap
-represents the main responsibilities of a minimap. An important member of the IMinimap is the
+represents the main responsibilities of a minimap. An important member of the
+IMinimap is the
 @nickmaltbie.MinimapTools.Minimap.IMinimap.GetWorldBounds function
 which returns a @nickmaltbie.MinimapTools.Minimap.Shape.IMinimapShape.
 The minimap shape determines the space that the minimap
@@ -65,8 +66,8 @@ The minimap is organized into a few different sections.
 The minimap itself has a background texture drawn within
 the mask. The @nickmaltbie.MinimapTools.Background.BackgroundTexture
 has many @nickmaltbie.MinimapTools.Background.IMinimapElement drawn on top of it.
-In addition, multiple @nickmaltbie.MinimapTools.Icon.IMinimapIcon are created as @UnityEngine.GameObject on
-top of the minimap and moved independently.
+In addition, multiple @nickmaltbie.MinimapTools.Icon.IMinimapIcon are created as
+@UnityEngine.GameObject on top of the minimap and moved independently.
 
 The organization is basically
 
@@ -112,7 +113,8 @@ the background texture.
 
 ### Minimap Elements
 
-Background elements implement the @nickmaltbie.MinimapTools.Background.IMinimapElement interface.
+Background elements implement the
+@nickmaltbie.MinimapTools.Background.IMinimapElement interface.
 There are two implementations of the @nickmaltbie.MinimapTools.Background.IMinimapElement
 
 * @nickmaltbie.MinimapTools.Background.BoxMinimapElement -
