@@ -141,7 +141,7 @@ There are two implementation of the @nickmaltbie.MinimapTools.Icon.IMinimapEleme
     Icon that will scale with the map to maintain a consist size
     with its world size with the @nickmaltbie.MinimapTools.Minimap.IMinimap.PixelsPerUnit
     So if an element was 1x1 units and the pixel scale was 30 pixels per unit, it
-    would scale the icon to be 30x30 pixels
+    would scale the icon to be 30x30 pixels.
 
 These are derived from the @nickmaltbie.MinimapTools.Icon.AbstractSizeIcon
 class which contains useful functions for managing a sprite
