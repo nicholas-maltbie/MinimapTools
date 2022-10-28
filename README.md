@@ -14,12 +14,15 @@ This is an open source project licensed under a [MIT License](LICENSE.txt).
 
 The minimap tools package includes the following features:
 
-* \[Planned\] UI Element for a minimap on the screen.
+* UI Element for a minimap on the screen.
+* Icons moved on the map based on objects inside the game scene.
+* Optional automated generation of minimap texture from background elements.
+* \[Planned\] Arbitrary minimap direction (besides just the XZ plane).
+* \[Planned\] Supporting multiple minimap zoom layers and configuration.
+* \[Planned\] Supporting multiple minimap areas depending on where the player
+  is such as floors of a building.
 * \[Planned\] Revealing the map as the player moves around with configurable
   levels of fog of war.
-* \[Planned\] Icons and UI Elements within the map based on objects inside
-  the game scene.
-* \[Planned\] Optional automated generation of minimap using a camera.
 
 ## Installation
 
