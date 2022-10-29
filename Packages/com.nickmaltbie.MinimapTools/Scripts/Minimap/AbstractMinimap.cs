@@ -238,7 +238,14 @@ namespace nickmaltbie.MinimapTools.Minimap
         {
             float x1, y1;
             MinimapSquare minimapBounds = MinimapBounds;
-            (x1, y1) = minimapBounds.GetPositionRelativeToP1(new Vector2(worldPosition.x, worldPosition.z));
+            Vector3 xComponent = Vector3.Project(worldPosition, MapAxisHoriz());
+            Vector3 yComponent = Vector3.Project(worldPosition, MapAxisVert());
+
+            float xSign = Vector3.Dot(xComponent, MapAxisHoriz()) > 0 ? 1 : -1;
+            float ySign = Vector3.Dot(yComponent, MapAxisVert()) > 0 ? 1 : -1;
+
+            Vector2 planePosition = new Vector2(xComponent.magnitude * xSign, yComponent.magnitude * ySign);
+            (x1, y1) = minimapBounds.GetPositionRelativeToP1(planePosition);
             return new Vector2(x1 / minimapBounds.size.x, y1 / minimapBounds.size.y);
         }
 
@@ -253,6 +260,24 @@ namespace nickmaltbie.MinimapTools.Minimap
         public float GetRotation()
         {
             return MinimapBounds.rotation;
+        }
+
+        /// <inheritdoc/>
+        public Vector3 MapNormal()
+        {
+            return MinimapBounds.MapNormal();
+        }
+
+        /// <inheritdoc/>
+        public Vector3 MapAxisHoriz()
+        {
+            return MinimapBounds.MapAxisHoriz();
+        }
+
+        /// <inheritdoc/>
+        public Vector3 MapAxisVert()
+        {
+            return MinimapBounds.MapAxisVert();
         }
     }
 }

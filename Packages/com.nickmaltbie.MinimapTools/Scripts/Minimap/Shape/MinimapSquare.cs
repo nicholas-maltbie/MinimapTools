@@ -35,6 +35,16 @@ namespace nickmaltbie.MinimapTools.Minimap.Shape
         public Vector2 center;
 
         /// <summary>
+        /// Horizontal axis of the minimap.
+        /// </summary>
+        public Vector3 horizontalAxis = Vector3.right;
+
+        /// <summary>
+        /// Vertical axis of the minimap.
+        /// </summary>
+        public Vector3 verticalAxis = Vector3.forward;
+
+        /// <summary>
         /// Rotation of the object about the vertical axis.
         /// </summary>
         [ReadOnly]
@@ -147,6 +157,24 @@ namespace nickmaltbie.MinimapTools.Minimap.Shape
                 MathUtils.GetRotatedPoint(center.x + size.x / 2, center.y + size.y / 2, center.x, center.y, rotation),
                 MathUtils.GetRotatedPoint(center.x + size.x / 2, center.y - size.y / 2, center.x, center.y, rotation)
             );
+        }
+
+        /// <inheritdoc/>
+        public Vector3 MapNormal()
+        {
+            return Vector3.Cross(horizontalAxis, verticalAxis);
+        }
+
+        /// <inheritdoc/>
+        public Vector3 MapAxisHoriz()
+        {
+            return horizontalAxis;
+        }
+
+        /// <inheritdoc/>
+        public Vector3 MapAxisVert()
+        {
+            return verticalAxis;
         }
     }
 }

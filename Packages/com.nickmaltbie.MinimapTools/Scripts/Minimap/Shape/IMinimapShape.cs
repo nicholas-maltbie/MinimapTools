@@ -55,5 +55,23 @@ namespace nickmaltbie.MinimapTools.Minimap.Shape
         /// <param name="point">Point in 3D world space.</param>
         /// <returns>True if the point is in the minimap, false otherwise.</returns>
         bool Contains(Vector2 point);
+
+        /// <summary>
+        /// Get the normal vector for the plane of this minimap.
+        /// </summary>
+        /// <returns>Vector normal to the minimap plane.</returns>
+        Vector3 MapNormal();
+
+        /// <summary>
+        /// Direction of the axis horizontal along the minimap plane.
+        /// </summary>
+        /// <returns>Horizontal directional vector.</returns>
+        Vector3 MapAxisHoriz();
+
+        /// <summary>
+        /// Direction of the vertical axis along the minimap plane.
+        /// </summary>
+        /// <returns>Vertical direction vector.</returns>
+        Vector3 MapAxisVert();
     }
 }

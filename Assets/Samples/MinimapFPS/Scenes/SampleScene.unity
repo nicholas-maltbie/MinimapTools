@@ -159,6 +159,8 @@ MonoBehaviour:
   elementTexture: {fileID: 2800000, guid: a93deafd9f0437c40ab6b2deb0eb8f54, type: 3}
   elementBounds:
     center: {x: -9.92, y: -2.58}
+    horizontalAxis: {x: 0, y: 0, z: 0}
+    verticalAxis: {x: 0, y: 0, z: 0}
     rotation: -313.49878
     size: {x: 10, y: 10}
     lockAspectRatio: 1
@@ -399,6 +401,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimapShape:
     center: {x: -0.45, y: 0.5}
+    horizontalAxis: {x: 1, y: 0, z: 0}
+    verticalAxis: {x: 0, y: 0, z: 1}
     rotation: -0
     size: {x: 60, y: 35}
     lockAspectRatio: 1
@@ -448,6 +452,8 @@ MonoBehaviour:
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
     center: {x: 5.82, y: 0.5}
+    horizontalAxis: {x: 0, y: 0, z: 0}
+    verticalAxis: {x: 0, y: 0, z: 0}
     rotation: -303.6524
     size: {x: 1, y: 1}
     lockAspectRatio: 0
@@ -567,6 +573,8 @@ MonoBehaviour:
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
     center: {x: 8.66, y: -0.78}
+    horizontalAxis: {x: 0, y: 0, z: 0}
+    verticalAxis: {x: 0, y: 0, z: 0}
     rotation: -290.10275
     size: {x: 1, y: 1}
     lockAspectRatio: 0
@@ -1214,6 +1222,8 @@ MonoBehaviour:
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
     center: {x: 14.92, y: -0.62}
+    horizontalAxis: {x: 0, y: 0, z: 0}
+    verticalAxis: {x: 0, y: 0, z: 0}
     rotation: -289.2975
     size: {x: 1, y: 1}
     lockAspectRatio: 0
@@ -1318,6 +1328,8 @@ MonoBehaviour:
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
     center: {x: 16.32, y: -1.11}
+    horizontalAxis: {x: 0, y: 0, z: 0}
+    verticalAxis: {x: 0, y: 0, z: 0}
     rotation: -305.44434
     size: {x: 1, y: 1}
     lockAspectRatio: 0
@@ -1552,6 +1564,8 @@ MonoBehaviour:
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
     center: {x: 7.12, y: -0.22000003}
+    horizontalAxis: {x: 0, y: 0, z: 0}
+    verticalAxis: {x: 0, y: 0, z: 0}
     rotation: -297.09567
     size: {x: 1, y: 1}
     lockAspectRatio: 0
@@ -1880,6 +1894,8 @@ MonoBehaviour:
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
     center: {x: 11.73, y: -0.89}
+    horizontalAxis: {x: 0, y: 0, z: 0}
+    verticalAxis: {x: 0, y: 0, z: 0}
     rotation: -250.63127
     size: {x: 1, y: 1}
     lockAspectRatio: 0
@@ -1984,6 +2000,8 @@ MonoBehaviour:
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
     center: {x: 13.26, y: -0.6}
+    horizontalAxis: {x: 0, y: 0, z: 0}
+    verticalAxis: {x: 0, y: 0, z: 0}
     rotation: -271.45154
     size: {x: 1, y: 1}
     lockAspectRatio: 0
@@ -2152,6 +2170,8 @@ MonoBehaviour:
   elementTexture: {fileID: 2800000, guid: a93deafd9f0437c40ab6b2deb0eb8f54, type: 3}
   elementBounds:
     center: {x: 0, y: 0}
+    horizontalAxis: {x: 0, y: 0, z: 0}
+    verticalAxis: {x: 0, y: 0, z: 0}
     rotation: -0
     size: {x: 10, y: 10}
     lockAspectRatio: 0
@@ -2585,6 +2605,8 @@ MonoBehaviour:
   elementTexture: {fileID: 2800000, guid: a93deafd9f0437c40ab6b2deb0eb8f54, type: 3}
   elementBounds:
     center: {x: 10, y: 0}
+    horizontalAxis: {x: 0, y: 0, z: 0}
+    verticalAxis: {x: 0, y: 0, z: 0}
     rotation: -0
     size: {x: 10, y: 10}
     lockAspectRatio: 0
@@ -2717,6 +2739,8 @@ MonoBehaviour:
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
     center: {x: 10.120001, y: -1.12}
+    horizontalAxis: {x: 0, y: 0, z: 0}
+    verticalAxis: {x: 0, y: 0, z: 0}
     rotation: -266.6463
     size: {x: 1, y: 1}
     lockAspectRatio: 0

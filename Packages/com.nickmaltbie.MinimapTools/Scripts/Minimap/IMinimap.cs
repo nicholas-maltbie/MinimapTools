@@ -79,5 +79,23 @@ namespace nickmaltbie.MinimapTools.Minimap
         /// </summary>
         /// <returns>Vector2Int of the width and height of the minimap.</returns>
         Vector2Int GetSize();
+
+        /// <summary>
+        /// Get the normal vector for the plane of this minimap.
+        /// </summary>
+        /// <returns>Vector normal to the minimap plane.</returns>
+        Vector3 MapNormal();
+
+        /// <summary>
+        /// Direction of the axis horizontal along the minimap plane.
+        /// </summary>
+        /// <returns>Horizontal directional vector.</returns>
+        Vector3 MapAxisHoriz();
+
+        /// <summary>
+        /// Direction of the vertical axis along the minimap plane.
+        /// </summary>
+        /// <returns>Vertical direction vector.</returns>
+        Vector3 MapAxisVert();
     }
 }
