@@ -19,6 +19,7 @@
 using nickmaltbie.MinimapTools.Icon;
 using nickmaltbie.MinimapTools.Minimap.Shape;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace nickmaltbie.MinimapTools.Minimap.Simple
 {
@@ -75,6 +76,8 @@ namespace nickmaltbie.MinimapTools.Minimap.Simple
             rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, targetHeight);
 
             base.Start();
+
+            backgroundRt.GetComponent<Image>().SetNativeSize();
 
             foreach (IMinimapIcon icon in GameObject.FindObjectsOfType<AbstractSpriteIcon>())
             {

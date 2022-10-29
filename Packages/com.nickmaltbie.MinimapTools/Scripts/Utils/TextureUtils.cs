@@ -71,8 +71,8 @@ namespace nickmaltbie.MinimapTools.Utils
                 }
                 else
                 {
-                    var blended = Color.Lerp(current.Value, source, weight / (current.Value.a + weight));
-                    blended.a = current.Value.a + weight * source.a;
+                    var blended = Color.Lerp(current.Value, source, source.a * weight);
+                    blended.a += weight * source.a;
                     colorTable[idx] = blended;
                 }
             };

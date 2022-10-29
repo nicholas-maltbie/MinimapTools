@@ -68,11 +68,11 @@ namespace nickmaltbie.MinimapTools.Icon
             rt.SetParent(minimapTransform);
 
             image.sprite = sprite;
-            rt.anchorMin = Vector2.one * 0.5f;
-            rt.anchorMax = Vector2.one * 0.5f;
+            rt.pivot = new Vector2(0.5f, 0.5f);
             Vector2Int pixelSize = GetPixelSize(minimap);
             rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, pixelSize.x);
             rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, pixelSize.y);
+
             return go;
         }
 
