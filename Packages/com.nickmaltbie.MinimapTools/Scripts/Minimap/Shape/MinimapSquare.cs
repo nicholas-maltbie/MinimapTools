@@ -66,11 +66,15 @@ namespace nickmaltbie.MinimapTools.Minimap.Shape
         /// <param name="center">Center of the object in world space.</param>
         /// <param name="size">Size of the object in world space.</param>
         /// <param name="rotation">Rotation of the object about the vertical axis.</param>
-        public MinimapSquare(Vector2 center, Vector2 size, float rotation)
+        /// <param name="horiz">Horizontal axis of minimap plane.</param>
+        /// <param name="vert">Vertical axis of minimap plane.</param>
+        public MinimapSquare(Vector2 center, Vector2 size, float rotation, Vector3? horiz = null, Vector3? vert = null)
         {
             this.center = center;
             this.size = size;
             this.rotation = rotation;
+            this.horizontalAxis = horiz ?? Vector3.right;
+            this.verticalAxis = vert ?? Vector3.forward;
         }
 
         /// <inheritdoc/>

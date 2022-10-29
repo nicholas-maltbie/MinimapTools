@@ -43,7 +43,9 @@ namespace nickmaltbie.MinimapTools.EditorTools
                 new Vector2(
                     boxCollider.size.x * minimapBox.transform.lossyScale.x,
                     boxCollider.size.z * minimapBox.transform.lossyScale.z),
-                -rotation);
+                -rotation,
+                minimapBox.transform.right,
+                minimapBox.transform.forward);
 
             minimapBox.transform.rotation = Quaternion.Euler(0, rotation, 0);
 
