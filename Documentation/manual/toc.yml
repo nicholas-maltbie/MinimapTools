@@ -3,6 +3,8 @@
   
 - name: Code Design
   href: code-design.md
+- name: Fog of War
+  href: fog-of-war.md
 - name: Minimap Design
   href: minimap-design.md
 - name: Usage
