@@ -76,8 +76,8 @@ namespace nickmaltbie.MinimapTools.Minimap.Shape
         /// <returns>Position in minimap space.</returns>
         public Vector2 ConvertToMinimapPlane(Vector3 worldSpace)
         {
-            Vector3 xComponent = Vector3.Project(worldSpace, MapAxisHoriz());
-            Vector3 yComponent = Vector3.Project(worldSpace, MapAxisVert());
+            var xComponent = Vector3.Project(worldSpace, MapAxisHoriz());
+            var yComponent = Vector3.Project(worldSpace, MapAxisVert());
             float xSign = Vector3.Dot(xComponent, MapAxisHoriz()) > 0 ? 1 : -1;
             float ySign = Vector3.Dot(yComponent, MapAxisVert()) > 0 ? 1 : -1;
 

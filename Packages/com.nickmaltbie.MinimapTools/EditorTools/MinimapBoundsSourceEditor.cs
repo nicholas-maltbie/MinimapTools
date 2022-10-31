@@ -18,7 +18,6 @@
 
 using nickmaltbie.MinimapTools.Minimap.Shape;
 using UnityEditor;
-using UnityEngine;
 
 namespace nickmaltbie.MinimapTools.EditorTools
 {

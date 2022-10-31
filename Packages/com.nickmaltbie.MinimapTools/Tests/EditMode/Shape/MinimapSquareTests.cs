@@ -51,7 +51,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Shape
             [NUnit.Framework.Range(-30, 30, 15)] float rotationZ
         )
         {
-            Quaternion rotation = Quaternion.Euler(rotationX, rotationY, rotationZ);
+            var rotation = Quaternion.Euler(rotationX, rotationY, rotationZ);
             var square = new MinimapSquare(Vector2.zero, Vector2.one * 10, rotation);
 
             TestUtils.AssertInBounds(square.Center, Vector3.zero);
@@ -59,9 +59,9 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Shape
 
             Vector3[] corners = square.GetWorldSpaceCorners(Vector3.zero);
             TestUtils.AssertInBounds(corners[0], rotation * new Vector3(-5, 0, -5));
-            TestUtils.AssertInBounds(corners[1], rotation * new Vector3(-5, 0,  5));
-            TestUtils.AssertInBounds(corners[2], rotation * new Vector3( 5, 0,  5));
-            TestUtils.AssertInBounds(corners[3], rotation * new Vector3( 5, 0, -5));
+            TestUtils.AssertInBounds(corners[1], rotation * new Vector3(-5, 0, 5));
+            TestUtils.AssertInBounds(corners[2], rotation * new Vector3(5, 0, 5));
+            TestUtils.AssertInBounds(corners[3], rotation * new Vector3(5, 0, -5));
         }
     }
 }

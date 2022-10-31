@@ -47,7 +47,6 @@ namespace nickmaltbie.MinimapTools.EditorTools
 
         public static void UpdateMinimapSquareFromTransform(Transform transform, MinimapSquare minimapShape)
         {
-            float rotation = transform.rotation.eulerAngles.y;
             minimapShape.rotation = transform.rotation;
 
             // Update center in minimap position
@@ -74,7 +73,7 @@ namespace nickmaltbie.MinimapTools.EditorTools
             {
                 Undo.RecordObject(objectToUndo ?? origin.gameObject, "Adjust size of minimap bounds");
                 Vector3 move = newTargetPosition - handlePos;
-                var delta = minimapSquare.ConvertToMinimapPlane(move);
+                Vector2 delta = minimapSquare.ConvertToMinimapPlane(move);
                 delta.Scale(direction);
 
                 bool lockRatio = minimapSquare.lockAspectRatio;

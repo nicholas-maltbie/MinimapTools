@@ -18,7 +18,6 @@
 
 using nickmaltbie.MinimapTools.Background;
 using UnityEditor;
-using UnityEngine;
 
 namespace nickmaltbie.MinimapTools.EditorTools
 {
