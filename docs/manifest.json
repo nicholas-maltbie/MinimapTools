@@ -1,0 +1,940 @@
+{
+  "sitemap": {
+    "fileOptions": {
+      "latest/api/*": {
+        "changefreq": "daily"
+      }
+    },
+    "baseUrl": "https://nickmaltbie.com/MinimapTools/docs/",
+    "changefreq": "weekly"
+  },
+  "homepages": [],
+  "source_base_path": "D:/a/MinimapTools/MinimapTools/Documentation",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "Demo/MinimapTools-Example.gif",
+      "output": {
+        "resource": {
+          "relative_path": "Demo/MinimapTools-Example.gif"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "LICENSE.txt",
+      "output": {
+        "resource": {
+          "relative_path": "LICENSE.txt"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Background.AbstractMinimapElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Background.AbstractMinimapElement.html",
+          "hash": "FRuEUUVZCNWb640y9XRtNC+5ekDoZnfAHmxWGuL1sLg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Background.BackgroundTexture.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Background.BackgroundTexture.html",
+          "hash": "gFYSWEjlr2+rnZr6Od8lmVYdXd1C5klakL20ms/aTqE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Background.BoxMinimapElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Background.BoxMinimapElement.html",
+          "hash": "L2Xu5rtb3NV2mEFcSC0jqPH/nNocEJEebEjyHcT24HM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Background.IMinimapElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Background.IMinimapElement.html",
+          "hash": "CLJ71XChJEKuNahbYbgQgtSm6qBbm3DSzbLTFzeJatE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Background.SpriteMinimapElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Background.SpriteMinimapElement.html",
+          "hash": "nXtVkCg+DkiI2iES9NH4G7a3SvnNnoVxhzLLOpx8Ve0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Background.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Background.html",
+          "hash": "2lsx3eBGh+KtVUELr9hvWY8gB0xSz3L7MlgwIikQhHk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.EditorTools.BoxMinimapElementEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.EditorTools.BoxMinimapElementEditor.html",
+          "hash": "4JSNYgBKE9XAA9ZnlobC1tiM8uigffN/zGSkVbVaDU0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.EditorTools.MinimapBoundsSourceEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.EditorTools.MinimapBoundsSourceEditor.html",
+          "hash": "g78vW4cewl0L6bQ81BwrsmLPJTX/D+nEspus7hQYxZE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.EditorTools.MinimapSquareUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.EditorTools.MinimapSquareUtils.html",
+          "hash": "3P39XTQFq+lZZSN7tziVbi3qLpHqHhq+hgP48MkI89s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.EditorTools.ReadOnlyDrawer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.EditorTools.ReadOnlyDrawer.html",
+          "hash": "iapfm7W55xGP5jYjvz6j59KRqmWw+nTf4Tl8aUaH3+A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.EditorTools.SpriteMinimapElementEditor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.EditorTools.SpriteMinimapElementEditor.html",
+          "hash": "+KT+HI4LciPce0CF0au/cP/u+lcODLKUaOWiXsdCHMs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.EditorTools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.EditorTools.html",
+          "hash": "jjd6nusMYPb5s66HL/2KS/lpOtfukxudhUeYIWG2DTU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Icon.AbstractSpriteIcon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Icon.AbstractSpriteIcon.html",
+          "hash": "agFiFZYHLAUXEFCQL0pbPGsatNHH8ZZumUIRPqLUn7M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Icon.FixedSizeSpriteIcon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Icon.FixedSizeSpriteIcon.html",
+          "hash": "gSC240zD04OGdmLBgH80GY5LJqA2mfMox5+V5y6a/+Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Icon.IMinimapIcon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Icon.IMinimapIcon.html",
+          "hash": "4fJN0eCLH3yeMe3FpiT9N54hsijtcPCTmdts5tnGgC8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Icon.RelativeSizeSpriteIcon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Icon.RelativeSizeSpriteIcon.html",
+          "hash": "hplsAWyAhNck5yUZh0YPfbHdDXWHPM+w/F1pmwQAgLg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Icon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Icon.html",
+          "hash": "VY4WICkeBonwrOYeIGzYRRymhW9k6ujNF6FQaLMvWiM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Minimap.AbstractMinimap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Minimap.AbstractMinimap.html",
+          "hash": "WTAeuadtrjN8cpjvDjSLz5oy4DgcDz3kIcFKbwNMhSM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Minimap.Centered.CenteredMinimap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Minimap.Centered.CenteredMinimap.html",
+          "hash": "jmFcTwSh2oTcXOTT2oeb+ToazAcuzshlkoEt0mUBpjA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Minimap.Centered.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Minimap.Centered.html",
+          "hash": "tcFe8UKxkxM/dt7W+42+l61BxM4OSPrHO0rmbq10OOE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Minimap.IMinimap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Minimap.IMinimap.html",
+          "hash": "pkLeoiKMWhX11gtOQhr2fIDrzPz/XUOeMc46X+U916c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Minimap.Shape.IMinimapShape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Minimap.Shape.IMinimapShape.html",
+          "hash": "lfTtxcE0DvFq/NDAntQas2SD5Fi4988C7FYv1tDPvc4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Minimap.Shape.MinimapBoundsSource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Minimap.Shape.MinimapBoundsSource.html",
+          "hash": "+iuCYpllu6p6CvX4Phpo2IzET85B6ZOokVPbsug70RU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Minimap.Shape.MinimapSquare.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Minimap.Shape.MinimapSquare.html",
+          "hash": "SrdeE4rolpdAqY0fPaK/DhklaLLvpI+QA3IUxzQBUfs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Minimap.Shape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Minimap.Shape.html",
+          "hash": "d7ahY8FfoDlC+pq9/c5z3AbNzzXX9N9+oXvn3EnNgQQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Minimap.Simple.SimpleStaticMinimap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Minimap.Simple.SimpleStaticMinimap.html",
+          "hash": "VkVckzjpxNdr1QwYI2vuRln3UeTOlQxmMc1ZgP4sZBY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Minimap.Simple.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Minimap.Simple.html",
+          "hash": "vonm9BodiphWFBIeE3sekRnW+5M+y0aOhxCxJNGuA3Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Minimap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Minimap.html",
+          "hash": "W+mekJWkYV5VO63C5A1U88BLKg41azzEUx+oD+9w50I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.TestCommon.TestBase.GizmoValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.TestCommon.TestBase.GizmoValidator.html",
+          "hash": "MvlsNu/QNvXbXfVnBsHyFqyC4BCu6XREiNgd68sq9z4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.TestCommon.TestBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.TestCommon.TestBase.html",
+          "hash": "jzoXAi8iGuSmaljMCsIvzRFZ8DCJ6I+UvSf5c05Zjcs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.TestCommon.TestUtils.BoundRange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.TestCommon.TestUtils.BoundRange.html",
+          "hash": "VU9pFiz/w7IUY3FnODhySpDv4bsIJtOj2Rha0uY2IgE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.TestCommon.TestUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.TestCommon.TestUtils.html",
+          "hash": "qEtTgk+c3VAp/MEksrfDmdJPQySsePOKmJsSnvMM7l0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.TestCommon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.TestCommon.html",
+          "hash": "GxT+/SoHQRkyf8vpaKn8ie08z/ohW4RRufDGkixOOLs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Background.BackgroundTextureTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Background.BackgroundTextureTests.html",
+          "hash": "p1gmT/4sUtbN734pmVylDw9zcUjiSEQehuWoDXPWrJ4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Background.BoxMinimapElementTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Background.BoxMinimapElementTests.html",
+          "hash": "L+Dn3uGA2gYyGBG9kxcbSBbdqDBOaIOY2gWf3XHMVVU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Background.SpriteMinimapElementTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Background.SpriteMinimapElementTests.html",
+          "hash": "1wGAhxWIJeODHAxFWwPYVQiVLlunsui9vNdMKsNHDf0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Background.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Background.html",
+          "hash": "x4wv7Q6LtDVVfGoyma9kZucmy0nlir3nh0suIMUayDc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Icon.FixedSizeSpriteIconTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Icon.FixedSizeSpriteIconTests.html",
+          "hash": "1pP9TNsiBMAyj3/y8bmy+xvQ/TS7J3Fo1rPAQRl89fM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Icon.RelativeSizeSpriteIconTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Icon.RelativeSizeSpriteIconTests.html",
+          "hash": "91NVHNCXzl0intogUziqn9zNrOqjZF3F5MjcgRPeQ2Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Icon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Icon.html",
+          "hash": "YHCxu6+sHL7zUtAE7429WHYZuoWKmI2na7i9tFl3ErE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.AbstractMinimapTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.AbstractMinimapTests.html",
+          "hash": "fFhLiwN3tRPbg6rX6RNMpXd28XYcj5lsVBlcGykKdL0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.CenteredMinimapTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.CenteredMinimapTests.html",
+          "hash": "xibVHLql/FCOWJRj8HoQFuihVzcyhMmrZ9KHoQ/mJ6M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.ExampleMinimap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.ExampleMinimap.html",
+          "hash": "xeO7ZQOi600zcJfZu6MXzMwJwmTfCB/1SAGaP4XA4zU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.ExampleMinimapElement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.ExampleMinimapElement.html",
+          "hash": "/sWPQ1HRv5zPaoEg01+3OsfnhjUR92rf3sdvBWXBI/k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.ExampleMinimapIcon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.ExampleMinimapIcon.html",
+          "hash": "DUESuKNUHvOwdkE+Tm8jxfau4onbQNFcInnDe0Ptc9s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.SimpleStaticMinimapTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.SimpleStaticMinimapTests.html",
+          "hash": "a2VdgfmU3I4r1hTq2PCiAw7eUha6nmniO00rVBlDUyc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Minimap.html",
+          "hash": "HiZ0eOQZ/4E57sUZgI7KTwE6heTTkM/jswdwGDaeTCM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Shape.MinimapSquareTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Shape.MinimapSquareTests.html",
+          "hash": "rTkh5OHFNKaG7P88gVCPPoNa/nBg0xjes9WnOjJVJn4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Shape.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Shape.html",
+          "hash": "RRTl22OCv640gBCWO/rpVxI4O605Nat5qOChn7yA4tw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Utils.TextureUtilsTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Utils.TextureUtilsTests.html",
+          "hash": "tyJ3BFrQcnmzgr7tyvqcPSmqgJODMRxwkQo613H06ww="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.EditMode.Utils.html",
+          "hash": "s6mH50R8m1qp0odKdCYsj4CTqW0n3LQmKhbHV9aYljQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.PlayMode.SamplePlaymodeTests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.PlayMode.SamplePlaymodeTests.html",
+          "hash": "68G5iGCDh38MvT1KmCaFVIR0GY3BxwyBuss5K6udLKs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Tests.PlayMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Tests.PlayMode.html",
+          "hash": "wIy6GUFOgoJ42y6aIL6QSy8Zx+b68GbsCvg1uwc5LWM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Utils.MathUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Utils.MathUtils.html",
+          "hash": "YqOZPuFXpOHahXL9iUFbr9Xh30SObjjaGWKFxgmq2oI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Utils.ReadOnlyAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Utils.ReadOnlyAttribute.html",
+          "hash": "Ci8kqkYPR7LUCnI+5M9iK++X8bq0RQ2a4U2UWZNs/pU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Utils.TextureUtils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Utils.TextureUtils.html",
+          "hash": "VkEZz6MKIo41tpkN7zKyBoSfo4/H7mYzw+Lmtf9r3q8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/nickmaltbie.MinimapTools.Utils.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/nickmaltbie.MinimapTools.Utils.html",
+          "hash": "8ppUni08SRajllOgWZ+otZ5u39vj8+VVa4UrNS1+SGk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "BBFKA6hutDyma9gdQLqZ5VN/V1wxR3qRRvgrrkeuxs0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "changelog/CHANGELOG.md",
+      "output": {
+        ".html": {
+          "relative_path": "changelog/CHANGELOG.html",
+          "hash": "FNpFt1hbDliJeDPah4STj8Z7OQvFjuxG2Tl2TVukyAE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "changelog/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "changelog/toc.html",
+          "hash": "1q1fO7/YyPEGJ89UlRVsP2/QXB8oQ3/9CvSsb1tfrWg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "iR8IvdzdvkYm5iZ7Omq3Sxd7Diu43Z3qsXG4SydaDxk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/code-design.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/code-design.html",
+          "hash": "ffn/wKA37IfCI5z8O/9KSPlz+/auf4sJTCNQMtnauBU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/introduction.html",
+          "hash": "FSgCSj+h+hXvh2Bsqc8mrzIpum/ZUR/MqGs0dHBjlWw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/minimap-design.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/minimap-design.html",
+          "hash": "s6YtIrgCOsPn8ihiOLs3gCr4W9jk+FZliLk8zxj93xk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "manual/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "manual/toc.html",
+          "hash": "EwO3vhzLv2MaGk4yWkz5yV+ZN4R57+DdQLP3VTyleUQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "manual/usage.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/usage.html",
+          "hash": "+0KN0ZU0R8YDh/hSzXmV2QjNgXzOSVjPQwcMaGgma00="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/Super_Metroid_Grapple_Beam.png",
+      "output": {
+        "resource": {
+          "relative_path": "resources/Super_Metroid_Grapple_Beam.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/sources.txt",
+      "output": {
+        "resource": {
+          "relative_path": "resources/sources.txt"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "resources/starcraft-screenshot.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "resources/starcraft-screenshot.jpg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "ohc/AHLeR6plKOy3giZ29sFpFKPrlpdecGHLRv2AFic="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 6,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 57,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

@@ -1,0 +1,778 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class AbstractMinimap
+   | MinimapTools Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class AbstractMinimap
+   | MinimapTools Documentation ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap">
+  
+  
+  <h1 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap" class="text-break">Class AbstractMinimap
+  </h1>
+  <div class="markdown level0 summary"><p>Abstract minimap that contains basic functions for  minimap.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">AbstractMinimap</span></div>
+      <div class="level2"><a class="xref" href="nickmaltbie.MinimapTools.Minimap.Centered.CenteredMinimap.html">CenteredMinimap</a></div>
+      <div class="level2"><a class="xref" href="nickmaltbie.MinimapTools.Minimap.Simple.SimpleStaticMinimap.html">SimpleStaticMinimap</a></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="nickmaltbie.MinimapTools.Minimap.IMinimap.html">IMinimap</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="nickmaltbie.MinimapTools.Minimap.html">nickmaltbie.MinimapTools.Minimap</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class AbstractMinimap : MonoBehaviour, IMinimap</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  
+  
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_backgroundImage" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.backgroundImage">backgroundImage</h4>
+  <div class="markdown level1 summary"><p>Background image for the minimap.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Texture2D backgroundImage</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Texture2D</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_backgroundRt" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.backgroundRt">backgroundRt</h4>
+  <div class="markdown level1 summary"><p>Transform of background image.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected RectTransform backgroundRt</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RectTransform</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_defaultShape" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.defaultShape">defaultShape</h4>
+  <div class="markdown level1 summary"><p>Default bounds for the minimap.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly MinimapSquare defaultShape</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="nickmaltbie.MinimapTools.Minimap.Shape.MinimapSquare.html">MinimapSquare</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_icons" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.icons">icons</h4>
+  <div class="markdown level1 summary"><p>Collection of icons contained in this minimap.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Dictionary&lt;IMinimapIcon, GameObject&gt; icons</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">IMinimapIcon</span>, <span class="xref">GameObject</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_maskShape" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.maskShape">maskShape</h4>
+  <div class="markdown level1 summary"><p>Shape of the minimap mask.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Sprite maskShape</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Sprite</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_MapOffset_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.MapOffset*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_MapOffset" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.MapOffset">MapOffset</h4>
+  <div class="markdown level1 summary"><p>Map offset for the minimap relative to the map size. A value of (0,0)
+would indicate centered map. A value of (1,1) would indicate shift the
+minimap by 1 unit of the minimap viewing area.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract Vector2 MapOffset { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_MapScale_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.MapScale*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_MapScale" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.MapScale">MapScale</h4>
+  <div class="markdown level1 summary"><p>Scale factor for map on screen.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract float MapScale { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_MinimapBounds_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.MinimapBounds*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_MinimapBounds" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.MinimapBounds">MinimapBounds</h4>
+  <div class="markdown level1 summary"><p>Get the MinimapSquare version of the minimap bounds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected MinimapSquare MinimapBounds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="nickmaltbie.MinimapTools.Minimap.Shape.MinimapSquare.html">MinimapSquare</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_PixelsPerUnit_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.PixelsPerUnit*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_PixelsPerUnit" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.PixelsPerUnit">PixelsPerUnit</h4>
+  <div class="markdown level1 summary"><p>Number of pixels per unit of the minimap size.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float PixelsPerUnit { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><p>Returns the number of pixels per unit for sizing the minimap.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_Source_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.Source*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_Source" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.Source">Source</h4>
+  <div class="markdown level1 summary"><p>Source of shape for the minimap.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract MinimapBoundsSource Source { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="nickmaltbie.MinimapTools.Minimap.Shape.MinimapBoundsSource.html">MinimapBoundsSource</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_AddIcon_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.AddIcon*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_AddIcon_IMinimapIcon_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.AddIcon(IMinimapIcon)">AddIcon(IMinimapIcon)</h4>
+  <div class="markdown level1 summary"><p>Add an icon to the minimap.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool AddIcon(IMinimapIcon minimapIcon)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IMinimapIcon</span></td>
+        <td><span class="parametername">minimapIcon</span></td>
+        <td><p>Icon to add to the minimap.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p>True if the object was added successfully, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_Awake_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.Awake*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_Awake" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.Awake">Awake()</h4>
+  <div class="markdown level1 summary"><p>Initial minimap setup.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Awake()</code></pre>
+  </div>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_GetMinimapPosition_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.GetMinimapPosition*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_GetMinimapPosition_Vector3_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.GetMinimapPosition(Vector3)">GetMinimapPosition(Vector3)</h4>
+  <div class="markdown level1 summary"><p>Translates a position from world space to normalized minimap space.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Vector2 GetMinimapPosition(Vector3 worldPosition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td><span class="parametername">worldPosition</span></td>
+        <td><p>Position of the object in world space.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2</span></td>
+        <td><p>Normalized minimap position, will scale positions within
+the minimap to between (0,0) and (1,1).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_GetRotation_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.GetRotation*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_GetRotation" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.GetRotation">GetRotation()</h4>
+  <div class="markdown level1 summary"><p>Get the rotation of the minimap with respect to the vertical axis.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetRotation()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Single</a></td>
+        <td><p>Rotation of the minimap in degrees.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_GetSize_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.GetSize*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_GetSize" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.GetSize">GetSize()</h4>
+  <div class="markdown level1 summary"><p>Get the size of the minimap texture in pixels.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector2Int GetSize()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector2Int</span></td>
+        <td><p>Vector2Int of the width and height of the minimap.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_GetWorldBounds_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.GetWorldBounds*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_GetWorldBounds" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.GetWorldBounds">GetWorldBounds()</h4>
+  <div class="markdown level1 summary"><p>Get the world bounds for the minimap.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IMinimapShape GetWorldBounds()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="nickmaltbie.MinimapTools.Minimap.Shape.IMinimapShape.html">IMinimapShape</a></td>
+        <td><p>World bound that the minimap represents.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_LateUpdate_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.LateUpdate*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_LateUpdate" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.LateUpdate">LateUpdate()</h4>
+  <div class="markdown level1 summary"><p>Move each object following minimap rules.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void LateUpdate()</code></pre>
+  </div>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_MapAxisHoriz_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.MapAxisHoriz*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_MapAxisHoriz" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.MapAxisHoriz">MapAxisHoriz()</h4>
+  <div class="markdown level1 summary"><p>Direction of the axis horizontal along the minimap plane.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 MapAxisHoriz()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td><p>Horizontal directional vector.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_MapAxisVert_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.MapAxisVert*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_MapAxisVert" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.MapAxisVert">MapAxisVert()</h4>
+  <div class="markdown level1 summary"><p>Direction of the vertical axis along the minimap plane.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 MapAxisVert()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td><p>Vertical direction vector.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_MapNormal_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.MapNormal*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_MapNormal" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.MapNormal">MapNormal()</h4>
+  <div class="markdown level1 summary"><p>Get the normal vector for the plane of this minimap.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vector3 MapNormal()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Vector3</span></td>
+        <td><p>Vector normal to the minimap plane.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_RemoveIcon_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.RemoveIcon*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_RemoveIcon_IMinimapIcon_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.RemoveIcon(IMinimapIcon)">RemoveIcon(IMinimapIcon)</h4>
+  <div class="markdown level1 summary"><p>Remove an icon from the minimap.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool RemoveIcon(IMinimapIcon minimapIcon)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IMinimapIcon</span></td>
+        <td><span class="parametername">minimapIcon</span></td>
+        <td><p>Icon to remove to the minimap.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p>True if the object was removed successfully, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_Start_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.Start*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_Start" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.Start">Start()</h4>
+  <div class="markdown level1 summary"><p>Add any icons from the minimap to this object during the start.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Start()</code></pre>
+  </div>
+  
+  
+  <a id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_UpdateMinimapIconPosition_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.UpdateMinimapIconPosition*"></a>
+  <h4 id="nickmaltbie_MinimapTools_Minimap_AbstractMinimap_UpdateMinimapIconPosition_IMinimapIcon_" data-uid="nickmaltbie.MinimapTools.Minimap.AbstractMinimap.UpdateMinimapIconPosition(IMinimapIcon)">UpdateMinimapIconPosition(IMinimapIcon)</h4>
+  <div class="markdown level1 summary"><p>Update the position of a minimap icon based on its current position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void UpdateMinimapIconPosition(IMinimapIcon icon)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IMinimapIcon</span></td>
+        <td><span class="parametername">icon</span></td>
+        <td><p>icon to update position of.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="nickmaltbie.MinimapTools.Minimap.IMinimap.html">IMinimap</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            MinimapTools Documentation
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    
+    <!-- Derived from https://blog.christian-schou.dk/how-to-produce-static-documentation-using-docfx/#including-diagrams-in-your-documentation-mermaid-with-docfx !-->
+    <!-- mermaid support -->
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+        startOnLoad: false
+    });
+    mermaid.init(undefined, ".lang-mermaid");
+    </script>  </body>
+</html>

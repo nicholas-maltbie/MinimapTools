@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Minimap Design | MinimapTools Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Minimap Design | MinimapTools Documentation ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="minimap-design">Minimap Design</h1>
+
+<p>This document presents a basic overview of how the minimap is designed
+for the unity project.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The minimap can support a few different scenarios and
+requirements, let&#39;s define those at the start of
+this document.</p>
+<ol>
+<li>Show player&#39;s surroundings.</li>
+<li>Allow for easy navigation of virtual space.</li>
+<li>Highlight relevant information for a user.</li>
+<li>Allow player to focus on minimap to find important information.</li>
+</ol>
+<h2 id="examples">Examples</h2>
+<p>This is a very broad definition of a minimap but there are a few
+existing high level minimap designs that could be derived from this.</p>
+<p>The simplest minimap may be something that just shows
+the room the player is located in relative to
+previously explored rooms like in the game
+Super Metroid.</p>
+<p><img src="../resources/Super_Metroid_Grapple_Beam.png" alt="Screenshot of typical game play from Super Metroid.
+The protagonist uses a grapple beam to reach inaccessible areas."></p>
+<p><em>Image from
+<a href="http://metroid.retropixel.net/games/metroid3/screenshots/">Metroid Recon</a>,
+<a href="https://en.wikipedia.org/wiki/File:Super_Metroid_Grapple_Beam.png">Wikipedia Source Details</a>
+Minimap in top right of screen.</em></p>
+<p>A more complex version of this minimap design may be something similar to
+Star craft 2&#39;s minimap which shows fog of war, terrain, units, as well
+as other important features and has navigation controls.</p>
+<p><img src="../resources/starcraft-screenshot.jpg" alt="StarCraft 2 game Outbreak mission in Wings of liberty campaign.">
+<em>Image from game StarCraft 2, Minimap in bottom left</em></p>
+<h2 id="features">Features</h2>
+<p>From the given requirements and examples above, we can define a set of
+features that satisfy these requirements.</p>
+<p>There are many designs and layers to the minimap,
+but as a basic set of goals, the minimap would
+need to do the following:</p>
+<ol>
+<li>Show a high level view of the world.</li>
+<li>Show the player their position relative to the world.<ul>
+<li>This can have varying levels of detail. For example,
+the Metroid map just shows the room the player is in
+while the StarCraft map highlights every unit in
+the player&#39;s vision.</li>
+</ul>
+</li>
+<li>Expand to show new areas as the player explores them.</li>
+</ol>
+<p>These capabilities implemented together should
+satisfy all the requirements we defined earlier.</p>
+<h2 id="design-overview">Design Overview</h2>
+<p>The minimap component itself will be implemented
+similar to that of StarCraft and Metroid as a UI element
+on the screen. To implement the features described in
+the previous section, we will need to combine a
+few components and layers together.</p>
+<h3 id="view-of-world">View of World</h3>
+<p>The minimap itself should just show the world around
+the player. To make this the most simple, we can allow
+the end user to give the minimap a sprite/image texture
+to display as the base of the map.</p>
+<p>We can then draw a scaled version of this image as
+the minimap on the screen.</p>
+<p>We could generate this image from a terrain map
+or labeled structure but at the most general level,
+we simply need to draw an image on the screen.</p>
+<h3 id="relative-position">Relative Position</h3>
+<p>Once we have the basic image down, we need to then
+show where the player is viewing the map.</p>
+<p>The simplest way to do this is to make some sort of
+icon/drawing to show the player on the minimap.
+Again, the most general form of this would be just to
+draw a sprite on top of the minimap to show the player.</p>
+<p>Additionally, sometimes a minimap can be too large
+so showing a zoomed in version of the minimap to
+highlight local features and having the center of
+the map move with the player may make it easier to
+view and read. This is how the map in metroid
+is configured.</p>
+<p>However, this moving map feature is a more
+specialized feature as not every map needs this
+feature. For example, the StarCraft map
+provided earlier just draws a square to show
+the area the player is viewing.</p>
+<h3 id="reveal-new-areas">Reveal New Areas</h3>
+<p>The last general feature I would like to add to
+the minimap is revealing new areas. With the
+StarCraft map as well as the Metroid map, the map
+expands and shows new area as the player explores
+them.</p>
+<p>There are two main ways this could be implemented.</p>
+<ol>
+<li>Adding to the base map image every time a new
+ area is explored.</li>
+<li>Having a cover over the original map and revealing
+ parts of it as it is explored.</li>
+</ol>
+<p>Since we assumed that the map would be a static image
+from an earlier step, revealing parts of the map
+would probably be the easiest method for implementing
+this.</p>
+<p>Lots of image editing programs such as GIMP or PhotoShop
+have a concept of layers and masks. To achieve revealing
+the map from a cover, we simply would need to draw a
+layer over the original map and erase parts of the
+cover as the player explores new areas.</p>
+<h2 id="other-features">Other Features</h2>
+<p>Some additional features that seem to be in common
+use among many games include:</p>
+<ul>
+<li>Navigation via minimap</li>
+<li>Fog of war exploration</li>
+<li>Expanding to a full screen map</li>
+<li>Highlighting objects on the minimap</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/nicholas-maltbie/MinimapTools/blob/main/Documentation/manual/minimap-design.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            MinimapTools Documentation
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    
+    <!-- Derived from https://blog.christian-schou.dk/how-to-produce-static-documentation-using-docfx/#including-diagrams-in-your-documentation-mermaid-with-docfx !-->
+    <!-- mermaid support -->
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+        startOnLoad: false
+    });
+    mermaid.init(undefined, ".lang-mermaid");
+    </script>  </body>
+</html>
