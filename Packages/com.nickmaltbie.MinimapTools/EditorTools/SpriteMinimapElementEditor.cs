@@ -31,19 +31,9 @@ namespace nickmaltbie.MinimapTools.EditorTools
         public void OnSceneGUI()
         {
             var spriteElement = (target as SpriteMinimapElement);
-            float rotation = spriteElement.transform.rotation.eulerAngles.y;
-
-            spriteElement.elementBounds.center = new Vector2(spriteElement.transform.position.x, spriteElement.transform.position.z);
-            spriteElement.elementBounds.rotation = -rotation % 360;
-
-            spriteElement.transform.rotation = Quaternion.Euler(0, rotation, 0);
-
-            MinimapSquareUtils.RenderMinimapSquare(spriteElement.elementBounds, spriteElement.transform.position.y);
-
-            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.right, spriteElement);
-            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.left, spriteElement);
-            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.up, spriteElement);
-            MinimapSquareUtils.DrawSizeHandle(spriteElement.elementBounds, spriteElement.transform, Vector2.down, spriteElement);
+            MinimapSquareUtils.UpdateMinimapSquareFromTransform(spriteElement.transform, spriteElement.elementBounds);
+            MinimapSquareUtils.RenderMinimapSquare(spriteElement.elementBounds, spriteElement.transform.position);
+            MinimapSquareUtils.DrawFourSizeHandles(spriteElement.elementBounds, spriteElement.transform, spriteElement);
         }
     }
 }

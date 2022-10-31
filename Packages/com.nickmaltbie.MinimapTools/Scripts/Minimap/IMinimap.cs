@@ -34,13 +34,6 @@ namespace nickmaltbie.MinimapTools.Minimap
         float PixelsPerUnit { get; }
 
         /// <summary>
-        /// Check if a location is in the minimap space.
-        /// </summary>
-        /// <param name="worldSpace">World space of the object.</param>
-        /// <returns>True if the location is within the minimap, false otherwise.</returns>
-        bool InMap(Vector3 worldSpace);
-
-        /// <summary>
         /// Get the rotation of the minimap with respect to the vertical axis.
         /// </summary>
         /// <returns>Rotation of the minimap in degrees.</returns>

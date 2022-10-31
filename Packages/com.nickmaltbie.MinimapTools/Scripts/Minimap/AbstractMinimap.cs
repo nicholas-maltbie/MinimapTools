@@ -34,7 +34,7 @@ namespace nickmaltbie.MinimapTools.Minimap
         /// <summary>
         /// Default bounds for the minimap.
         /// </summary>
-        public static readonly MinimapSquare defaultShape = new MinimapSquare(Vector3.zero, Vector3.one * 10, 0);
+        public static readonly MinimapSquare defaultShape = new MinimapSquare(Vector3.zero, Vector3.one * 10, Quaternion.identity);
 
         /// <summary>
         /// Background image for the minimap.
@@ -183,12 +183,6 @@ namespace nickmaltbie.MinimapTools.Minimap
         }
 
         /// <inheritdoc/>
-        public virtual bool InMap(Vector3 worldSpace)
-        {
-            return GetWorldBounds().Contains(worldSpace);
-        }
-
-        /// <inheritdoc/>
         public virtual bool RemoveIcon(IMinimapIcon minimapIcon)
         {
             if (icons.TryGetValue(minimapIcon, out GameObject go))
@@ -215,7 +209,7 @@ namespace nickmaltbie.MinimapTools.Minimap
 
                 if (icon.RotateWithMap())
                 {
-                    rectTransform.localRotation = Quaternion.Euler(0, 0, -(icon.GetIconRotation().eulerAngles.y + GetRotation()));
+                    rectTransform.localRotation = Quaternion.Euler(0, 0, -(icon.GetIconRotation().eulerAngles.y - GetRotation()));
                 }
                 else
                 {
@@ -236,17 +230,8 @@ namespace nickmaltbie.MinimapTools.Minimap
         /// <inheritdoc/>
         public virtual Vector2 GetMinimapPosition(Vector3 worldPosition)
         {
-            float x1, y1;
-            MinimapSquare minimapBounds = MinimapBounds;
-            Vector3 xComponent = Vector3.Project(worldPosition, MapAxisHoriz());
-            Vector3 yComponent = Vector3.Project(worldPosition, MapAxisVert());
-
-            float xSign = Vector3.Dot(xComponent, MapAxisHoriz()) > 0 ? 1 : -1;
-            float ySign = Vector3.Dot(yComponent, MapAxisVert()) > 0 ? 1 : -1;
-
-            Vector2 planePosition = new Vector2(xComponent.magnitude * xSign, yComponent.magnitude * ySign);
-            (x1, y1) = minimapBounds.GetPositionRelativeToP1(planePosition);
-            return new Vector2(x1 / minimapBounds.size.x, y1 / minimapBounds.size.y);
+            Vector2 planePosition = MinimapBounds.ConvertToMinimapPlane(worldPosition - MinimapBounds.Center);
+            return new Vector2(planePosition.x / MinimapBounds.size.x, planePosition.y / MinimapBounds.size.y) + new Vector2(0.5f, 0.5f);
         }
 
         /// <inheritdoc/>
@@ -259,7 +244,7 @@ namespace nickmaltbie.MinimapTools.Minimap
         /// <inheritdoc/>
         public float GetRotation()
         {
-            return MinimapBounds.rotation;
+            return MinimapBounds.rotation.eulerAngles.y;
         }
 
         /// <inheritdoc/>

@@ -158,10 +158,8 @@ MonoBehaviour:
   drawOrder: 1
   elementTexture: {fileID: 2800000, guid: a93deafd9f0437c40ab6b2deb0eb8f54, type: 3}
   elementBounds:
-    center: {x: -9.92, y: -2.58}
-    horizontalAxis: {x: 0, y: 0, z: 0}
-    verticalAxis: {x: 0, y: 0, z: 0}
-    rotation: -313.49878
+    center: {x: -9.92, y: 0, z: -2.58}
+    rotation: {x: -0, y: -0.38268343, z: -0, w: 0.92387956}
     size: {x: 10, y: 10}
     lockAspectRatio: 1
   color: {r: 0, g: 0, b: 0, a: 1}
@@ -235,14 +233,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2479624}
-  m_LocalRotation: {x: -0, y: 0.39475372, z: -0, w: -0.918787}
+  m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -19.92, y: 0, z: -2.58}
   m_LocalScale: {x: 10, y: 0.1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1059609838}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -46.501, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!1 &81242863
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,14 +377,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193516852}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.45, y: 0, z: 0.5}
+  m_LocalRotation: {x: 0, y: 0.2588191, z: 0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 653599882}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!114 &193516856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,12 +398,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimapShape:
-    center: {x: -0.45, y: 0.5}
-    horizontalAxis: {x: 1, y: 0, z: 0}
-    verticalAxis: {x: 0, y: 0, z: 1}
-    rotation: -0
-    size: {x: 60, y: 35}
-    lockAspectRatio: 1
+    center: {x: 0, y: 0, z: 0}
+    rotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
+    size: {x: 45, y: 45}
+    lockAspectRatio: 0
 --- !u!114 &269746997 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6623657609640478871, guid: 730ef644cc0c4e647824412d22b50c05, type: 3}
@@ -451,10 +447,8 @@ MonoBehaviour:
   drawOrder: 4
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
-    center: {x: 5.82, y: 0.5}
-    horizontalAxis: {x: 0, y: 0, z: 0}
-    verticalAxis: {x: 0, y: 0, z: 0}
-    rotation: -303.6524
+    center: {x: 5.82, y: 0.1500001, z: 0.5}
+    rotation: {x: -0, y: 0.47214773, z: -0, w: -0.88151944}
     size: {x: 1, y: 1}
     lockAspectRatio: 0
   color: {r: 0, g: 0, b: 0, a: 1}
@@ -572,10 +566,8 @@ MonoBehaviour:
   drawOrder: 4
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
-    center: {x: 8.66, y: -0.78}
-    horizontalAxis: {x: 0, y: 0, z: 0}
-    verticalAxis: {x: 0, y: 0, z: 0}
-    rotation: -290.10275
+    center: {x: 8.66, y: 0.1500001, z: -0.78}
+    rotation: {x: -0, y: 0.5728417, z: -0, w: -0.819666}
     size: {x: 1, y: 1}
     lockAspectRatio: 0
   color: {r: 0, g: 0, b: 0, a: 1}
@@ -629,6 +621,43 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 476787484}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &653599881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 653599882}
+  m_Layer: 0
+  m_Name: World
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &653599882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653599881}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 193516853}
+  - {fileID: 1596054673}
+  - {fileID: 1059609838}
+  - {fileID: 1872964489}
+  - {fileID: 978374829}
+  - {fileID: 1973020962}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,8 +1039,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978374828}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.82, y: 0.15, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.82, y: 0.1500001, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1023,8 +1052,8 @@ Transform:
   - {fileID: 1492131257}
   - {fileID: 1211526673}
   - {fileID: 1216255114}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 653599882}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1016296757
 GameObject:
@@ -1161,7 +1190,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059609837}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1169,8 +1198,8 @@ Transform:
   - {fileID: 1519543791}
   - {fileID: 2479629}
   - {fileID: 1976778489}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 653599882}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1211526672
 GameObject:
@@ -1221,10 +1250,8 @@ MonoBehaviour:
   drawOrder: 4
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
-    center: {x: 14.92, y: -0.62}
-    horizontalAxis: {x: 0, y: 0, z: 0}
-    verticalAxis: {x: 0, y: 0, z: 0}
-    rotation: -289.2975
+    center: {x: 14.92, y: 0.1500001, z: -0.62}
+    rotation: {x: -0, y: 0.57858765, z: -0, w: -0.8156203}
     size: {x: 1, y: 1}
     lockAspectRatio: 0
   color: {r: 0, g: 0, b: 0, a: 1}
@@ -1327,10 +1354,8 @@ MonoBehaviour:
   drawOrder: 4
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
-    center: {x: 16.32, y: -1.11}
-    horizontalAxis: {x: 0, y: 0, z: 0}
-    verticalAxis: {x: 0, y: 0, z: 0}
-    rotation: -305.44434
+    center: {x: 16.32, y: 0.1500001, z: -1.11}
+    rotation: {x: -0, y: 0.45830572, z: -0, w: -0.88879466}
     size: {x: 1, y: 1}
     lockAspectRatio: 0
   color: {r: 0, g: 0, b: 0, a: 1}
@@ -1563,10 +1588,8 @@ MonoBehaviour:
   drawOrder: 4
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
-    center: {x: 7.12, y: -0.22000003}
-    horizontalAxis: {x: 0, y: 0, z: 0}
-    verticalAxis: {x: 0, y: 0, z: 0}
-    rotation: -297.09567
+    center: {x: 7.12, y: 0.1500001, z: -0.22000003}
+    rotation: {x: -0, y: 0.5217866, z: -0, w: -0.85307604}
     size: {x: 1, y: 1}
     lockAspectRatio: 0
   color: {r: 0, g: 0, b: 0, a: 1}
@@ -1724,14 +1747,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369885544}
-  m_LocalRotation: {x: -0, y: 0.46803337, z: -0, w: 0.8837108}
+  m_LocalRotation: {x: -0, y: 0.45399046, z: -0, w: 0.8910066}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.4696598, y: 0.82322, z: 10.217313}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1872964489}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 55.813, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 54, z: 0}
 --- !u!1 &1418373626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,10 +1916,8 @@ MonoBehaviour:
   drawOrder: 4
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
-    center: {x: 11.73, y: -0.89}
-    horizontalAxis: {x: 0, y: 0, z: 0}
-    verticalAxis: {x: 0, y: 0, z: 0}
-    rotation: -250.63127
+    center: {x: 11.73, y: 0.1500001, z: -0.89}
+    rotation: {x: -0, y: 0.81597984, z: -0, w: -0.57808036}
     size: {x: 1, y: 1}
     lockAspectRatio: 0
   color: {r: 0, g: 0, b: 0, a: 1}
@@ -1999,10 +2020,8 @@ MonoBehaviour:
   drawOrder: 4
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
-    center: {x: 13.26, y: -0.6}
-    horizontalAxis: {x: 0, y: 0, z: 0}
-    verticalAxis: {x: 0, y: 0, z: 0}
-    rotation: -271.45154
+    center: {x: 13.26, y: 0.1500001, z: -0.6}
+    rotation: {x: -0, y: 0.6980934, z: -0, w: -0.7160067}
     size: {x: 1, y: 1}
     lockAspectRatio: 0
   color: {r: 0, g: 0, b: 0, a: 1}
@@ -2146,7 +2165,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519543787}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 0.2, z: 10}
   m_ConstrainProportionsScale: 0
@@ -2169,10 +2188,8 @@ MonoBehaviour:
   drawOrder: 2
   elementTexture: {fileID: 2800000, guid: a93deafd9f0437c40ab6b2deb0eb8f54, type: 3}
   elementBounds:
-    center: {x: 0, y: 0}
-    horizontalAxis: {x: 0, y: 0, z: 0}
-    verticalAxis: {x: 0, y: 0, z: 0}
-    rotation: -0
+    center: {x: 0, y: 0, z: 0}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
     size: {x: 10, y: 10}
     lockAspectRatio: 0
   color: {r: 0, g: 0, b: 0, a: 1}
@@ -2266,13 +2283,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596054669}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.001, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0009999275, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 653599882}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1650472626
 PrefabInstance:
@@ -2524,8 +2541,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872964488}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.83, y: 0.359, z: 1.09}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.83, y: 0.35899997, z: 1.0900002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2533,8 +2550,8 @@ Transform:
   - {fileID: 81242868}
   - {fileID: 1016296762}
   - {fileID: 1369885549}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 653599882}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1973020961
 GameObject:
@@ -2546,7 +2563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1973020962}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Box Icons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2559,15 +2576,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973020961}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.22, y: 2.23, z: 8.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1293184455}
   - {fileID: 1676812100}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 653599882}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1976778484
 GameObject:
@@ -2604,10 +2621,8 @@ MonoBehaviour:
   drawOrder: 2
   elementTexture: {fileID: 2800000, guid: a93deafd9f0437c40ab6b2deb0eb8f54, type: 3}
   elementBounds:
-    center: {x: 10, y: 0}
-    horizontalAxis: {x: 0, y: 0, z: 0}
-    verticalAxis: {x: 0, y: 0, z: 0}
-    rotation: -0
+    center: {x: 10, y: 0, z: 0}
+    rotation: {x: -0, y: -0, z: -0, w: 1}
     size: {x: 10, y: 10}
     lockAspectRatio: 0
   color: {r: 0, g: 0, b: 0, a: 1}
@@ -2738,10 +2753,8 @@ MonoBehaviour:
   drawOrder: 4
   elementTexture: {fileID: 2800000, guid: ee88f5d8368e45240ba2448aeb8441c2, type: 3}
   elementBounds:
-    center: {x: 10.120001, y: -1.12}
-    horizontalAxis: {x: 0, y: 0, z: 0}
-    verticalAxis: {x: 0, y: 0, z: 0}
-    rotation: -266.6463
+    center: {x: 10.120001, y: 0.1500001, z: -1.12}
+    rotation: {x: -0, y: 0.7274956, z: -0, w: -0.68611234}
     size: {x: 1, y: 1}
     lockAspectRatio: 0
   color: {r: 0, g: 0, b: 0, a: 1}

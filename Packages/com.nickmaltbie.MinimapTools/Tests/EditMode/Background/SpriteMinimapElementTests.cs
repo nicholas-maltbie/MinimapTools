@@ -44,7 +44,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
             GameObject go = base.CreateGameObject();
             spriteMinimapElement = go.AddComponent<SpriteMinimapElement>();
             spriteMinimapElement.elementTexture = new Texture2D(10, 10);
-            spriteMinimapElement.elementBounds = new MinimapSquare(Vector2.zero, Vector2.one, 0);
+            spriteMinimapElement.elementBounds = new MinimapSquare(Vector2.zero, Vector2.one, Quaternion.identity);
 
             // Fill sprite with random pixels
             spriteMinimapElement.elementTexture.SetPixels(
@@ -54,7 +54,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
             spriteMinimapElement.elementTexture.Apply();
 
             minimapMock = new Mock<IMinimap>();
-            minimapSquare = new MinimapSquare(Vector2.zero, Vector2.one * 10, 0);
+            minimapSquare = new MinimapSquare(Vector2.zero, Vector2.one * 10, Quaternion.identity);
 
             backgroundTexture = new Texture2D(100, 100);
             backgroundTexture.SetPixels(

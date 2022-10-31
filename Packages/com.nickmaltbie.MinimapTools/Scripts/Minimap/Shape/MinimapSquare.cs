@@ -29,26 +29,16 @@ namespace nickmaltbie.MinimapTools.Minimap.Shape
     public class MinimapSquare : IMinimapShape
     {
         /// <summary>
-        /// Center of the object in world space.
+        /// Center of the object in minimap space.
         /// </summary>
         [ReadOnly]
-        public Vector2 center;
-
-        /// <summary>
-        /// Horizontal axis of the minimap.
-        /// </summary>
-        public Vector3 horizontalAxis = Vector3.right;
-
-        /// <summary>
-        /// Vertical axis of the minimap.
-        /// </summary>
-        public Vector3 verticalAxis = Vector3.forward;
+        public Vector3 center;
 
         /// <summary>
         /// Rotation of the object about the vertical axis.
         /// </summary>
         [ReadOnly]
-        public float rotation;
+        public Quaternion rotation;
 
         /// <summary>
         /// Size of the object in world space.
@@ -65,120 +55,71 @@ namespace nickmaltbie.MinimapTools.Minimap.Shape
         /// </summary>
         /// <param name="center">Center of the object in world space.</param>
         /// <param name="size">Size of the object in world space.</param>
-        /// <param name="rotation">Rotation of the object about the vertical axis.</param>
-        /// <param name="horiz">Horizontal axis of minimap plane.</param>
-        /// <param name="vert">Vertical axis of minimap plane.</param>
-        public MinimapSquare(Vector2 center, Vector2 size, float rotation, Vector3? horiz = null, Vector3? vert = null)
+        /// <param name="rotation">Rotation of the object in 3D space for the plane.</param>
+        public MinimapSquare(Vector3 center, Vector3 size, Quaternion rotation)
         {
             this.center = center;
             this.size = size;
             this.rotation = rotation;
-            this.horizontalAxis = horiz ?? Vector3.right;
-            this.verticalAxis = vert ?? Vector3.forward;
         }
 
         /// <inheritdoc/>
-        public Vector2 Center => center;
+        public Vector3 Center => center;
 
         /// <inheritdoc/>
         public Vector2 Size => size;
 
-        /// <inheritdoc/>
-        public Vector2 Min
+        /// <summary>
+        /// Get the position of an element from world space to minimap space.
+        /// </summary>
+        /// <param name="worldSpace">Position in world space.</param>
+        /// <returns>Position in minimap space.</returns>
+        public Vector2 ConvertToMinimapPlane(Vector3 worldSpace)
         {
-            get
-            {
-                float x1, y1, x2, y2, x3, y3, x4, y4;
-                ((x1, y1), (x2, y2), (x3, y3), (x4, y4)) = GetCorners();
-                return new Vector2(Mathf.Min(x1, x2, x3, x4), Mathf.Min(y1, y2, y3, y4));
-            }
-        }
+            Vector3 xComponent = Vector3.Project(worldSpace, MapAxisHoriz());
+            Vector3 yComponent = Vector3.Project(worldSpace, MapAxisVert());
+            float xSign = Vector3.Dot(xComponent, MapAxisHoriz()) > 0 ? 1 : -1;
+            float ySign = Vector3.Dot(yComponent, MapAxisVert()) > 0 ? 1 : -1;
 
-        /// <inheritdoc/>
-        public Vector2 Max
-        {
-            get
-            {
-                float x1, y1, x2, y2, x3, y3, x4, y4;
-                ((x1, y1), (x2, y2), (x3, y3), (x4, y4)) = GetCorners();
-                return new Vector2(Mathf.Max(x1, x2, x3, x4), Mathf.Max(y1, y2, y3, y4));
-            }
-        }
-
-        /// <inheritdoc/>
-        public bool Contains(Vector2 point)
-        {
-            float dx, dy;
-            (dx, dy) = GetPositionRelativeToP1(point);
-            return dx >= 0 && dx <= size.x && dy >= 0 && dy <= size.y;
+            return new Vector2(xComponent.magnitude * xSign, yComponent.magnitude * ySign);
         }
 
         /// <summary>
-        /// https://math.stackexchange.com/questions/2157931/how-to-check-if-a-point-is-inside-a-square-2d-plane
+        /// Get the corners of the minimap in world space.
         /// </summary>
-        /// <param name="point"></param>
-        /// <returns></returns>
-        public (float, float) GetPositionRelativeToP1(Vector2 point)
+        /// <param name="offset">Offset from center in world space.</param>
+        /// <returns>Four corners of the minimap as vector 3 in world space.</returns>
+        public Vector3[] GetWorldSpaceCorners(Vector3? offset)
         {
-            float x1, x2, x4, y1, y2, y4;
-            ((x1, y1), (x2, y2), _, (x4, y4)) = GetCorners();
+            offset ??= Vector3.zero;
+            Vector3 horiz = MapAxisHoriz();
+            Vector3 vert = MapAxisVert();
 
-            // Define vector for bottom and left edge
-            float xbot, ybot, xleft, yleft;
-            xbot = x4 - x1;
-            ybot = y4 - y1;
-            xleft = x2 - x1;
-            yleft = y2 - y1;
-
-            // Define vector from point point to bottom left corner
-            float diagx, diagy;
-            diagx = point.x - x1;
-            diagy = point.y - y1;
-
-            // Compute the horizontal and vertical components of distance
-            // relative to the bottom left corner.
-            float dx = MathUtils.Dot(diagx, diagy, xbot, ybot) / MathUtils.Length(xbot, ybot);
-            float dy = MathUtils.Dot(diagx, diagy, xleft, yleft) / MathUtils.Length(xleft, yleft);
-
-            return (dx, dy);
-        }
-
-        /// <summary>
-        /// Get the four corners of this minimap square rotated about the center.
-        /// <pre>
-        ///     [1] x2,y2 --- [2] x3,y3
-        ///      |                   |
-        ///     [0] x1,y1 --- [3] x4,y4
-        /// </pre>
-        /// </summary>
-        /// <returns>Corners of the minimap square rotated about the center.
-        /// Returns the points in order ((x1, y1), (x2, y2), (x3, y3), (x4, y4))</returns>
-        public ((float, float), (float, float), (float, float), (float, float)) GetCorners()
-        {
-            return (
-                MathUtils.GetRotatedPoint(center.x - size.x / 2, center.y - size.y / 2, center.x, center.y, rotation),
-                MathUtils.GetRotatedPoint(center.x - size.x / 2, center.y + size.y / 2, center.x, center.y, rotation),
-                MathUtils.GetRotatedPoint(center.x + size.x / 2, center.y + size.y / 2, center.x, center.y, rotation),
-                MathUtils.GetRotatedPoint(center.x + size.x / 2, center.y - size.y / 2, center.x, center.y, rotation)
-            );
+            return new Vector3[]
+            {
+                offset.Value - horiz * size.x / 2 - vert * size.y / 2,
+                offset.Value - horiz * size.x / 2 + vert * size.y / 2,
+                offset.Value + horiz * size.x / 2 + vert * size.y / 2,
+                offset.Value + horiz * size.x / 2 - vert * size.y / 2
+            };
         }
 
         /// <inheritdoc/>
         public Vector3 MapNormal()
         {
-            return Vector3.Cross(horizontalAxis, verticalAxis);
+            return rotation * Vector3.up;
         }
 
         /// <inheritdoc/>
         public Vector3 MapAxisHoriz()
         {
-            return horizontalAxis;
+            return rotation * Vector3.right;
         }
 
         /// <inheritdoc/>
         public Vector3 MapAxisVert()
         {
-            return verticalAxis;
+            return rotation * Vector3.forward;
         }
     }
 }

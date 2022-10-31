@@ -43,13 +43,11 @@ namespace nickmaltbie.MinimapTools.EditorTools
                 new Vector2(
                     boxCollider.size.x * minimapBox.transform.lossyScale.x,
                     boxCollider.size.z * minimapBox.transform.lossyScale.z),
-                -rotation,
-                minimapBox.transform.right,
-                minimapBox.transform.forward);
+                boxCollider.transform.rotation);
 
             minimapBox.transform.rotation = Quaternion.Euler(0, rotation, 0);
 
-            MinimapSquareUtils.RenderMinimapSquare(minimapShape, minimapBox.transform.position.y);
+            MinimapSquareUtils.RenderMinimapSquare(minimapShape, minimapBox.transform.position);
         }
     }
 }

@@ -68,7 +68,7 @@ namespace nickmaltbie.MinimapTools.Background
         /// <inheritdoc/>
         public override float GetRotation()
         {
-            return -elementBounds.rotation + 180;
+            return elementBounds.rotation.eulerAngles.y;
         }
     }
 }
