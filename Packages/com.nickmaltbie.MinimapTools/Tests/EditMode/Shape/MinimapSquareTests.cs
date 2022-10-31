@@ -32,30 +32,36 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Shape
         [Test]
         public void Validate_MinimapSquare_Normal()
         {
-            var square = new MinimapSquare(Vector2.zero, Vector2.one * 10, 0);
+            var square = new MinimapSquare(Vector3.zero, Vector3.one * 10, Quaternion.identity);
 
-            Assert.AreEqual(square.Center, Vector2.zero);
-            Assert.AreEqual(square.Size, Vector2.one * 10);
-            Assert.AreEqual(square.Min, Vector2.one * -5);
-            Assert.AreEqual(square.Max, Vector2.one * 5);
+            TestUtils.AssertInBounds(square.Center, Vector3.zero);
+            TestUtils.AssertInBounds(square.Size, Vector2.one * 10);
 
-            TestUtils.AssertInBounds(square.GetPositionRelativeToP1(Vector2.zero), (5, 5));
-            TestUtils.AssertInBounds(square.GetPositionRelativeToP1(Vector2.one * -5), (0, 0));
-            TestUtils.AssertInBounds(square.GetPositionRelativeToP1(Vector2.one * 5), (10, 10));
-            TestUtils.AssertInBounds(square.GetPositionRelativeToP1(new Vector2(-1, 3)), (4, 8));
+            Vector3[] corners = square.GetWorldSpaceCorners(Vector3.zero);
+            TestUtils.AssertInBounds(corners[0], new Vector3(-5, 0, -5));
+            TestUtils.AssertInBounds(corners[1], new Vector3(-5, 0, 5));
+            TestUtils.AssertInBounds(corners[2], new Vector3(5, 0, 5));
+            TestUtils.AssertInBounds(corners[3], new Vector3(5, 0, -5));
         }
 
         [Test]
-        public void Validate_MinimapSquare_Rotated()
+        public void Validate_MinimapSquare_Rotated(
+            [NUnit.Framework.Range(-30, 30, 15)] float rotationX,
+            [NUnit.Framework.Range(-30, 30, 15)] float rotationY,
+            [NUnit.Framework.Range(-30, 30, 15)] float rotationZ
+        )
         {
-            var square = new MinimapSquare(Vector2.zero, Vector2.one * 10, 45);
+            var rotation = Quaternion.Euler(rotationX, rotationY, rotationZ);
+            var square = new MinimapSquare(Vector2.zero, Vector2.one * 10, rotation);
 
-            Assert.AreEqual(square.Center, Vector2.zero);
-            Assert.AreEqual(square.Size, Vector2.one * 10);
-            TestUtils.AssertInBounds(square.Min, -Vector2.one * 10 * Mathf.Cos(Mathf.PI / 4));
-            TestUtils.AssertInBounds(square.Max, Vector2.one * 10 * Mathf.Cos(Mathf.PI / 4));
+            TestUtils.AssertInBounds(square.Center, Vector3.zero);
+            TestUtils.AssertInBounds(square.Size, Vector2.one * 10);
 
-            TestUtils.AssertInBounds(square.GetPositionRelativeToP1(Vector2.zero), (5, 5));
+            Vector3[] corners = square.GetWorldSpaceCorners(Vector3.zero);
+            TestUtils.AssertInBounds(corners[0], rotation * new Vector3(-5, 0, -5));
+            TestUtils.AssertInBounds(corners[1], rotation * new Vector3(-5, 0, 5));
+            TestUtils.AssertInBounds(corners[2], rotation * new Vector3(5, 0, 5));
+            TestUtils.AssertInBounds(corners[3], rotation * new Vector3(5, 0, -5));
         }
     }
 }

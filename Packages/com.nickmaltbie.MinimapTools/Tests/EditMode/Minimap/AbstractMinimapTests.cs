@@ -78,7 +78,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
             GameObject canvas = base.CreateGameObject();
             canvas.AddComponent<Canvas>();
             boundsSource = base.CreateGameObject().AddComponent<MinimapBoundsSource>();
-            boundsSource.minimapShape = new MinimapSquare(Vector2.zero, Vector2.one * 10, 0);
+            boundsSource.minimapShape = new MinimapSquare(Vector2.zero, Vector2.one * 10, Quaternion.identity);
 
             GameObject minimapGo = CreateGameObject();
             minimapGo.transform.SetParent(canvas.transform);
@@ -112,6 +112,15 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
 
             exampleMinimap.boundsSource = null;
             Assert.AreEqual(AbstractMinimap.defaultShape, exampleMinimap.GetWorldBounds());
+        }
+
+        [Test]
+        public void Verify_AbstractMinimap_Directions()
+        {
+            exampleMinimap.Start();
+            TestUtils.AssertInBounds(exampleMinimap.MapNormal(), Vector3.up);
+            TestUtils.AssertInBounds(exampleMinimap.MapAxisHoriz(), Vector3.right);
+            TestUtils.AssertInBounds(exampleMinimap.MapAxisVert(), Vector3.forward);
         }
 
         [Test]

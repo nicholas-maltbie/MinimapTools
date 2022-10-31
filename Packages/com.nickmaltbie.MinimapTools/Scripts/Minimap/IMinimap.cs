@@ -34,13 +34,6 @@ namespace nickmaltbie.MinimapTools.Minimap
         float PixelsPerUnit { get; }
 
         /// <summary>
-        /// Check if a location is in the minimap space.
-        /// </summary>
-        /// <param name="worldSpace">World space of the object.</param>
-        /// <returns>True if the location is within the minimap, false otherwise.</returns>
-        bool InMap(Vector3 worldSpace);
-
-        /// <summary>
         /// Get the rotation of the minimap with respect to the vertical axis.
         /// </summary>
         /// <returns>Rotation of the minimap in degrees.</returns>
@@ -79,5 +72,23 @@ namespace nickmaltbie.MinimapTools.Minimap
         /// </summary>
         /// <returns>Vector2Int of the width and height of the minimap.</returns>
         Vector2Int GetSize();
+
+        /// <summary>
+        /// Get the normal vector for the plane of this minimap.
+        /// </summary>
+        /// <returns>Vector normal to the minimap plane.</returns>
+        Vector3 MapNormal();
+
+        /// <summary>
+        /// Direction of the axis horizontal along the minimap plane.
+        /// </summary>
+        /// <returns>Horizontal directional vector.</returns>
+        Vector3 MapAxisHoriz();
+
+        /// <summary>
+        /// Direction of the vertical axis along the minimap plane.
+        /// </summary>
+        /// <returns>Vertical direction vector.</returns>
+        Vector3 MapAxisVert();
     }
 }

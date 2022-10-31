@@ -29,7 +29,7 @@ namespace nickmaltbie.MinimapTools.Minimap.Shape
         /// Get the center of this minimap shape in world space.
         /// </summary>
         /// <value>Position of the object in world space.</value>
-        Vector2 Center { get; }
+        Vector3 Center { get; }
 
         /// <summary>
         /// Get the size of this minimap object in world space.
@@ -38,22 +38,21 @@ namespace nickmaltbie.MinimapTools.Minimap.Shape
         Vector2 Size { get; }
 
         /// <summary>
-        /// Get the lowest point of this object in world space.
+        /// Get the normal vector for the plane of this minimap.
         /// </summary>
-        /// <value>Minimum extent of the object in world space (only the xz axis).</value>
-        Vector2 Min { get; }
+        /// <returns>Vector normal to the minimap plane.</returns>
+        Vector3 MapNormal();
 
         /// <summary>
-        /// Get the greatest point of this object in world space.
+        /// Direction of the axis horizontal along the minimap plane.
         /// </summary>
-        /// <value>Maximum extent of the object in world space (only the xz axis).</value>
-        Vector2 Max { get; }
+        /// <returns>Horizontal directional vector.</returns>
+        Vector3 MapAxisHoriz();
 
         /// <summary>
-        /// CHeck if a point is within the minimap shape.
+        /// Direction of the vertical axis along the minimap plane.
         /// </summary>
-        /// <param name="point">Point in 3D world space.</param>
-        /// <returns>True if the point is in the minimap, false otherwise.</returns>
-        bool Contains(Vector2 point);
+        /// <returns>Vertical direction vector.</returns>
+        Vector3 MapAxisVert();
     }
 }

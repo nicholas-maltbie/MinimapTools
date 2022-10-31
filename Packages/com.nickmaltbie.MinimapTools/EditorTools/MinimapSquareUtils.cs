@@ -33,17 +33,32 @@ namespace nickmaltbie.MinimapTools.EditorTools
         /// <param name="minimapSquare">Minimap square to render.</param>
         /// <param name="offset">Offset of minimap square.</param>
         /// <param name="color">Color to draw the square for the minimap.</param>
-        public static void RenderMinimapSquare(MinimapSquare minimapSquare, float verticalOffset, Color? color = null)
+        public static void RenderMinimapSquare(MinimapSquare minimapSquare, Vector3 offset, Color? color = null)
         {
-            float x1, y1, x2, y2, x3, y3, x4, y4;
-            ((x1, y1), (x2, y2), (x3, y3), (x4, y4)) = minimapSquare.GetCorners();
+            Vector3[] corners = minimapSquare.GetWorldSpaceCorners(offset);
 
             Handles.color = color ?? Color.red;
 
-            Handles.DrawLine(new Vector3(x1, verticalOffset, y1), new Vector3(x2, verticalOffset, y2));
-            Handles.DrawLine(new Vector3(x2, verticalOffset, y2), new Vector3(x3, verticalOffset, y3));
-            Handles.DrawLine(new Vector3(x3, verticalOffset, y3), new Vector3(x4, verticalOffset, y4));
-            Handles.DrawLine(new Vector3(x4, verticalOffset, y4), new Vector3(x1, verticalOffset, y1));
+            Handles.DrawLine(corners[0], corners[1]);
+            Handles.DrawLine(corners[1], corners[2]);
+            Handles.DrawLine(corners[2], corners[3]);
+            Handles.DrawLine(corners[3], corners[0]);
+        }
+
+        public static void UpdateMinimapSquareFromTransform(Transform transform, MinimapSquare minimapShape)
+        {
+            minimapShape.rotation = transform.rotation;
+
+            // Update center in minimap position
+            minimapShape.center = transform.position;
+        }
+
+        public static void DrawFourSizeHandles(MinimapSquare minimapSquare, Transform origin, Object objectToUndo = null)
+        {
+            MinimapSquareUtils.DrawSizeHandle(minimapSquare, origin, Vector2.right, objectToUndo);
+            MinimapSquareUtils.DrawSizeHandle(minimapSquare, origin, Vector2.left, objectToUndo);
+            MinimapSquareUtils.DrawSizeHandle(minimapSquare, origin, Vector2.up, objectToUndo);
+            MinimapSquareUtils.DrawSizeHandle(minimapSquare, origin, Vector2.down, objectToUndo);
         }
 
         public static void DrawSizeHandle(MinimapSquare minimapSquare, Transform origin, Vector2 direction, Object objectToUndo = null)
@@ -58,7 +73,7 @@ namespace nickmaltbie.MinimapTools.EditorTools
             {
                 Undo.RecordObject(objectToUndo ?? origin.gameObject, "Adjust size of minimap bounds");
                 Vector3 move = newTargetPosition - handlePos;
-                var delta = new Vector2(move.x, move.z);
+                Vector2 delta = minimapSquare.ConvertToMinimapPlane(move);
                 delta.Scale(direction);
 
                 bool lockRatio = minimapSquare.lockAspectRatio;

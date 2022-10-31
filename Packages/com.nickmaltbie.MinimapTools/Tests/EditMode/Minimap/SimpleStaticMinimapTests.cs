@@ -85,15 +85,5 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Minimap
             simpleMinimap.AddIcon(spriteIcon);
             Assert.AreEqual(minimapTransform.childCount, 1);
         }
-
-        /// <summary>
-        /// Check if an object is in the map.
-        /// </summary>
-        [Test]
-        public void Validate_SimpleStaticMinimap_InMap()
-        {
-            Assert.IsTrue(simpleMinimap.InMap(Vector3.zero));
-            Assert.IsFalse(simpleMinimap.InMap(new Vector3(10, 10, 10)));
-        }
     }
 }

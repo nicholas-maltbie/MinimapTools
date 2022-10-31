@@ -18,7 +18,6 @@
 
 using nickmaltbie.MinimapTools.Minimap.Shape;
 using UnityEditor;
-using UnityEngine;
 
 namespace nickmaltbie.MinimapTools.EditorTools
 {
@@ -31,19 +30,9 @@ namespace nickmaltbie.MinimapTools.EditorTools
         public void OnSceneGUI()
         {
             var minimapBounds = (target as MinimapBoundsSource);
-            float rotation = minimapBounds.transform.rotation.eulerAngles.y;
-
-            minimapBounds.minimapShape.center = new Vector2(minimapBounds.transform.position.x, minimapBounds.transform.position.z);
-            minimapBounds.minimapShape.rotation = -rotation % 360;
-
-            minimapBounds.transform.rotation = Quaternion.Euler(0, rotation, 0);
-
-            MinimapSquareUtils.RenderMinimapSquare(minimapBounds.minimapShape, minimapBounds.transform.position.y);
-
-            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.right, minimapBounds);
-            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.left, minimapBounds);
-            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.up, minimapBounds);
-            MinimapSquareUtils.DrawSizeHandle(minimapBounds.minimapShape, minimapBounds.transform, Vector2.down, minimapBounds);
+            MinimapSquareUtils.UpdateMinimapSquareFromTransform(minimapBounds.transform, minimapBounds.minimapShape);
+            MinimapSquareUtils.RenderMinimapSquare(minimapBounds.minimapShape, minimapBounds.transform.position);
+            MinimapSquareUtils.DrawFourSizeHandles(minimapBounds.minimapShape, minimapBounds.transform, minimapBounds);
         }
     }
 }

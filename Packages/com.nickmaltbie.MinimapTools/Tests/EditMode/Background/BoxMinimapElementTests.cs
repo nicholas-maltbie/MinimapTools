@@ -50,7 +50,7 @@ namespace nickmaltbie.MinimapTools.Tests.EditMode.Background
             boxCollider = go.GetComponent<BoxCollider>();
 
             minimapMock = new Mock<IMinimap>();
-            minimapSquare = new MinimapSquare(Vector2.zero, Vector2.one * 10, 0);
+            minimapSquare = new MinimapSquare(Vector2.zero, Vector2.one * 10, Quaternion.identity);
 
             backgroundTexture = new Texture2D(100, 100);
             backgroundTexture.SetPixels(

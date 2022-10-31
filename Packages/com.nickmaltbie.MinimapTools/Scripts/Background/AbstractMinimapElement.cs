@@ -61,7 +61,8 @@ namespace nickmaltbie.MinimapTools.Background
         public virtual void DrawOnBackground(IMinimap minimap, Texture2D backgroundTexture)
         {
             Vector2 targetPos = minimap.GetMinimapPosition(WorldCenter());
-            backgroundTexture.DrawStampRelative(GetTexture(minimap).GetRotated(-(GetRotation() + minimap.GetRotation())), targetPos);
+            UnityEngine.Debug.Log($"{GetRotation()} - {minimap.GetRotation()}");
+            backgroundTexture.DrawStampRelative(GetTexture(minimap).GetRotated(-GetRotation() + 180 + minimap.GetRotation()), targetPos);
         }
 
         /// <inheritdoc/>
