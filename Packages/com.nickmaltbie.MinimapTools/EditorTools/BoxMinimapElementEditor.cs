@@ -33,20 +33,12 @@ namespace nickmaltbie.MinimapTools.EditorTools
         {
             var minimapBox = (target as BoxMinimapElement);
             BoxCollider boxCollider = minimapBox.GetComponent<BoxCollider>();
-
-            float rotation = minimapBox.transform.rotation.eulerAngles.y;
-
             var minimapShape = new MinimapSquare(
-                new Vector2(
-                    minimapBox.WorldCenter().x,
-                    minimapBox.WorldCenter().z),
+                minimapBox.transform.position,
                 new Vector2(
                     boxCollider.size.x * minimapBox.transform.lossyScale.x,
                     boxCollider.size.z * minimapBox.transform.lossyScale.z),
                 boxCollider.transform.rotation);
-
-            minimapBox.transform.rotation = Quaternion.Euler(0, rotation, 0);
-
             MinimapSquareUtils.RenderMinimapSquare(minimapShape, minimapBox.transform.position);
         }
     }
